@@ -18,7 +18,7 @@ public class SuperDefence extends javax.swing.JFrame {
     public SuperDefence() {
         initComponents();
         setLocationRelativeTo(null);
-        getContentPane().setBackground(new Color(247f / 255, 247f / 255, 242f / 255, 0.635f));
+        getContentPane().setBackground(new Color(247, 247, 242));        
     }
 
     /**
@@ -29,8 +29,7 @@ public class SuperDefence extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        jSlider1 = new javax.swing.JSlider();
+        
         jLabelAreaClearance = new javax.swing.JLabel();
         jCheckBoxPosition = new javax.swing.JCheckBox();
         jButtonShoot = new javax.swing.JButton();
@@ -48,7 +47,6 @@ public class SuperDefence extends javax.swing.JFrame {
         jSliderFuelAmount = new javax.swing.JSlider();
 
         setTitle("Super Defence");
-        setPreferredSize(new java.awt.Dimension(800, 650));
         setResizable(false);
 
         jLabelAreaClearance.setBackground(new java.awt.Color(237, 111, 52));
@@ -296,10 +294,8 @@ public class SuperDefence extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SuperDefence().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new SuperDefence().setVisible(true);
         });
     }
 
@@ -314,7 +310,6 @@ public class SuperDefence extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSoldierCount;
     private javax.swing.JScrollPane jScrollPaneDisplayArea;
     private javax.swing.JScrollPane jScrollPaneInputArea;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JSlider jSliderFuelAmount;
     private javax.swing.JSpinner jSpinnerAmmo;
     private javax.swing.JSpinner jSpinnerSoldier;
