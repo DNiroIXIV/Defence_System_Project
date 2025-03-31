@@ -5,6 +5,7 @@
 package defencesystem;
 
 import defencesystem.defences.Helicopter;
+import defencesystem.superdefence.SuperDefence;
 
 /**
  *
@@ -16,6 +17,7 @@ public class Starter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        new SuperDefence().setVisible(true);
         new Helicopter().setVisible(true);
     }
     

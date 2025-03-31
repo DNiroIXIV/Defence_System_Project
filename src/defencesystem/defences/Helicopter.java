@@ -28,47 +28,45 @@ public class Helicopter extends SuperDefence {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        checkBoxPosition = getCheckBoxPosition();
         labelAreaClearance = new javax.swing.JLabel();
-        checkBoxPosition = new javax.swing.JCheckBox();
-        buttonShoot = new javax.swing.JButton();
-        buttonMissile = new javax.swing.JButton();
         labelSoldierCount = new javax.swing.JLabel();
         spinnerSoldierCount = new javax.swing.JSpinner();
-        buttonLaser = new javax.swing.JButton();
         labelAmmoCount = new javax.swing.JLabel();
         spinnerAmmoCount = new javax.swing.JSpinner();
+        buttonShoot = new javax.swing.JButton();
+        buttonMissile = new javax.swing.JButton();
+        buttonLaser = new javax.swing.JButton();
         scrollPaneMessageBox = new javax.swing.JScrollPane();
         textPaneMeassageBox = new javax.swing.JTextPane();
-        sliderFuel = new javax.swing.JSlider();
         scrollPaneMessageInput = new javax.swing.JScrollPane();
         textAreaMessageInput = new javax.swing.JTextArea();
         buttonSend = new javax.swing.JButton();
+        sliderFuel = new javax.swing.JSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         labelAreaClearance.setText("jLabel1");
 
-        checkBoxPosition.setText("jCheckBox1");
+        labelSoldierCount.setText("Soldier Count");
+
+        labelAmmoCount.setText("Ammo Count");
 
         buttonShoot.setText("Shoot");
 
         buttonMissile.setText("Missile Operation");
 
-        labelSoldierCount.setText("Soldier Count");
-
         buttonLaser.setText("Laser Operation");
 
-        labelAmmoCount.setText("Ammo Count");
-
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
-
-        sliderFuel.setOrientation(javax.swing.JSlider.VERTICAL);
 
         textAreaMessageInput.setColumns(20);
         textAreaMessageInput.setRows(5);
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         buttonSend.setText("jButton4");
+
+        sliderFuel.setOrientation(javax.swing.JSlider.VERTICAL);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
