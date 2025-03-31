@@ -4,7 +4,15 @@
  */
 package defencesystem.superdefence;
 
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JSlider;
+import javax.swing.JSpinner;
+import javax.swing.JTextArea;
+import javax.swing.JTextPane;
+import javax.swing.text.JTextComponent;
 
 /**
  *
@@ -42,11 +50,11 @@ public class SuperDefence extends javax.swing.JFrame {
         buttonTrident = new javax.swing.JButton();
         buttonRedar = new javax.swing.JButton();
         buttonRotate = new javax.swing.JButton();
+        buttonSend = new javax.swing.JButton();
         scrollPaneMessageBox = new javax.swing.JScrollPane();
         textPaneMeassageBox = new javax.swing.JTextPane();
         scrollPaneMessageInput = new javax.swing.JScrollPane();
         textAreaMessageInput = new javax.swing.JTextArea();
-        buttonSend = new javax.swing.JButton();
         sliderFuel = new javax.swing.JSlider();
         sliderEnergy = new javax.swing.JSlider();
         sliderOxygen = new javax.swing.JSlider();
@@ -78,13 +86,13 @@ public class SuperDefence extends javax.swing.JFrame {
 
         buttonRotate.setText("Rotate Shooting");
 
+        buttonSend.setText("Send");
+
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         textAreaMessageInput.setColumns(20);
         textAreaMessageInput.setRows(5);
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
-
-        buttonSend.setText("Send");
 
         sliderFuel.setOrientation(javax.swing.JSlider.VERTICAL);
 
@@ -108,9 +116,9 @@ public class SuperDefence extends javax.swing.JFrame {
                             .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(60, 60, 60)
+                                    .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(40, 40, 40)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(spinnerSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(spinnerAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -175,7 +183,7 @@ public class SuperDefence extends javax.swing.JFrame {
                         .addComponent(sliderEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(sliderFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(sliderOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -188,6 +196,131 @@ public class SuperDefence extends javax.swing.JFrame {
     public JCheckBox getCheckBoxPosition(){
         return checkBoxPosition;
     }
+    
+    public JLabel getLabelAreaClearance(){
+        return labelAreaClearance;
+    }
+    
+    public JLabel getLabelSoldierCount(){
+        return labelSoldierCount;
+    }
+    
+    public JSpinner getSpinnerSoldierCount(){
+        return spinnerSoldierCount;
+    }
+    
+    public JLabel getLabelAmmoCount(){
+        return labelAmmoCount;
+    }
+    
+    public JSpinner getSpinnerAmmoCount(){
+        return spinnerAmmoCount;
+    }
+    
+    public JButton getButtonShoot(){
+        return buttonShoot;
+    }
+    
+    public JButton getButtonMissile(){
+        return buttonMissile;
+    }
+        
+    public JButton getButtonLaser(){
+        return buttonLaser;
+    }
+    
+    public JButton getButtonSonar(){
+        return buttonSonar;
+    }
+    
+    public JButton getButtonTomahawk(){
+        return buttonTomahawk;
+    }
+    
+    public JButton getButtonTrident(){
+        return buttonTrident;
+    }
+    
+    public JButton getButtonRedar(){
+        return buttonRedar;
+    }
+    
+    public JButton getButtonRotate(){
+        return buttonRotate;
+    }
+    
+    public JButton getButtonSend(){
+        return buttonSend;
+    }
+    
+    public JScrollPane getScrollPaneMessageBox(){
+        return scrollPaneMessageBox;
+    }
+    
+    public JTextPane getTextPaneMeassageBox(){
+        return textPaneMeassageBox;
+    }
+    
+    public JScrollPane getScrollPaneMessageInput(){
+        return scrollPaneMessageInput;
+    }
+    
+    public JTextArea getTextAreaMessageInput(){
+        return textAreaMessageInput;
+    }
+    
+    public JSlider getSliderFuel(){
+        return sliderFuel;
+    }
+    
+    public JSlider getSliderEnergy(){
+        return sliderEnergy;
+    }
+    
+    public JSlider getSliderOxygen(){
+        return sliderOxygen;
+    }
+    
+    public void setButtonMissile(JButton buttonMissile){
+        this.buttonMissile = buttonMissile;
+    }
+        
+    public void setButtonLaser(JButton buttonLaser){
+        this.buttonLaser = buttonLaser;
+    }
+    
+    public void setButtonSonar(JButton buttonSonar){
+        this.buttonSonar = buttonSonar;
+    }
+    
+    /*public JButton getButtonTomahawk(){
+        return buttonTomahawk;
+    }
+    
+    public JButton getButtonTrident(){
+        return buttonTrident;
+    }
+    
+    public JButton getButtonRedar(){
+        return buttonRedar;
+    }
+    
+    public JButton getButtonRotate(){
+        return buttonRotate;
+    }
+    
+    public JSlider getSliderFuel(){
+        return sliderFuel;
+    }
+    
+    public JSlider getSliderEnergy(){
+        return sliderEnergy;
+    }
+    
+    public JSlider getSliderOxygen(){
+        return sliderOxygen;
+    }*/
+    
     /**
      * @param args the command line arguments
      */

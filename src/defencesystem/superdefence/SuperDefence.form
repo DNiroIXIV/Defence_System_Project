@@ -37,10 +37,10 @@
                           <Component id="labelAreaClearance" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelSoldierCount" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <Component id="labelAmmoCount" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="labelSoldierCount" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="labelAmmoCount" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="spinnerSoldierCount" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                                   <Component id="spinnerAmmoCount" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
@@ -126,7 +126,7 @@
                       <Component id="sliderOxygen" alignment="0" min="-2" pref="580" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="scrollPaneMessageInput" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="buttonSend" min="-2" pref="50" max="-2" attributes="0"/>
@@ -201,6 +201,11 @@
         <Property name="text" type="java.lang.String" value="Rotate Shooting"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="buttonSend">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Send"/>
+      </Properties>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="scrollPaneMessageBox">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -221,11 +226,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="buttonSend">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Send"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JSlider" name="sliderFuel">
       <Properties>
         <Property name="orientation" type="int" value="1"/>
