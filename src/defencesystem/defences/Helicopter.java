@@ -4,11 +4,13 @@
  */
 package defencesystem.defences;
 
+import defencesystem.superdefence.SuperDefence;
+
 /**
  *
  * @author Nirodha
  */
-public class Helicopter extends javax.swing.JFrame {
+public class Helicopter extends SuperDefence {
 
     /**
      * Creates new form Helicopter
