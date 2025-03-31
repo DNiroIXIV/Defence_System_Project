@@ -160,10 +160,8 @@ public class Tank extends SuperDefence {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Tank().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Tank().setVisible(true);
         });
     }
 

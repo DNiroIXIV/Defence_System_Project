@@ -175,10 +175,8 @@ public class Helicopter extends SuperDefence {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Helicopter().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Helicopter().setVisible(true);
         });
     }
 
