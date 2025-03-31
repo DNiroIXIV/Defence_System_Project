@@ -25,45 +25,43 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="labelSoldierCount" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="spinnerSoldierCount" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="buttonTomahawk" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="buttonShoot" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="labelAreaClearance" min="-2" pref="280" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="labelAmmoCount" min="-2" pref="160" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="spinnerAmmoCount" min="-2" pref="80" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="buttonTrident" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="buttonSonar" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                              <Component id="checkBoxPosition" alignment="1" min="-2" pref="280" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                  </Group>
-                  <Component id="scrollPaneMessageBox" min="-2" pref="600" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="scrollPaneMessageInput" min="-2" pref="450" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="buttonSend" min="-2" pref="120" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="scrollPaneMessageBox" alignment="0" min="-2" pref="600" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="labelSoldierCount" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="spinnerSoldierCount" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labelAreaClearance" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <Component id="buttonShoot" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                  <Component id="buttonRedar" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="buttonRotate" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="buttonMissile" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Component id="checkBoxPosition" min="-2" pref="280" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="labelAmmoCount" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="spinnerAmmoCount" min="-2" pref="80" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="sliderEnergy" min="-2" pref="100" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="sliderOxygen" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="sliderFuel" min="-2" pref="100" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -73,29 +71,28 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="sliderOxygen" min="-2" pref="600" max="-2" attributes="0"/>
-                  <Component id="sliderEnergy" min="-2" pref="600" max="-2" attributes="0"/>
+                  <Component id="sliderFuel" min="-2" pref="600" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="checkBoxPosition" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelAreaClearance" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="checkBoxPosition" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="buttonShoot" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="buttonSonar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="buttonMissile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="buttonTomahawk" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="buttonTrident" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="buttonRedar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="buttonRotate" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="spinnerSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="spinnerAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="spinnerSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                       <Component id="scrollPaneMessageBox" min="-2" pref="200" max="-2" attributes="0"/>
@@ -142,19 +139,19 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="getButtonShoot()"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonSonar">
+    <Component class="javax.swing.JButton" name="buttonMissile">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Sonar Operation"/>
+        <Property name="text" type="java.lang.String" value="Missile Operation"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonTomahawk">
+    <Component class="javax.swing.JButton" name="buttonRedar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tomahawk Missile"/>
+        <Property name="text" type="java.lang.String" value="Redar Operation"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="buttonTrident">
+    <Component class="javax.swing.JButton" name="buttonRotate">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Trident-2 Missile"/>
+        <Property name="text" type="java.lang.String" value="Rotate Shooting"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelSoldierCount">
@@ -233,12 +230,7 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="getButtonSend()"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JSlider" name="sliderEnergy">
-      <Properties>
-        <Property name="orientation" type="int" value="1"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSlider" name="sliderOxygen">
+    <Component class="javax.swing.JSlider" name="sliderFuel">
       <Properties>
         <Property name="orientation" type="int" value="1"/>
       </Properties>
