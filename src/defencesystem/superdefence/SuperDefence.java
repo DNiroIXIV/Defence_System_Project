@@ -21,8 +21,10 @@ public class SuperDefence extends javax.swing.JFrame {
     /**
      * Creates new form SuperDefence
      */
-    public SuperDefence() {
+    public SuperDefence() {        
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
     }
     
     /**

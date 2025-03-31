@@ -5,6 +5,7 @@
 package defencesystem;
 
 import defencesystem.defences.Helicopter;
+import defencesystem.defences.Submarine;
 import defencesystem.superdefence.SuperDefence;
 
 /**
@@ -19,6 +20,7 @@ public class Starter {
     public static void main(String[] args) {
         new SuperDefence().setVisible(true);
         new Helicopter().setVisible(true);
+        new Submarine().setVisible(true);
     }
     
 }

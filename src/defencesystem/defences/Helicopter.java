@@ -17,6 +17,7 @@ public class Helicopter extends SuperDefence {
      */
     public Helicopter() {                
         initComponents();
+        setTitle("Helicopter");
         
     }
 
@@ -29,6 +30,8 @@ public class Helicopter extends SuperDefence {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        checkBoxPosition = getCheckBoxPosition();
+        labelAreaClearance = getLabelAreaClearance();
         labelSoldierCount = getLabelSoldierCount();
         spinnerSoldierCount = getSpinnerSoldierCount();
         labelAmmoCount = getLabelAmmoCount();
@@ -36,14 +39,12 @@ public class Helicopter extends SuperDefence {
         buttonShoot = getButtonShoot();
         buttonMissile = new javax.swing.JButton();
         buttonLaser = new javax.swing.JButton();
-        scrollPaneMessageInput = getScrollPaneMessageInput();
-        textAreaMessageInput = getTextAreaMessageInput();
-        sliderFuel = new javax.swing.JSlider();
-        checkBoxPosition = getCheckBoxPosition();
-        labelAreaClearance = getLabelAreaClearance();
-        buttonSend = getButtonSend();
         scrollPaneMessageBox = getScrollPaneMessageBox();
         textPaneMeassageBox = getTextPaneMeassageBox();
+        scrollPaneMessageInput = getScrollPaneMessageInput();
+        textAreaMessageInput = getTextAreaMessageInput();
+        buttonSend = getButtonSend();
+        sliderFuel = new javax.swing.JSlider();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,11 +62,11 @@ public class Helicopter extends SuperDefence {
             }
         });
 
+        scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
+
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         sliderFuel.setOrientation(javax.swing.JSlider.VERTICAL);
-
-        scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
