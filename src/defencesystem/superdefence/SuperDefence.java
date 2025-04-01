@@ -17,17 +17,16 @@ import javax.swing.JTextPane;
  *
  * @author Nirodha
  */
-public class SuperDefence extends javax.swing.JFrame {
+public abstract class SuperDefence extends javax.swing.JFrame {
 
     /**
      * Creates new form SuperDefence
      */
-    public SuperDefence() {        
+    public SuperDefence() {
         initComponents();
-        setResizable(false);
-        setLocationRelativeTo(null);
+        setResizable(false);        
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,9 +57,12 @@ public class SuperDefence extends javax.swing.JFrame {
         checkBoxPosition.setText("Position");
         checkBoxPosition.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        labelAreaClearance.setBackground(new java.awt.Color(238, 137, 21));
         labelAreaClearance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelAreaClearance.setForeground(new java.awt.Color(0, 0, 0));
+        labelAreaClearance.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelAreaClearance.setText("Area Not Cleared");
+        labelAreaClearance.setOpaque(true);
 
         labelSoldierCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelSoldierCount.setForeground(new java.awt.Color(0, 0, 0));
@@ -158,68 +160,68 @@ public class SuperDefence extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public JCheckBox getCheckBoxPosition(){
+
+    public JCheckBox getCheckBoxPosition() {
         return checkBoxPosition;
     }
-    
-    public JLabel getLabelAreaClearance(){
+
+    public JLabel getLabelAreaClearance() {
         return labelAreaClearance;
     }
-    
-    public JLabel getLabelSoldierCount(){
+
+    public JLabel getLabelSoldierCount() {
         return labelSoldierCount;
     }
-    
-    public JSpinner getSpinnerSoldierCount(){
+
+    public JSpinner getSpinnerSoldierCount() {
         return spinnerSoldierCount;
     }
-    
-    public JLabel getLabelAmmoCount(){
+
+    public JLabel getLabelAmmoCount() {
         return labelAmmoCount;
     }
-    
-    public JSpinner getSpinnerAmmoCount(){
+
+    public JSpinner getSpinnerAmmoCount() {
         return spinnerAmmoCount;
     }
-    
-    public JButton getButtonShoot(){
+
+    public JButton getButtonShoot() {
         return buttonShoot;
-    }    
-    
-    public JButton getButtonSend(){
+    }
+
+    public JButton getButtonSend() {
         return buttonSend;
     }
-    
-    public JScrollPane getScrollPaneMessageBox(){
+
+    public JScrollPane getScrollPaneMessageBox() {
         return scrollPaneMessageBox;
     }
-    
-    public JTextPane getTextPaneMeassageBox(){
+
+    public JTextPane getTextPaneMeassageBox() {
         return textPaneMeassageBox;
     }
-    
-    public JScrollPane getScrollPaneMessageInput(){
+
+    public JScrollPane getScrollPaneMessageInput() {
         return scrollPaneMessageInput;
     }
-    
-    public JTextArea getTextAreaMessageInput(){
+
+    public JTextArea getTextAreaMessageInput() {
         return textAreaMessageInput;
-    }   
-    
-    protected void setSliderCommonAppearance(JSlider jSlider){
+    }
+
+    protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jSlider.setMajorTickSpacing(20);
         jSlider.setMinorTickSpacing(10);
         jSlider.setPaintLabels(true);
         jSlider.setPaintTicks(true);
     }
-    
-    protected void setButtonCommonAppearance(JButton jButton){
+
+    protected void setButtonCommonAppearance(JButton jButton) {
         jButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton.setForeground(new java.awt.Color(0, 0, 0));
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -249,7 +251,7 @@ public class SuperDefence extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new SuperDefence().setVisible(true);
+            //new SuperDefence().setVisible(true);
         });
     }
 
@@ -268,4 +270,3 @@ public class SuperDefence extends javax.swing.JFrame {
     private javax.swing.JTextPane textPaneMeassageBox;
     // End of variables declaration//GEN-END:variables
 }
-

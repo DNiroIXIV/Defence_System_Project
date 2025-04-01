@@ -4,21 +4,33 @@
  */
 package defencesystem.controller;
 
+import defencesystem.util.Observer;
+
 /**
  *
  * @author Nirodha
  */
 public class MainController extends javax.swing.JFrame {
-
+    private static MainController mainController = null;
+    
+    private final Observer observer;
     /**
      * Creates new form MainController
      */
-    public MainController() {
+    private MainController(Observer observer) {        
         super("Main Controller");
+        this.observer = observer;
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
     }
+    
+    public static MainController getMainControllerInstance(Observer observer){
+        if(mainController == null){
+            mainController = new MainController(observer);
+        }
+        return mainController;
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,7 +43,7 @@ public class MainController extends javax.swing.JFrame {
 
         labelPosition = new javax.swing.JLabel();
         sliderPositionStrength = new javax.swing.JSlider();
-        checkBoxAreaClearance = new javax.swing.JCheckBox();
+        checkBoxAreaClear = new javax.swing.JCheckBox();
         comboBoxSelectDefence = new javax.swing.JComboBox<>();
         buttonCollectInfo = new javax.swing.JButton();
         labelSoldier = new javax.swing.JLabel();
@@ -54,13 +66,6 @@ public class MainController extends javax.swing.JFrame {
         textPaneGlobalMessageBox = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                formCaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
-        });
 
         labelPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelPosition.setText("Position");
@@ -71,9 +76,14 @@ public class MainController extends javax.swing.JFrame {
         sliderPositionStrength.setPaintLabels(true);
         sliderPositionStrength.setPaintTicks(true);
 
-        checkBoxAreaClearance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        checkBoxAreaClearance.setText("Area Clear");
-        checkBoxAreaClearance.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        checkBoxAreaClear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        checkBoxAreaClear.setText("Area Clear");
+        checkBoxAreaClear.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        checkBoxAreaClear.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                checkBoxAreaClearItemStateChanged(evt);
+            }
+        });
 
         comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         comboBoxSelectDefence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Item 2", "Item 3", "Item 4" }));
@@ -172,7 +182,7 @@ public class MainController extends javax.swing.JFrame {
                                 .addGap(20, 20, 20)
                                 .addComponent(sliderPositionStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(150, 150, 150)
-                                .addComponent(checkBoxAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(checkBoxAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
@@ -208,7 +218,7 @@ public class MainController extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(sliderPositionStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkBoxAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkBoxAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -242,9 +252,9 @@ public class MainController extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_formCaretPositionChanged
+    private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_formCaretPositionChanged
+    }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -275,14 +285,14 @@ public class MainController extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new MainController().setVisible(true);
+            getMainControllerInstance(Observer.getObserverInstance()).setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCollectInfo;
     private javax.swing.JButton buttonSend;
-    private javax.swing.JCheckBox checkBoxAreaClearance;
+    private javax.swing.JCheckBox checkBoxAreaClear;
     private javax.swing.JCheckBox checkBoxSendPrivate;
     private javax.swing.JComboBox<String> comboBoxSelectDefence;
     private javax.swing.JLabel labelAmmo;

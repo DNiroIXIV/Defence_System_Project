@@ -5,12 +5,13 @@
 package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.Observable;
 
 /**
  *
  * @author Nirodha
  */
-public class Submarine extends SuperDefence {
+public class Submarine extends SuperDefence implements Observable{
 
     /**
      * Creates new form Submarine
@@ -18,6 +19,7 @@ public class Submarine extends SuperDefence {
     public Submarine() {
         initComponents();
         setTitle("Submarine");
+        setLocationRelativeTo(null);
     }
 
     /**

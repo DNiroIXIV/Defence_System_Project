@@ -8,7 +8,7 @@ import defencesystem.controller.MainController;
 import defencesystem.defences.Helicopter;
 import defencesystem.defences.Submarine;
 import defencesystem.defences.Tank;
-import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.Observer;
 
 /**
  *
@@ -20,10 +20,10 @@ public class Starter {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        new SuperDefence().setVisible(true);
+        Observer observer = Observer.getObserverInstance();
+        MainController mainController = MainController.getMainControllerInstance(observer);
         new Helicopter().setVisible(true);
         new Submarine().setVisible(true);
-        new Tank().setVisible(true);
-        new MainController().setVisible(true);
+        new Tank().setVisible(true);        
     }
 }

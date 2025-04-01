@@ -5,12 +5,13 @@
 package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.Observable;
 
 /**
  *
  * @author Nirodha
  */
-public class Tank extends SuperDefence {
+public class Tank extends SuperDefence implements Observable{
 
     /**
      * Creates new form Tank
@@ -18,6 +19,7 @@ public class Tank extends SuperDefence {
     public Tank() {
         initComponents();
         setTitle("Tank");
+        setLocationRelativeTo(null);
     }
 
     /**

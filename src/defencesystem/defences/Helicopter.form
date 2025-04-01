@@ -175,9 +175,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Missile  Operation"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMissileActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonMissile);"/>
       </AuxValues>
@@ -186,9 +183,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Laser Operation"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonLaserActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonLaser);"/>
       </AuxValues>

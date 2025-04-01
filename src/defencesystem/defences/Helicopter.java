@@ -5,12 +5,13 @@
 package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.Observable;
 
 /**
  *
  * @author Nirodha
  */
-public class Helicopter extends SuperDefence {
+public class Helicopter extends SuperDefence implements Observable{
 
     /**
      * Creates new form Helicopter
@@ -18,7 +19,7 @@ public class Helicopter extends SuperDefence {
     public Helicopter() {                
         initComponents();
         setTitle("Helicopter");
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -49,19 +50,9 @@ public class Helicopter extends SuperDefence {
 
         buttonMissile.setText("Missile  Operation");
         setButtonCommonAppearance(buttonMissile);
-        buttonMissile.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMissileActionPerformed(evt);
-            }
-        });
 
         buttonLaser.setText("Laser Operation");
         setButtonCommonAppearance(buttonLaser);
-        buttonLaser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonLaserActionPerformed(evt);
-            }
-        });
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
@@ -148,14 +139,6 @@ public class Helicopter extends SuperDefence {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void buttonLaserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLaserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonLaserActionPerformed
-
-    private void buttonMissileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMissileActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_buttonMissileActionPerformed
 
     /**
      * @param args the command line arguments
