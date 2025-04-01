@@ -144,16 +144,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Missile Operation"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonMissile);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonRedar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Redar Operation"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonRedar);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonRotate">
       <Properties>
         <Property name="text" type="java.lang.String" value="Rotate Shooting"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonRotate);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="labelSoldierCount">
       <Properties>

@@ -50,10 +50,13 @@ public class Submarine extends SuperDefence {
         sliderOxygen = new javax.swing.JSlider();
 
         buttonSonar.setText("Sonar Operation");
+        setButtonCommonAppearance(buttonSonar);
 
         buttonTomahawk.setText("Tomahawk Missile");
+        setButtonCommonAppearance(buttonTomahawk);
 
         buttonTrident.setText("Trident-2 Missile");
+        setButtonCommonAppearance(buttonTrident);
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 

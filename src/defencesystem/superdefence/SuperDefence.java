@@ -207,12 +207,17 @@ public class SuperDefence extends javax.swing.JFrame {
         return textAreaMessageInput;
     }   
     
-    protected void setSliderCommonAppearance(JSlider slider){
-        slider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        slider.setMajorTickSpacing(20);
-        slider.setMinorTickSpacing(10);
-        slider.setPaintLabels(true);
-        slider.setPaintTicks(true);
+    protected void setSliderCommonAppearance(JSlider jSlider){
+        jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jSlider.setMajorTickSpacing(20);
+        jSlider.setMinorTickSpacing(10);
+        jSlider.setPaintLabels(true);
+        jSlider.setPaintTicks(true);
+    }
+    
+    protected void setButtonCommonAppearance(JButton jButton){
+        jButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton.setForeground(new java.awt.Color(0, 0, 0));
     }
     
     /**

@@ -48,6 +48,7 @@ public class Helicopter extends SuperDefence {
         sliderFuel = new javax.swing.JSlider();
 
         buttonMissile.setText("Missile  Operation");
+        setButtonCommonAppearance(buttonMissile);
         buttonMissile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonMissileActionPerformed(evt);
@@ -55,6 +56,7 @@ public class Helicopter extends SuperDefence {
         });
 
         buttonLaser.setText("Laser Operation");
+        setButtonCommonAppearance(buttonLaser);
         buttonLaser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonLaserActionPerformed(evt);

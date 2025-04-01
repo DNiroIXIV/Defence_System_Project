@@ -151,16 +151,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Sonar Operation"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonSonar);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonTomahawk">
       <Properties>
         <Property name="text" type="java.lang.String" value="Tomahawk Missile"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonTomahawk);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonTrident">
       <Properties>
         <Property name="text" type="java.lang.String" value="Trident-2 Missile"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonTrident);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="labelSoldierCount">
       <Properties>

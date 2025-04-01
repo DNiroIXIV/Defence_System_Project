@@ -178,6 +178,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonMissileActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonMissile);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="buttonLaser">
       <Properties>
@@ -186,6 +189,9 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonLaserActionPerformed"/>
       </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setButtonCommonAppearance(buttonLaser);"/>
+      </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="scrollPaneMessageBox">
       <AuxValues>

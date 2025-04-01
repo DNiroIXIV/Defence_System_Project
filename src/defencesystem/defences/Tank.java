@@ -48,10 +48,13 @@ public class Tank extends SuperDefence {
         sliderFuel = new javax.swing.JSlider();
 
         buttonMissile.setText("Missile Operation");
+        setButtonCommonAppearance(buttonMissile);
 
         buttonRedar.setText("Redar Operation");
+        setButtonCommonAppearance(buttonRedar);
 
         buttonRotate.setText("Rotate Shooting");
+        setButtonCommonAppearance(buttonRotate);
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
