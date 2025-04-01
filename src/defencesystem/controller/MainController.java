@@ -29,29 +29,29 @@ public class MainController extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        labelPosition = new javax.swing.JLabel();
+        sliderPositionStrength = new javax.swing.JSlider();
+        checkBoxAreaClearance = new javax.swing.JCheckBox();
         comboBoxSelectDefence = new javax.swing.JComboBox<>();
         buttonCollectInfo = new javax.swing.JButton();
         labelSoldier = new javax.swing.JLabel();
         labelSoldierCount = new javax.swing.JLabel();
+        labelAmmo = new javax.swing.JLabel();
+        labelAmmoCount = new javax.swing.JLabel();
         labelEnergy = new javax.swing.JLabel();
         labelEnergyAmount = new javax.swing.JLabel();
-        checkBoxAreaClearance = new javax.swing.JCheckBox();
-        labelPosition = new javax.swing.JLabel();
-        sliderStrength = new javax.swing.JSlider();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        labelAmmoCount = new javax.swing.JLabel();
-        labelAmmo = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
+        labelFuel = new javax.swing.JLabel();
+        labelFuelAmount = new javax.swing.JLabel();
+        labelOxygen = new javax.swing.JLabel();
+        labelOxygenAmount = new javax.swing.JLabel();
+        checkBoxSendPrivate = new javax.swing.JCheckBox();
+        scrollPaneInputBox = new javax.swing.JScrollPane();
+        textAreaInputBox = new javax.swing.JTextArea();
+        buttonSend = new javax.swing.JButton();
+        scrollPanePrivateMessageBox = new javax.swing.JScrollPane();
+        textPanePrivateMessageBox = new javax.swing.JTextPane();
+        scrollPaneGlobalMessageBox = new javax.swing.JScrollPane();
+        textPaneGlobalMessageBox = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addInputMethodListener(new java.awt.event.InputMethodListener() {
@@ -61,6 +61,19 @@ public class MainController extends javax.swing.JFrame {
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
+
+        labelPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelPosition.setText("Position");
+
+        sliderPositionStrength.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        sliderPositionStrength.setMajorTickSpacing(20);
+        sliderPositionStrength.setMinorTickSpacing(10);
+        sliderPositionStrength.setPaintLabels(true);
+        sliderPositionStrength.setPaintTicks(true);
+
+        checkBoxAreaClearance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        checkBoxAreaClearance.setText("Area Clear");
+        checkBoxAreaClearance.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
         comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         comboBoxSelectDefence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Item 2", "Item 3", "Item 4" }));
@@ -75,6 +88,13 @@ public class MainController extends javax.swing.JFrame {
         labelSoldierCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelSoldierCount.setText("1000");
 
+        labelAmmo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAmmo.setText("Ammo Count");
+
+        labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAmmoCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelAmmoCount.setText("1000");
+
         labelEnergy.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelEnergy.setText("Energy Amount");
 
@@ -82,62 +102,42 @@ public class MainController extends javax.swing.JFrame {
         labelEnergyAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelEnergyAmount.setText("1000");
 
-        checkBoxAreaClearance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        checkBoxAreaClearance.setText("Area Clear");
-        checkBoxAreaClearance.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelFuel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelFuel.setText("Fuel Amount");
 
-        labelPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        labelPosition.setText("Position");
+        labelFuelAmount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelFuelAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelFuelAmount.setText("1000");
 
-        sliderStrength.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        sliderStrength.setMajorTickSpacing(20);
-        sliderStrength.setMinorTickSpacing(10);
-        sliderStrength.setPaintLabels(true);
-        sliderStrength.setPaintTicks(true);
+        labelOxygen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelOxygen.setText("Oxygen Amount");
 
-        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jScrollPane1.setViewportView(jTextPane1);
+        labelOxygenAmount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelOxygenAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelOxygenAmount.setText("1000");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        checkBoxSendPrivate.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        checkBoxSendPrivate.setText("Send Private");
+        checkBoxSendPrivate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jButton2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton2.setText("Send");
+        textAreaInputBox.setColumns(20);
+        textAreaInputBox.setRows(5);
+        scrollPaneInputBox.setViewportView(textAreaInputBox);
 
-        jCheckBox2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jCheckBox2.setText("Send Private");
-        jCheckBox2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buttonSend.setText("Send");
 
-        jScrollPane3.setForeground(new java.awt.Color(0, 0, 0));
-        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        jScrollPane3.setViewportView(jTextPane2);
+        scrollPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPanePrivateMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
-        jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel12.setText("Fuel Count");
-
-        jLabel13.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel13.setText("1000");
-
-        labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        labelAmmoCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelAmmoCount.setText("1000");
-
-        labelAmmo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        labelAmmo.setText("Ammo Count");
-
-        jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel18.setText("Fuel Count");
-
-        jLabel19.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel19.setText("1000");
+        scrollPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollPaneGlobalMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -148,16 +148,16 @@ public class MainController extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(checkBoxSendPrivate, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addComponent(sliderStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(sliderPositionStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(150, 150, 150)
                                 .addComponent(checkBoxAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
@@ -175,17 +175,17 @@ public class MainController extends javax.swing.JFrame {
                                 .addGap(50, 50, 50)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(labelEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(labelFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
@@ -194,7 +194,7 @@ public class MainController extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sliderStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sliderPositionStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkBoxAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -206,23 +206,23 @@ public class MainController extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buttonCollectInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkBoxSendPrivate, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -268,27 +268,27 @@ public class MainController extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCollectInfo;
+    private javax.swing.JButton buttonSend;
     private javax.swing.JCheckBox checkBoxAreaClearance;
+    private javax.swing.JCheckBox checkBoxSendPrivate;
     private javax.swing.JComboBox<String> comboBoxSelectDefence;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JLabel labelAmmo;
     private javax.swing.JLabel labelAmmoCount;
     private javax.swing.JLabel labelEnergy;
     private javax.swing.JLabel labelEnergyAmount;
+    private javax.swing.JLabel labelFuel;
+    private javax.swing.JLabel labelFuelAmount;
+    private javax.swing.JLabel labelOxygen;
+    private javax.swing.JLabel labelOxygenAmount;
     private javax.swing.JLabel labelPosition;
     private javax.swing.JLabel labelSoldier;
     private javax.swing.JLabel labelSoldierCount;
-    private javax.swing.JSlider sliderStrength;
+    private javax.swing.JScrollPane scrollPaneGlobalMessageBox;
+    private javax.swing.JScrollPane scrollPaneInputBox;
+    private javax.swing.JScrollPane scrollPanePrivateMessageBox;
+    private javax.swing.JSlider sliderPositionStrength;
+    private javax.swing.JTextArea textAreaInputBox;
+    private javax.swing.JTextPane textPaneGlobalMessageBox;
+    private javax.swing.JTextPane textPanePrivateMessageBox;
     // End of variables declaration//GEN-END:variables
 }

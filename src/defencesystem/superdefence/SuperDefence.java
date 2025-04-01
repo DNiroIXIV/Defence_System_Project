@@ -52,21 +52,46 @@ public class SuperDefence extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Super Defence");
 
+        checkBoxPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        checkBoxPosition.setForeground(new java.awt.Color(0, 0, 0));
         checkBoxPosition.setText("Position");
+        checkBoxPosition.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        labelAreaClearance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAreaClearance.setForeground(new java.awt.Color(0, 0, 0));
         labelAreaClearance.setText("Area Not Cleared");
 
+        labelSoldierCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelSoldierCount.setForeground(new java.awt.Color(0, 0, 0));
         labelSoldierCount.setText("Soldier Count");
 
+        labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAmmoCount.setForeground(new java.awt.Color(0, 0, 0));
         labelAmmoCount.setText("Ammo Count");
 
+        buttonShoot.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buttonShoot.setForeground(new java.awt.Color(0, 0, 0));
         buttonShoot.setText("Shoot");
 
+        buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buttonSend.setForeground(new java.awt.Color(0, 0, 0));
         buttonSend.setText("Send");
 
+        scrollPaneMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        textPaneMeassageBox.setEditable(false);
+        textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPaneMeassageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
+        scrollPaneMessageInput.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneMessageInput.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
         textAreaMessageInput.setColumns(20);
+        textAreaMessageInput.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textAreaMessageInput.setForeground(new java.awt.Color(0, 0, 0));
+        textAreaMessageInput.setLineWrap(true);
         textAreaMessageInput.setRows(5);
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
