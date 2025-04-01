@@ -4,6 +4,7 @@
  */
 package defencesystem;
 
+import defencesystem.controller.MainController;
 import defencesystem.defences.Helicopter;
 import defencesystem.defences.Submarine;
 import defencesystem.defences.Tank;
@@ -23,6 +24,6 @@ public class Starter {
         new Helicopter().setVisible(true);
         new Submarine().setVisible(true);
         new Tank().setVisible(true);
+        new MainController().setVisible(true);
     }
-    
 }

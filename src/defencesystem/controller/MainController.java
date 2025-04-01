@@ -29,15 +29,15 @@ public class MainController extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jLabel11 = new javax.swing.JLabel();
-        jSlider1 = new javax.swing.JSlider();
+        comboBoxSelectDefence = new javax.swing.JComboBox<>();
+        buttonCollectInfo = new javax.swing.JButton();
+        labelSoldier = new javax.swing.JLabel();
+        labelSoldierCount = new javax.swing.JLabel();
+        labelEnergy = new javax.swing.JLabel();
+        labelEnergyAmount = new javax.swing.JLabel();
+        checkBoxAreaClearance = new javax.swing.JCheckBox();
+        labelPosition = new javax.swing.JLabel();
+        sliderStrength = new javax.swing.JSlider();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -48,8 +48,8 @@ public class MainController extends javax.swing.JFrame {
         jTextPane2 = new javax.swing.JTextPane();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        labelAmmoCount = new javax.swing.JLabel();
+        labelAmmo = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
 
@@ -62,34 +62,43 @@ public class MainController extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setToolTipText("");
+        comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        comboBoxSelectDefence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jButton1.setText("Collect Informations");
+        buttonCollectInfo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        buttonCollectInfo.setText("Collect Informations");
 
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel1.setText("Soldier Count");
+        labelSoldier.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelSoldier.setText("Soldier Count");
 
-        jLabel2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("1000");
+        labelSoldierCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelSoldierCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelSoldierCount.setText("1000");
 
-        jLabel5.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel5.setText("Energy Count");
+        labelEnergy.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelEnergy.setText("Energy Amount");
 
-        jLabel8.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel8.setText("1000");
+        labelEnergyAmount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelEnergyAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelEnergyAmount.setText("1000");
 
-        jCheckBox1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jCheckBox1.setText("Area Clear");
-        jCheckBox1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        checkBoxAreaClearance.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        checkBoxAreaClearance.setText("Area Clear");
+        checkBoxAreaClearance.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
 
-        jLabel11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel11.setText("Position");
+        labelPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelPosition.setText("Position");
 
+        sliderStrength.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        sliderStrength.setMajorTickSpacing(20);
+        sliderStrength.setMinorTickSpacing(10);
+        sliderStrength.setPaintLabels(true);
+        sliderStrength.setPaintTicks(true);
+
+        jScrollPane1.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(jTextPane1);
 
         jTextArea1.setColumns(20);
@@ -101,7 +110,12 @@ public class MainController extends javax.swing.JFrame {
 
         jCheckBox2.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jCheckBox2.setText("Send Private");
+        jCheckBox2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        jScrollPane3.setForeground(new java.awt.Color(0, 0, 0));
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        jScrollPane3.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         jScrollPane3.setViewportView(jTextPane2);
 
         jLabel12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -111,12 +125,12 @@ public class MainController extends javax.swing.JFrame {
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         jLabel13.setText("1000");
 
-        jLabel16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel16.setText("1000");
+        labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAmmoCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        labelAmmoCount.setText("1000");
 
-        jLabel17.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        jLabel17.setText("Fuel Count");
+        labelAmmo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelAmmo.setText("Ammo Count");
 
         jLabel18.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel18.setText("Fuel Count");
@@ -134,44 +148,44 @@ public class MainController extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
+                            .addComponent(jCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(50, 50, 50)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(40, 40, 40)
+                            .addGap(50, 50, 50)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(130, 130, 130)
-                                .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(sliderStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(150, 150, 150)
+                                .addComponent(checkBoxAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
+                                .addComponent(buttonCollectInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
+                                    .addComponent(labelSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(50, 50, 50)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(labelEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
@@ -179,25 +193,25 @@ public class MainController extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jSlider1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                    .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sliderStrength, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkBoxAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(labelSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonCollectInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
@@ -253,28 +267,28 @@ public class MainController extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton buttonCollectInfo;
+    private javax.swing.JCheckBox checkBoxAreaClearance;
+    private javax.swing.JComboBox<String> comboBoxSelectDefence;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSlider jSlider1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JLabel labelAmmo;
+    private javax.swing.JLabel labelAmmoCount;
+    private javax.swing.JLabel labelEnergy;
+    private javax.swing.JLabel labelEnergyAmount;
+    private javax.swing.JLabel labelPosition;
+    private javax.swing.JLabel labelSoldier;
+    private javax.swing.JLabel labelSoldierCount;
+    private javax.swing.JSlider sliderStrength;
     // End of variables declaration//GEN-END:variables
 }
