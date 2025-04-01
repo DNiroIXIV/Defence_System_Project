@@ -44,9 +44,8 @@ public class Helicopter extends SuperDefence {
         scrollPaneMessageInput = getScrollPaneMessageInput();
         textAreaMessageInput = getTextAreaMessageInput();
         buttonSend = getButtonSend();
+        labelFuel = new javax.swing.JLabel();
         sliderFuel = new javax.swing.JSlider();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonMissile.setText("Missile  Operation");
         buttonMissile.addActionListener(new java.awt.event.ActionListener() {
@@ -66,7 +65,12 @@ public class Helicopter extends SuperDefence {
 
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
+        labelFuel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelFuel.setForeground(new java.awt.Color(0, 0, 0));
+        labelFuel.setText("Fuel");
+
         sliderFuel.setOrientation(javax.swing.JSlider.VERTICAL);
+        setSliderCommonAppearance(sliderFuel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,19 +105,22 @@ public class Helicopter extends SuperDefence {
                                 .addComponent(buttonLaser, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollPaneMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(sliderFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sliderFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sliderFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -132,7 +139,8 @@ public class Helicopter extends SuperDefence {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(sliderFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -188,6 +196,7 @@ public class Helicopter extends SuperDefence {
     private javax.swing.JCheckBox checkBoxPosition;
     private javax.swing.JLabel labelAmmoCount;
     private javax.swing.JLabel labelAreaClearance;
+    private javax.swing.JLabel labelFuel;
     private javax.swing.JLabel labelSoldierCount;
     private javax.swing.JScrollPane scrollPaneMessageBox;
     private javax.swing.JScrollPane scrollPaneMessageInput;

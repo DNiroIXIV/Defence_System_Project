@@ -17,7 +17,7 @@ public class Submarine extends SuperDefence {
      */
     public Submarine() {
         initComponents();
-        setTitle("Subamrine");
+        setTitle("Submarine");
     }
 
     /**
@@ -44,10 +44,10 @@ public class Submarine extends SuperDefence {
         scrollPaneMessageInput = getScrollPaneMessageInput();
         textAreaMessageInput = getTextAreaMessageInput();
         buttonSend = getButtonSend();
+        labelEnergy = new javax.swing.JLabel();
         sliderEnergy = new javax.swing.JSlider();
+        labelOxygen = new javax.swing.JLabel();
         sliderOxygen = new javax.swing.JSlider();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         buttonSonar.setText("Sonar Operation");
 
@@ -59,9 +59,19 @@ public class Submarine extends SuperDefence {
 
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
+        labelEnergy.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelEnergy.setForeground(new java.awt.Color(0, 0, 0));
+        labelEnergy.setText("Energy");
+
         sliderEnergy.setOrientation(javax.swing.JSlider.VERTICAL);
+        setSliderCommonAppearance(sliderEnergy);
+
+        labelOxygen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelOxygen.setForeground(new java.awt.Color(0, 0, 0));
+        labelOxygen.setText("Oxygen");
 
         sliderOxygen.setOrientation(javax.swing.JSlider.VERTICAL);
+        setSliderCommonAppearance(sliderOxygen);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,23 +106,27 @@ public class Submarine extends SuperDefence {
                         .addGap(30, 30, 30)
                         .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addComponent(sliderEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sliderEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
-                .addComponent(sliderOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(sliderOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(sliderOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sliderEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(buttonShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonSonar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,7 +145,9 @@ public class Submarine extends SuperDefence {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(sliderEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sliderOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40))
         );
 
@@ -180,6 +196,8 @@ public class Submarine extends SuperDefence {
     private javax.swing.JCheckBox checkBoxPosition;
     private javax.swing.JLabel labelAmmoCount;
     private javax.swing.JLabel labelAreaClearance;
+    private javax.swing.JLabel labelEnergy;
+    private javax.swing.JLabel labelOxygen;
     private javax.swing.JLabel labelSoldierCount;
     private javax.swing.JScrollPane scrollPaneMessageBox;
     private javax.swing.JScrollPane scrollPaneMessageInput;

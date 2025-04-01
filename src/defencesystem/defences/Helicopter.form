@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
-  <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
-  </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
@@ -62,21 +59,26 @@
                   <Component id="checkBoxPosition" min="-2" pref="280" max="-2" attributes="0"/>
                   <Component id="scrollPaneMessageBox" min="-2" pref="600" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="sliderFuel" min="-2" pref="100" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="sliderFuel" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="labelFuel" min="-2" pref="100" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="sliderFuel" min="-2" pref="600" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="checkBoxPosition" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="labelFuel" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="checkBoxPosition" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="buttonShoot" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelAreaClearance" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
@@ -101,6 +103,7 @@
                           <Component id="buttonSend" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <Component id="sliderFuel" min="-2" pref="540" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
           </Group>
@@ -230,10 +233,24 @@
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="getButtonSend()"/>
       </AuxValues>
     </Component>
+    <Component class="javax.swing.JLabel" name="labelFuel">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="0" green="0" red="0" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Fuel"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JSlider" name="sliderFuel">
       <Properties>
         <Property name="orientation" type="int" value="1"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="setSliderCommonAppearance(sliderFuel);"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

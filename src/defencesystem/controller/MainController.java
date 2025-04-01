@@ -120,7 +120,12 @@ public class MainController extends javax.swing.JFrame {
         checkBoxSendPrivate.setText("Send Private");
         checkBoxSendPrivate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        scrollPaneInputBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
         textAreaInputBox.setColumns(20);
+        textAreaInputBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textAreaInputBox.setForeground(new java.awt.Color(0, 0, 0));
+        textAreaInputBox.setLineWrap(true);
         textAreaInputBox.setRows(5);
         scrollPaneInputBox.setViewportView(textAreaInputBox);
 
@@ -131,12 +136,20 @@ public class MainController extends javax.swing.JFrame {
         scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPanePrivateMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+
+        textPanePrivateMessageBox.setEditable(false);
+        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
         scrollPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollPaneGlobalMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         scrollPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+
+        textPaneGlobalMessageBox.setEditable(false);
+        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

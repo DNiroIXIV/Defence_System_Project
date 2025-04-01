@@ -130,6 +130,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="spinnerSoldierCount">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="18" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="labelAmmoCount">
       <Properties>
@@ -143,6 +148,11 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="spinnerAmmoCount">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Arial" size="18" style="0"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="buttonShoot">
       <Properties>

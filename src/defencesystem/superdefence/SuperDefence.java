@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
+import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
@@ -65,9 +66,13 @@ public class SuperDefence extends javax.swing.JFrame {
         labelSoldierCount.setForeground(new java.awt.Color(0, 0, 0));
         labelSoldierCount.setText("Soldier Count");
 
+        spinnerSoldierCount.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+
         labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelAmmoCount.setForeground(new java.awt.Color(0, 0, 0));
         labelAmmoCount.setText("Ammo Count");
+
+        spinnerAmmoCount.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
 
         buttonShoot.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonShoot.setForeground(new java.awt.Color(0, 0, 0));
@@ -201,6 +206,14 @@ public class SuperDefence extends javax.swing.JFrame {
     public JTextArea getTextAreaMessageInput(){
         return textAreaMessageInput;
     }   
+    
+    protected void setSliderCommonAppearance(JSlider slider){
+        slider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        slider.setMajorTickSpacing(20);
+        slider.setMinorTickSpacing(10);
+        slider.setPaintLabels(true);
+        slider.setPaintTicks(true);
+    }
     
     /**
      * @param args the command line arguments
