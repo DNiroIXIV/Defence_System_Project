@@ -8,9 +8,8 @@ package defencesystem.util;
  *
  * @author Nirodha
  */
-public interface Observable {
+public interface ObserverInterface {    
 
-    public void setLabelAreaClearanceState(int stateChange);
-
+    public void getCheckBoxAreaClearState(int stateChange);
     
 }

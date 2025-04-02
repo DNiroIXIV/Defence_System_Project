@@ -8,7 +8,7 @@ import defencesystem.controller.MainController;
 import defencesystem.defences.Helicopter;
 import defencesystem.defences.Submarine;
 import defencesystem.defences.Tank;
-import defencesystem.util.Observer;
+import observerpattern.Observer;
 
 /**
  *
