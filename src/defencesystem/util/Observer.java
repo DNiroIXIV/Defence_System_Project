@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class Observer {
     private static Observer observer = null;
     
-    private ArrayList<Observable> defenceUnitsList = new ArrayList<>();
+    private final ArrayList<Observable> defenceUnitsList = new ArrayList<>();
     
     private Observer(){}
     
@@ -22,5 +22,13 @@ public class Observer {
             observer = new Observer();
         }
         return observer;
+    }
+    
+    public ArrayList<Observable> getDefenceUnitsList(){
+        return defenceUnitsList;
+    }
+    
+    public void addDefenceUnit(Observable observable){        
+        defenceUnitsList.add(observable);
     }
 }

@@ -4,33 +4,40 @@
  */
 package defencesystem.controller;
 
+import defencesystem.util.Observable;
 import defencesystem.util.Observer;
+import java.awt.Color;
+import java.awt.event.ItemEvent;
+import javax.swing.JLabel;
 
 /**
  *
  * @author Nirodha
  */
 public class MainController extends javax.swing.JFrame {
+
     private static MainController mainController = null;
-    
+
     private final Observer observer;
+
     /**
      * Creates new form MainController
      */
-    private MainController(Observer observer) {        
+    private MainController(Observer observer) {
         super("Main Controller");
         this.observer = observer;
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+        setVisible(true);
     }
-    
-    public static MainController getMainControllerInstance(Observer observer){
-        if(mainController == null){
+
+    public static MainController getMainControllerInstance(Observer observer) {
+        if (mainController == null) {
             mainController = new MainController(observer);
         }
         return mainController;
-    }    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -253,7 +260,16 @@ public class MainController extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
-        // TODO add your handling code here:
+        for (Observable observable : observer.getDefenceUnitsList()) {
+            JLabel jLabel = observable.getLabelAreaClearance();
+            if (evt.getStateChange() == ItemEvent.SELECTED) {
+                jLabel.setText("Area Cleared");
+                jLabel.setBackground(new Color(97, 179, 57));
+            } else if (evt.getStateChange() == ItemEvent.DESELECTED) {
+                jLabel.setText("Area Not Cleared");
+                jLabel.setBackground(new java.awt.Color(238, 137, 21));
+            }
+        }
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
 
     /**

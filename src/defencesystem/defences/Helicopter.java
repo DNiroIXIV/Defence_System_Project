@@ -20,6 +20,7 @@ public class Helicopter extends SuperDefence implements Observable{
         initComponents();
         setTitle("Helicopter");
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**

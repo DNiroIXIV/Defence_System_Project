@@ -20,6 +20,7 @@ public class Submarine extends SuperDefence implements Observable{
         initComponents();
         setTitle("Submarine");
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**

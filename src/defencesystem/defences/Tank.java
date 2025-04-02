@@ -20,6 +20,7 @@ public class Tank extends SuperDefence implements Observable{
         initComponents();
         setTitle("Tank");
         setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**

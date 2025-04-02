@@ -17,7 +17,7 @@ import javax.swing.JTextPane;
  *
  * @author Nirodha
  */
-public abstract class SuperDefence extends javax.swing.JFrame {
+public abstract class SuperDefence extends javax.swing.JFrame{
 
     /**
      * Creates new form SuperDefence

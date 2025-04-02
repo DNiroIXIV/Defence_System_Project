@@ -4,10 +4,15 @@
  */
 package defencesystem.util;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Nirodha
  */
 public interface Observable {
+
+    public JLabel getLabelAreaClearance();
+
     
 }
