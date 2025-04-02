@@ -4,6 +4,8 @@
  */
 package defencesystem.superdefence;
 
+import java.awt.Color;
+import java.awt.event.ItemEvent;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -17,14 +19,14 @@ import javax.swing.JTextPane;
  *
  * @author Nirodha
  */
-public abstract class SuperDefence extends javax.swing.JFrame{
+public abstract class SuperDefence extends javax.swing.JFrame {
 
     /**
      * Creates new form SuperDefence
      */
     public SuperDefence() {
         initComponents();
-        setResizable(false);        
+        setResizable(false);
     }
 
     /**
@@ -54,7 +56,6 @@ public abstract class SuperDefence extends javax.swing.JFrame{
 
         checkBoxPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         checkBoxPosition.setForeground(new java.awt.Color(0, 0, 0));
-        checkBoxPosition.setText("Position");
         checkBoxPosition.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         labelAreaClearance.setBackground(new java.awt.Color(238, 137, 21));
@@ -125,20 +126,27 @@ public abstract class SuperDefence extends javax.swing.JFrame{
                                     .addComponent(spinnerSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(spinnerAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(buttonShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(buttonShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(checkBoxPosition)))))
                 .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkBoxPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(checkBoxPosition)
+                        .addGap(44, 44, 44)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -220,6 +228,16 @@ public abstract class SuperDefence extends javax.swing.JFrame{
     protected void setButtonCommonAppearance(JButton jButton) {
         jButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton.setForeground(new java.awt.Color(0, 0, 0));
+    }
+
+    public void setLabelAreaClearanceState(int checkBoxAreaClearSelcetedOrNot) {
+        if (checkBoxAreaClearSelcetedOrNot == ItemEvent.SELECTED) {
+            labelAreaClearance.setText("Area Cleared");
+            labelAreaClearance.setBackground(new Color(97, 179, 57));
+        } else if (checkBoxAreaClearSelcetedOrNot == ItemEvent.DESELECTED) {
+            labelAreaClearance.setText("Area Not Cleared");
+            labelAreaClearance.setBackground(new Color(238, 137, 21));
+        }
     }
 
     /**

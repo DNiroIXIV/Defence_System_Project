@@ -146,6 +146,9 @@
         <Property name="paintLabels" type="boolean" value="true"/>
         <Property name="paintTicks" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="sliderPositionStrengthStateChanged"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JCheckBox" name="checkBoxAreaClear">
       <Properties>

@@ -82,6 +82,11 @@ public class MainController extends javax.swing.JFrame {
         sliderPositionStrength.setMinorTickSpacing(10);
         sliderPositionStrength.setPaintLabels(true);
         sliderPositionStrength.setPaintTicks(true);
+        sliderPositionStrength.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                sliderPositionStrengthStateChanged(evt);
+            }
+        });
 
         checkBoxAreaClear.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         checkBoxAreaClear.setText("Area Clear");
@@ -261,16 +266,15 @@ public class MainController extends javax.swing.JFrame {
 
     private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
         for (Observable observable : observer.getDefenceUnitsList()) {
-            JLabel jLabel = observable.getLabelAreaClearance();
-            if (evt.getStateChange() == ItemEvent.SELECTED) {
-                jLabel.setText("Area Cleared");
-                jLabel.setBackground(new Color(97, 179, 57));
-            } else if (evt.getStateChange() == ItemEvent.DESELECTED) {
-                jLabel.setText("Area Not Cleared");
-                jLabel.setBackground(new java.awt.Color(238, 137, 21));
-            }
+            observable.setLabelAreaClearanceState(evt.getStateChange());
         }
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
+
+    private void sliderPositionStrengthStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderPositionStrengthStateChanged
+        for (Observable observable : observer.getDefenceUnitsList()) {
+
+        }
+    }//GEN-LAST:event_sliderPositionStrengthStateChanged
 
     /**
      * @param args the command line arguments
