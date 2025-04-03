@@ -15,22 +15,19 @@ public class MainController extends javax.swing.JFrame {
 
     private static MainController mainController = null;
 
-    private final ObserverInterface observerInterface;
-    
-    private Strength strength;
-
+    private ObserverInterface observerInterface;
     /**
      * Creates new form MainController
      */
     private MainController(ObserverInterface observerInterface) {
         super("Main Controller");
-        this.observerInterface = observerInterface;
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);
+        this.observerInterface = observerInterface;
         setVisible(true);
     }
-
+    
     public static MainController getMainControllerInstance(ObserverInterface observerInterface) {
         if (mainController == null) {
             mainController = new MainController(observerInterface);
@@ -38,6 +35,9 @@ public class MainController extends javax.swing.JFrame {
         return mainController;
     }
 
+    public void addObserverInstance(ObserverInterface observerInterface){
+        this.observerInterface = observerInterface;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -284,22 +284,19 @@ public class MainController extends javax.swing.JFrame {
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
 
     private void sliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderPositionStateChanged
-        
+        sendSliderPositionStateChange();
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSendActionPerformed
 
-    public void hgjf(){
+    public void sendSliderPositionStateChange(){
         int sliderPositionValue = sliderPosition.getValue();
         
-        Strength strength = sliderPositionValue == 0 ? Strength.CLOSED : sliderPositionValue <= 25 ? Strength.LOW : sliderPositionValue <= 50 ? Strength.MEDIUM : sliderPositionValue <= 75 ? Strength.STRONG : Strength.HIGH;
+        Strength strength = sliderPositionValue == 0 ? Strength.CLOSED : sliderPositionValue <= 25 ? Strength.LOW : sliderPositionValue <= 50 ? Strength.MEDIUM : sliderPositionValue <= 80 ? Strength.STRONG : Strength.HIGH;
         
-        if(this.strength != strength){
-            this.strength = strength;
-            observerInterface.getSliderPositionStateChange(strength);
-        }        
+        observerInterface.getSliderPositionStateChange(strength);
     }
     
     /**

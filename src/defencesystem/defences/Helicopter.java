@@ -21,6 +21,7 @@ public class Helicopter extends SuperDefence implements Observable{
         initComponents();
         setTitle("Helicopter");
         setLocationRelativeTo(null);
+        enableWeaponOperation(Strength.CLOSED);
         setVisible(true);
     }
 
@@ -203,19 +204,21 @@ public class Helicopter extends SuperDefence implements Observable{
     public void enableWeaponOperation(Strength strength) {
         switch (strength) {
             case CLOSED: {
-                
+                buttonShoot.setEnabled(false);
+                buttonMissile.setEnabled(false);
+                buttonLaser.setEnabled(false);
             }
                 break;
             case LOW:
-                
+                buttonShoot.setEnabled(true);
                 break;
                 
             case MEDIUM:
-                
+                buttonMissile.setEnabled(true);
                 break;
                 
             case STRONG:
-                
+                buttonLaser.setEnabled(true);
                 break;
                 
             case HIGH:

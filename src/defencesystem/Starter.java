@@ -21,7 +21,7 @@ public class Starter {
      */
     public static void main(String[] args) {
         Observer observer = Observer.getObserverInstance();
-        MainController mainController = MainController.getMainControllerInstance(observer);
+        MainController.getMainControllerInstance(observer);
         observer.addDefenceUnit(new Helicopter());
         observer.addDefenceUnit(new Submarine());
         observer.addDefenceUnit(new Tank());
