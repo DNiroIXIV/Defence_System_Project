@@ -6,6 +6,8 @@ package observerpattern;
 
 import defencesystem.util.Observable;
 import defencesystem.util.ObserverInterface;
+import defencesystem.util.Strength;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 
 /**
@@ -31,9 +33,20 @@ public class Observer implements ObserverInterface{
     }
 
     @Override
-    public void getCheckBoxAreaClearState(int stateChange) {
+    public void getCheckBoxAreaClearStateChange(int stateChange) {
         for (Observable observable : defenceUnitsList) {
             observable.setLabelAreaClearanceState(stateChange);
+        }
+    }
+
+    @Override
+    public void getSliderPositionStateChange(Strength strength) {        
+        for (Observable observable : defenceUnitsList) {
+            int stateChange = observable.getCheckBoxPositionStatus();
+            
+            if(stateChange == ItemEvent.SELECTED){
+                observable.enableWeaponOperation(strength);
+            }            
         }
     }
 }

@@ -20,7 +20,7 @@ import javax.swing.JTextPane;
  * @author Nirodha
  */
 public abstract class SuperDefence extends javax.swing.JFrame {
-
+    private int checkBoxPositionValue;
     /**
      * Creates new form SuperDefence
      */
@@ -76,6 +76,11 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         checkBoxPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         checkBoxPosition.setForeground(new java.awt.Color(0, 0, 0));
         checkBoxPosition.setText("Position");
+        checkBoxPosition.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                checkBoxPositionItemStateChanged(evt);
+            }
+        });
 
         buttonShoot.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonShoot.setForeground(new java.awt.Color(0, 0, 0));
@@ -164,6 +169,14 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void checkBoxPositionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxPositionItemStateChanged
+        checkBoxPositionValue = evt.getStateChange();
+    }//GEN-LAST:event_checkBoxPositionItemStateChanged
+
+    public int getCheckBoxPositionStatus(){
+        return checkBoxPositionValue;
+    }
+    
     public JCheckBox getCheckBoxPosition() {
         return checkBoxPosition;
     }

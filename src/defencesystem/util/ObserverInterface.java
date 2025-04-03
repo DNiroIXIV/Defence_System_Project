@@ -10,6 +10,8 @@ package defencesystem.util;
  */
 public interface ObserverInterface {    
 
-    public void getCheckBoxAreaClearState(int stateChange);
+    public void getCheckBoxAreaClearStateChange(int stateChange);
+
+    public void getSliderPositionStateChange(Strength strength);
     
 }

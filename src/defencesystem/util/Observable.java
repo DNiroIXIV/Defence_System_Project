@@ -12,5 +12,8 @@ public interface Observable {
 
     public void setLabelAreaClearanceState(int stateChange);
 
+    public void enableWeaponOperation(Strength strength);
+    
+    public int getCheckBoxPositionStatus();
     
 }

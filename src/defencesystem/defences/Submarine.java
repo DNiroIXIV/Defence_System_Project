@@ -6,6 +6,7 @@ package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
 import defencesystem.util.Observable;
+import defencesystem.util.Strength;
 
 /**
  *
@@ -218,4 +219,9 @@ public class Submarine extends SuperDefence implements Observable{
     private javax.swing.JTextArea textAreaMessageInput;
     private javax.swing.JTextPane textPaneMeassageBox;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void enableWeaponOperation(Strength strength) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

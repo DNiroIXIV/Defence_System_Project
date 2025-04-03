@@ -9,5 +9,5 @@ package defencesystem.util;
  * @author Nirodha
  */
 public enum Strength {
-    LOW, MEDIUM, HIGH, STRONG, CLOSED
+    CLOSED, LOW, MEDIUM, HIGH, STRONG;
 }

@@ -6,6 +6,7 @@ package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
 import defencesystem.util.Observable;
+import defencesystem.util.Strength;
 
 /**
  *
@@ -197,4 +198,30 @@ public class Helicopter extends SuperDefence implements Observable{
     private javax.swing.JTextArea textAreaMessageInput;
     private javax.swing.JTextPane textPaneMeassageBox;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void enableWeaponOperation(Strength strength) {
+        switch (strength) {
+            case CLOSED: {
+                
+            }
+                break;
+            case LOW:
+                
+                break;
+                
+            case MEDIUM:
+                
+                break;
+                
+            case STRONG:
+                
+                break;
+                
+            case HIGH:
+                
+                break;
+            default:                
+        }
+    }
 }

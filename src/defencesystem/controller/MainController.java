@@ -5,6 +5,7 @@
 package defencesystem.controller;
 
 import defencesystem.util.ObserverInterface;
+import defencesystem.util.Strength;
 
 /**
  *
@@ -15,6 +16,8 @@ public class MainController extends javax.swing.JFrame {
     private static MainController mainController = null;
 
     private final ObserverInterface observerInterface;
+    
+    private Strength strength;
 
     /**
      * Creates new form MainController
@@ -225,7 +228,7 @@ public class MainController extends javax.swing.JFrame {
                             .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(50, 50, 50)
                             .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +280,7 @@ public class MainController extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
-        observerInterface.getCheckBoxAreaClearState(evt.getStateChange());
+        observerInterface.getCheckBoxAreaClearStateChange(evt.getStateChange());
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
 
     private void sliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderPositionStateChanged
@@ -288,6 +291,17 @@ public class MainController extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSendActionPerformed
 
+    public void hgjf(){
+        int sliderPositionValue = sliderPosition.getValue();
+        
+        Strength strength = sliderPositionValue == 0 ? Strength.CLOSED : sliderPositionValue <= 25 ? Strength.LOW : sliderPositionValue <= 50 ? Strength.MEDIUM : sliderPositionValue <= 75 ? Strength.STRONG : Strength.HIGH;
+        
+        if(this.strength != strength){
+            this.strength = strength;
+            observerInterface.getSliderPositionStateChange(strength);
+        }        
+    }
+    
     /**
      * @param args the command line arguments
      */
