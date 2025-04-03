@@ -207,23 +207,23 @@ public class Helicopter extends SuperDefence implements Observable{
                 buttonShoot.setEnabled(false);
                 buttonMissile.setEnabled(false);
                 buttonLaser.setEnabled(false);
-            }
-                break;
-            case LOW:
+            }break;
+            
+            case LOW: {
                 buttonShoot.setEnabled(true);
-                break;
-                
-            case MEDIUM:
+            }break;                
+            
+            case MEDIUM: {
                 buttonMissile.setEnabled(true);
-                break;
+            }break;
                 
-            case STRONG:
+            case HIGH: {
                 buttonLaser.setEnabled(true);
-                break;
+            }break;
                 
-            case HIGH:
+            case STRONG: {
                 
-                break;
+            }break;
             default:                
         }
     }

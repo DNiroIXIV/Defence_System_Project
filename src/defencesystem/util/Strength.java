@@ -21,6 +21,6 @@ public enum Strength {
     }
     
     public boolean inRange(int value){
-        return value <= min && value < max;
+        return value >= min && value < max;
     }    
 }

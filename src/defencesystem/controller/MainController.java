@@ -294,9 +294,15 @@ public class MainController extends javax.swing.JFrame {
     public void sendSliderPositionStateChange(){
         int sliderPositionValue = sliderPosition.getValue();
         
-        Strength strength = sliderPositionValue == 0 ? Strength.CLOSED : sliderPositionValue <= 25 ? Strength.LOW : sliderPositionValue <= 50 ? Strength.MEDIUM : sliderPositionValue <= 80 ? Strength.STRONG : Strength.HIGH;
+        Strength[] strengthList = Strength.values();
         
-        observerInterface.getSliderPositionStateChange(strength);
+        for (Strength strength : strengthList) {
+            if(strength.inRange(sliderPositionValue)){
+                System.out.println("strenth "+strength);
+                observerInterface.getSliderPositionStateChange(strength);
+                break;
+            }
+        }
     }
     
     /**
