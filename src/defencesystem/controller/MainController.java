@@ -16,6 +16,8 @@ public class MainController extends javax.swing.JFrame {
     private static MainController mainController = null;
 
     private ObserverInterface observerInterface;
+    
+    private Strength[] strengthList;
     /**
      * Creates new form MainController
      */
@@ -25,6 +27,7 @@ public class MainController extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         this.observerInterface = observerInterface;
+        strengthList = Strength.values();
         setVisible(true);
     }
     
@@ -81,6 +84,8 @@ public class MainController extends javax.swing.JFrame {
         sliderPosition.setMinorTickSpacing(10);
         sliderPosition.setPaintLabels(true);
         sliderPosition.setPaintTicks(true);
+        sliderPosition.setToolTipText("");
+        sliderPosition.setValue(0);
         sliderPosition.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 sliderPositionStateChanged(evt);
@@ -294,11 +299,8 @@ public class MainController extends javax.swing.JFrame {
     public void sendSliderPositionStateChange(){
         int sliderPositionValue = sliderPosition.getValue();
         
-        Strength[] strengthList = Strength.values();
-        
         for (Strength strength : strengthList) {
             if(strength.inRange(sliderPositionValue)){
-                System.out.println("strenth "+strength);
                 observerInterface.getSliderPositionStateChange(strength);
                 break;
             }

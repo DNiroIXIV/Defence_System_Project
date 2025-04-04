@@ -25,7 +25,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
      * Creates new form SuperDefence
      */
     public SuperDefence() {
-        initComponents();
+        initComponents();        
         setResizable(false);
     }
 
