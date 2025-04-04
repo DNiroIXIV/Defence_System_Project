@@ -8,6 +8,7 @@ import defencesystem.controller.MainController;
 import defencesystem.defences.Helicopter;
 import defencesystem.defences.Submarine;
 import defencesystem.defences.Tank;
+import defencesystem.util.Strength;
 import observerpattern.Observer;
 
 /**
@@ -21,10 +22,10 @@ public class Starter {
      */
     public static void main(String[] args) {
         Observer observer = Observer.getObserverInstance();
-        MainController mainController = MainController.getMainControllerInstance(observer);
+        MainController.getMainControllerInstance(observer);
         observer.addDefenceUnit(new Helicopter());
-        //observer.addDefenceUnit(new Submarine());
-        //observer.addDefenceUnit(new Tank());
-        mainController.sendSliderPositionStateChange();
+        observer.addDefenceUnit(new Submarine());
+        observer.addDefenceUnit(new Tank());
+        observer.notifyInitialStrength(Strength.CLOSED);        
     }
 }

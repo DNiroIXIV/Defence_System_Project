@@ -205,6 +205,29 @@ public class Tank extends SuperDefence implements Observable{
 
     @Override
     public void enableWeaponOperation(Strength strength) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        switch (strength) {
+            case CLOSED: {
+                disableButton(buttonShoot, buttonMissile, buttonRedar, buttonRotate);
+            }break;
+            
+            case LOW: {
+                enableButton(buttonShoot);
+                //disableButton();
+            }break;                
+            
+            case MEDIUM: {
+                enableButton(buttonMissile);
+                //disableButton();
+            }break;
+                
+            case HIGH: {
+                enableButton(buttonRedar);                
+            }break;
+                
+            case STRONG: {                
+                enableButton(buttonRotate);                
+            }break;
+            default:                
+        }
     }
 }

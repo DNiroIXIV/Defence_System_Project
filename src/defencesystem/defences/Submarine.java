@@ -222,6 +222,29 @@ public class Submarine extends SuperDefence implements Observable{
 
     @Override
     public void enableWeaponOperation(Strength strength) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        switch (strength) {
+            case CLOSED: {
+                disableButton(buttonShoot, buttonSonar, buttonTomahawk, buttonTrident);
+            }break;
+            
+            case LOW: {
+                enableButton(buttonShoot);
+                //disableButton();
+            }break;                
+            
+            case MEDIUM: {
+                enableButton(buttonSonar);
+                //disableButton();
+            }break;
+                
+            case HIGH: {
+                enableButton(buttonTomahawk);                
+            }break;
+                
+            case STRONG: {                
+                enableButton(buttonTrident);                
+            }break;
+            default:                
+        }
     }
 }

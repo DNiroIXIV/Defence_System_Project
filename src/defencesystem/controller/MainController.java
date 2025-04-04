@@ -285,27 +285,23 @@ public class MainController extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
-        observerInterface.getCheckBoxAreaClearStateChange(evt.getStateChange());
+        observerInterface.notifyCheckBoxAreaClearStatus(evt.getStateChange());
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
 
     private void sliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderPositionStateChanged
-        sendSliderPositionStateChange();
+        int sliderPositionValue = sliderPosition.getValue();
+        
+        for (Strength strength : strengthList) {
+            if(strength.inRange(sliderPositionValue)){
+                observerInterface.notifyStrength(strength);
+                break;
+            }
+        }
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_buttonSendActionPerformed
-
-    public void sendSliderPositionStateChange(){
-        int sliderPositionValue = sliderPosition.getValue();
-        
-        for (Strength strength : strengthList) {
-            if(strength.inRange(sliderPositionValue)){
-                observerInterface.getSliderPositionStateChange(strength);
-                break;
-            }
-        }
-    }
     
     /**
      * @param args the command line arguments

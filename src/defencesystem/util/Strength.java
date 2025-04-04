@@ -9,7 +9,7 @@ package defencesystem.util;
  * @author Nirodha
  */
 public enum Strength {
-    CLOSED(0, 20), LOW(20, 50), MEDIUM(50, 70), HIGH(70, 85), STRONG(85, 101);
+    CLOSED(0, 20), LOW(20, 40), MEDIUM(40, 60), HIGH(60, 80), STRONG(80, 101);
 
     private final int min;
     

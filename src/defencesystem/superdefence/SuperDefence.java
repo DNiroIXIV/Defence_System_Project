@@ -247,6 +247,22 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             labelAreaClearance.setBackground(new Color(238, 137, 21));
         }
     }
+    
+    protected void enableButton(JButton... jButtonArray){
+        for (JButton jButton : jButtonArray) {
+            if(!jButton.isEnabled()){
+                jButton.setEnabled(true);
+            }            
+        }
+    }
+    
+    protected void disableButton(JButton... jButtonArray){
+        for (JButton jButton : jButtonArray) {
+            if(jButton.isEnabled()){
+                jButton.setEnabled(false);
+            }
+        }
+    }
 
     /**
      * @param args the command line arguments

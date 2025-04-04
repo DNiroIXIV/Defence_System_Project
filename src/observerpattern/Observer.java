@@ -17,9 +17,11 @@ import java.util.ArrayList;
 public class Observer implements ObserverInterface{
     private static Observer observer = null;
     
-    private final ArrayList<Observable> defenceUnitsList = new ArrayList<>();
+    private final ArrayList<Observable> defenceUnitsList;
     
-    private Observer(){}
+    private Observer(){
+        defenceUnitsList = new ArrayList<>();
+    }
     
     public static Observer getObserverInstance(){
         if(observer == null){
@@ -33,20 +35,26 @@ public class Observer implements ObserverInterface{
     }
 
     @Override
-    public void getCheckBoxAreaClearStateChange(int stateChange) {
+    public void notifyCheckBoxAreaClearStatus(int stateChange) {
         for (Observable observable : defenceUnitsList) {
             observable.setLabelAreaClearanceState(stateChange);
         }
     }
 
     @Override
-    public void getSliderPositionStateChange(Strength strength) {        
+    public void notifyStrength(Strength strength) {
         for (Observable observable : defenceUnitsList) {
             int stateChange = observable.getCheckBoxPositionStatus();
             
             if(stateChange == ItemEvent.SELECTED){
                 observable.enableWeaponOperation(strength);
-            }            
+            }
         }
+    }
+    
+    public void notifyInitialStrength(Strength strength){
+        for (Observable observable : defenceUnitsList) {
+            observable.enableWeaponOperation(strength);
+        }        
     }
 }

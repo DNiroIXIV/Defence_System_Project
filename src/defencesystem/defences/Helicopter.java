@@ -203,25 +203,24 @@ public class Helicopter extends SuperDefence implements Observable{
     public void enableWeaponOperation(Strength strength) {
         switch (strength) {
             case CLOSED: {
-                buttonShoot.setEnabled(false);
-                buttonMissile.setEnabled(false);
-                buttonLaser.setEnabled(false);
+                disableButton(buttonShoot, buttonMissile, buttonLaser);
             }break;
             
             case LOW: {
-                buttonShoot.setEnabled(true);
+                enableButton(buttonShoot);
+                disableButton(buttonMissile, buttonLaser);
             }break;                
             
             case MEDIUM: {
-                buttonMissile.setEnabled(true);
+                enableButton(buttonShoot, buttonMissile);
+                disableButton(buttonLaser);
             }break;
                 
             case HIGH: {
-                buttonLaser.setEnabled(true);
+                enableButton(buttonShoot, buttonMissile, buttonLaser);                
             }break;
                 
-            case STRONG: {
-                
+            case STRONG: {                
             }break;
             default:                
         }
