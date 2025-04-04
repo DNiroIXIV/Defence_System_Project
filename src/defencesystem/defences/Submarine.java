@@ -5,8 +5,10 @@
 package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
+import observerpattern.Observer;
 
 /**
  *
@@ -18,12 +20,20 @@ public class Submarine extends SuperDefence implements Observable{
      * Creates new form Submarine
      */
     public Submarine() {
+        setUnitType(DefenceType.SUBMARINE);
+        setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.SUBMARINE));
+        setUnitName("Submarine", getUnitId());
+        setTitle(getUnitName());
         initComponents();
-        setTitle("Submarine");
         setLocationRelativeTo(null);
-        setVisible(true);
     }
 
+    public Submarine(String unitName){
+        this();
+        setUnitName(unitName, getUnitId());
+        setTitle(getUnitName());        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

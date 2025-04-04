@@ -5,8 +5,10 @@
 package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
+import observerpattern.Observer;
 
 /**
  *
@@ -18,10 +20,18 @@ public class Tank extends SuperDefence implements Observable{
      * Creates new form Tank
      */
     public Tank() {
-        initComponents();
-        setTitle("Tank");
-        setLocationRelativeTo(null);
-        setVisible(true);
+        setUnitType(DefenceType.TANK);
+        setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.TANK));
+        setUnitName("Tank", getUnitId());
+        setTitle(getUnitName());
+        initComponents();        
+        setLocationRelativeTo(null);        
+    }
+    
+    public Tank(String unitName){
+        this();
+        setUnitName(unitName, getUnitId());
+        setTitle(getUnitName());
     }
 
     /**
