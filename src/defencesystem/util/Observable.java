@@ -21,4 +21,6 @@ public interface Observable {
     public String getUnitName();
     
     public String getUnitId();
+    
+    public void setVisible(boolean value);
 }

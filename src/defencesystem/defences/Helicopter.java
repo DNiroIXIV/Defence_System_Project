@@ -8,6 +8,7 @@ import defencesystem.superdefence.SuperDefence;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
+import observerpattern.Observer;
 
 /**
  *
@@ -17,22 +18,20 @@ public class Helicopter extends SuperDefence implements Observable{
     /**
      * Creates new form Helicopter
      */
-    public Helicopter() {  
-        super("Helicopter");
+    public Helicopter() {          
         setUnitType(DefenceType.HELICOPTER);
+        setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.HELICOPTER));
+        setUnitName("Helicopter", getUnitId());
+        setTitle(getUnitName());
         initComponents();        
-        setLocationRelativeTo(null);        
+        setLocationRelativeTo(null);
     }
 
     public Helicopter(String unitName){
         this();
-        setTitle(unitName);
-        setVisible(true);
-    }
-    
-    public String getUnitId(){
-        return unitId;
-    }
+        setUnitName(unitName, getUnitId());
+        setTitle(getUnitName());
+    }    
     
     /**
      * This method is called from within the constructor to initialize the form.

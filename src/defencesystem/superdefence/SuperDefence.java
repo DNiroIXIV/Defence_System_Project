@@ -29,13 +29,12 @@ public abstract class SuperDefence extends javax.swing.JFrame {
      * Creates new form SuperDefence
      */    
     
-    public SuperDefence(String unitName) {
-        super(unitName);
+    public SuperDefence() {        
         initComponents();        
         setResizable(false);
     }
 
-    public void setUnitType(DefenceType unitType){
+    protected void setUnitType(DefenceType unitType){
         this.unitType = unitType;
     }
     
@@ -43,15 +42,15 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         return unitType;
     }
     
-    public void setUnitName(String unitName){
-        this.unitName = unitName;
+     protected void setUnitName(String defaultName, String unitId){
+        unitName = defaultName + " | " + unitId;
     }
     
     public String getUnitName(){
         return unitName;
     }
     
-    public void setUnitId(String unitId){
+    protected void setUnitId(String unitId){
         this.unitId = unitId;
     }
     
