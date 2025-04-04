@@ -5,6 +5,7 @@
 package defencesystem.defences;
 
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
 
@@ -12,18 +13,27 @@ import defencesystem.util.Strength;
  *
  * @author Nirodha
  */
-public class Helicopter extends SuperDefence implements Observable{
-
+public class Helicopter extends SuperDefence implements Observable{    
     /**
      * Creates new form Helicopter
      */
-    public Helicopter() {                
-        initComponents();
-        setTitle("Helicopter");
-        setLocationRelativeTo(null);
-        setVisible(true);
+    public Helicopter() {  
+        super("Helicopter");
+        setUnitType(DefenceType.HELICOPTER);
+        initComponents();        
+        setLocationRelativeTo(null);        
     }
 
+    public Helicopter(String unitName){
+        this();
+        setTitle(unitName);
+        setVisible(true);
+    }
+    
+    public String getUnitId(){
+        return unitId;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

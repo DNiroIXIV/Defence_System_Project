@@ -4,6 +4,7 @@
  */
 package defencesystem.superdefence;
 
+import defencesystem.util.DefenceType;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import javax.swing.JButton;
@@ -21,14 +22,42 @@ import javax.swing.JTextPane;
  */
 public abstract class SuperDefence extends javax.swing.JFrame {
     private int checkBoxPositionValue;
+    private DefenceType unitType;
+    private String unitName;
+    private String unitId;
     /**
      * Creates new form SuperDefence
-     */
-    public SuperDefence() {
+     */    
+    
+    public SuperDefence(String unitName) {
+        super(unitName);
         initComponents();        
         setResizable(false);
     }
 
+    public void setUnitType(DefenceType unitType){
+        this.unitType = unitType;
+    }
+    
+    public DefenceType getUnitType(){
+        return unitType;
+    }
+    
+    public void setUnitName(String unitName){
+        this.unitName = unitName;
+    }
+    
+    public String getUnitName(){
+        return unitName;
+    }
+    
+    public void setUnitId(String unitId){
+        this.unitId = unitId;
+    }
+    
+    public String getUnitId(){
+        return unitId;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

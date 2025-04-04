@@ -17,7 +17,7 @@ public class MainController extends javax.swing.JFrame {
 
     private ObserverInterface observerInterface;
     
-    private Strength[] strengthList;
+    private final Strength[] strengthList;
     /**
      * Creates new form MainController
      */

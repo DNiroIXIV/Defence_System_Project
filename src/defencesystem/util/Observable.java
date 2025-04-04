@@ -16,4 +16,9 @@ public interface Observable {
     
     public int getCheckBoxPositionStatus();
     
+    public DefenceType getUnitType();    
+        
+    public String getUnitName();
+    
+    public String getUnitId();
 }
