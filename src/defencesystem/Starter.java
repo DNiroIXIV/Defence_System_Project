@@ -24,12 +24,14 @@ public class Starter {
         Observer observer = Observer.getObserverInstance();
         MainController.getMainControllerInstance(observer);
         observer.addDefenceUnit(new Helicopter());
-        observer.addDefenceUnit(new Helicopter());
-        observer.addDefenceUnit(new Helicopter("Hawk"));
-        observer.addDefenceUnit(new Helicopter());
-        observer.addDefenceUnit(new Helicopter("Boeing01"));
-        //observer.addDefenceUnit(new Submarine());
+        observer.addDefenceUnit(new Submarine());
+        observer.addDefenceUnit(new Tank("Panther"));
+        //observer.addDefenceUnit(new Helicopter("Hawk"));
         //observer.addDefenceUnit(new Tank());
+        //observer.addDefenceUnit(new Submarine("USS Alexandria"));
+        //observer.addDefenceUnit(new Helicopter("Boeing"));
+        //observer.addDefenceUnit(new Tank("Crusader"));                
+        //observer.addDefenceUnit(new Submarine());
         observer.notifyInitialStrength(Strength.CLOSED);        
     }
 }

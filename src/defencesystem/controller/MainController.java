@@ -156,6 +156,7 @@ public class MainController extends javax.swing.JFrame {
         textAreaInputBox.setForeground(new java.awt.Color(0, 0, 0));
         textAreaInputBox.setLineWrap(true);
         textAreaInputBox.setRows(5);
+        textAreaInputBox.setWrapStyleWord(true);
         scrollPaneInputBox.setViewportView(textAreaInputBox);
 
         buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -167,8 +168,7 @@ public class MainController extends javax.swing.JFrame {
         });
 
         scrollPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPanePrivateMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
 
         textPanePrivateMessageBox.setEditable(false);
@@ -177,8 +177,7 @@ public class MainController extends javax.swing.JFrame {
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
         scrollPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollPaneGlobalMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
 
         textPaneGlobalMessageBox.setEditable(false);

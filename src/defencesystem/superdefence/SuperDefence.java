@@ -115,26 +115,29 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         buttonShoot.setText("Shoot");
 
         scrollPaneMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneMessageBox.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        textPaneMeassageBox.setEditable(false);
         textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         textPaneMeassageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneMessageInput.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         textAreaMessageInput.setColumns(20);
         textAreaMessageInput.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         textAreaMessageInput.setForeground(new java.awt.Color(0, 0, 0));
         textAreaMessageInput.setLineWrap(true);
         textAreaMessageInput.setRows(5);
+        textAreaMessageInput.setWrapStyleWord(true);
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonSend.setForeground(new java.awt.Color(0, 0, 0));
         buttonSend.setText("Send");
+        buttonSend.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSendActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,6 +203,12 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private void checkBoxPositionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxPositionItemStateChanged
         checkBoxPositionValue = evt.getStateChange();
     }//GEN-LAST:event_checkBoxPositionItemStateChanged
+
+    private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
+        String message = textAreaMessageInput.getText();
+        textAreaMessageInput.setText("");
+        textPaneMeassageBox.setText(message+"\n");
+    }//GEN-LAST:event_buttonSendActionPerformed
 
     public int getCheckBoxPositionStatus(){
         return checkBoxPositionValue;
