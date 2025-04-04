@@ -229,20 +229,21 @@ public class Submarine extends SuperDefence implements Observable{
             
             case LOW: {
                 enableButton(buttonShoot);
-                //disableButton();
+                disableButton(buttonSonar, buttonTomahawk, buttonTrident);
             }break;                
             
             case MEDIUM: {
-                enableButton(buttonSonar);
-                //disableButton();
+                enableButton(buttonShoot, buttonSonar);
+                disableButton(buttonTomahawk, buttonTrident);
             }break;
                 
             case HIGH: {
-                enableButton(buttonTomahawk);                
+                enableButton(buttonShoot, buttonSonar, buttonTomahawk);                
+                disableButton(buttonTrident);
             }break;
                 
             case STRONG: {                
-                enableButton(buttonTrident);                
+                enableButton(buttonShoot, buttonSonar, buttonTomahawk, buttonTrident);                
             }break;
             default:                
         }

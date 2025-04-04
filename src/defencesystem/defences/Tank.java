@@ -212,20 +212,21 @@ public class Tank extends SuperDefence implements Observable{
             
             case LOW: {
                 enableButton(buttonShoot);
-                //disableButton();
+                disableButton(buttonMissile, buttonRedar, buttonRotate);
             }break;                
             
             case MEDIUM: {
-                enableButton(buttonMissile);
-                //disableButton();
+                enableButton(buttonShoot, buttonMissile);
+                disableButton(buttonRedar, buttonRotate);
             }break;
                 
             case HIGH: {
-                enableButton(buttonRedar);                
+                enableButton(buttonShoot, buttonMissile, buttonRedar); 
+                disableButton(buttonRotate);
             }break;
                 
             case STRONG: {                
-                enableButton(buttonRotate);                
+                enableButton(buttonShoot, buttonMissile, buttonRedar, buttonRotate);   
             }break;
             default:                
         }
