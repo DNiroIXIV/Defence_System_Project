@@ -21,7 +21,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -74,14 +74,14 @@
                   <Component id="sliderOxygen" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="labelOxygen" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelAreaClearance" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelEnergy" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
@@ -95,20 +95,20 @@
                           <Component id="buttonShoot" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="buttonSonar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="buttonTomahawk" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="buttonTrident" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="labelAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="spinnerAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="spinnerSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      <Component id="scrollPaneMessageBox" min="-2" pref="200" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="scrollPaneMessageBox" min="-2" pref="250" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="buttonSend" min="-2" pref="50" max="-2" attributes="0"/>
@@ -121,7 +121,7 @@
                   <Component id="sliderEnergy" min="-2" pref="600" max="-2" attributes="0"/>
                   <Component id="sliderOxygen" min="-2" pref="600" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

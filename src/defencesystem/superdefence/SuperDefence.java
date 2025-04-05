@@ -33,7 +33,6 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     public SuperDefence() {        
         initComponents();
         textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
-        setResizable(false);
     }
 
     protected void setUnitType(DefenceType unitType){
@@ -44,8 +43,8 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         return unitType;
     }
     
-     protected void setUnitName(String defaultName, String unitId){
-        unitName = defaultName + " | " + unitId;
+    public void setUnitName(String unitName){
+        this.unitName = unitName;
     }
     
     public String getUnitName(){
@@ -59,6 +58,59 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     public String getUnitId(){
         return unitId;
     }
+    
+    public JCheckBox getCheckBoxPosition() {
+        return checkBoxPosition;
+    }
+
+    public JLabel getLabelAreaClearance() {
+        return labelAreaClearance;
+    }
+
+    public JLabel getLabelSoldierCount() {
+        return labelSoldierCount;
+    }
+
+    public JSpinner getSpinnerSoldierCount() {
+        return spinnerSoldierCount;
+    }
+
+    public JLabel getLabelAmmoCount() {
+        return labelAmmoCount;
+    }
+
+    public JSpinner getSpinnerAmmoCount() {
+        return spinnerAmmoCount;
+    }
+
+    public JButton getButtonShoot() {
+        return buttonShoot;
+    }
+
+    public JButton getButtonSend() {
+        return buttonSend;
+    }
+
+    public JScrollPane getScrollPaneMessageBox() {
+        return scrollPaneMessageBox;
+    }
+
+    public JTextPane getTextPaneMeassageBox() {
+        return textPaneMeassageBox;
+    }
+
+    public JScrollPane getScrollPaneMessageInput() {
+        return scrollPaneMessageInput;
+    }
+
+    public JTextArea getTextAreaMessageInput() {
+        return textAreaMessageInput;
+    }
+    
+    public int getCheckBoxPositionStatus(){
+        return checkBoxPositionValue;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,7 +200,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,27 +224,27 @@ public abstract class SuperDefence extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(92, 92, 92)
                                 .addComponent(checkBoxPosition)))))
-                .addGap(40, 40, 40))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelAreaClearance, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkBoxPosition))
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spinnerSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(buttonShoot, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(30, 30, 30)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spinnerAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                 .addComponent(scrollPaneMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,7 +252,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -213,60 +265,8 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         String message = textAreaMessageInput.getText();
         textAreaMessageInput.setText("");
-        textPaneMeassageBox.setText(message+"\n");
+        textPaneMeassageBox.setText(getUnitName()+" : "+message+"\n");
     }//GEN-LAST:event_buttonSendActionPerformed
-
-    public int getCheckBoxPositionStatus(){
-        return checkBoxPositionValue;
-    }
-    
-    public JCheckBox getCheckBoxPosition() {
-        return checkBoxPosition;
-    }
-
-    public JLabel getLabelAreaClearance() {
-        return labelAreaClearance;
-    }
-
-    public JLabel getLabelSoldierCount() {
-        return labelSoldierCount;
-    }
-
-    public JSpinner getSpinnerSoldierCount() {
-        return spinnerSoldierCount;
-    }
-
-    public JLabel getLabelAmmoCount() {
-        return labelAmmoCount;
-    }
-
-    public JSpinner getSpinnerAmmoCount() {
-        return spinnerAmmoCount;
-    }
-
-    public JButton getButtonShoot() {
-        return buttonShoot;
-    }
-
-    public JButton getButtonSend() {
-        return buttonSend;
-    }
-
-    public JScrollPane getScrollPaneMessageBox() {
-        return scrollPaneMessageBox;
-    }
-
-    public JTextPane getTextPaneMeassageBox() {
-        return textPaneMeassageBox;
-    }
-
-    public JScrollPane getScrollPaneMessageInput() {
-        return scrollPaneMessageInput;
-    }
-
-    public JTextArea getTextAreaMessageInput() {
-        return textAreaMessageInput;
-    }
 
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -281,16 +281,6 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         jButton.setForeground(new java.awt.Color(0, 0, 0));
     }
 
-    public void setLabelAreaClearanceState(int stateChange) {
-        if (stateChange == ItemEvent.SELECTED) {
-            labelAreaClearance.setText("Area Cleared");
-            labelAreaClearance.setBackground(new Color(97, 179, 57));
-        } else if (stateChange == ItemEvent.DESELECTED) {
-            labelAreaClearance.setText("Area Not Cleared");
-            labelAreaClearance.setBackground(new Color(238, 137, 21));
-        }
-    }
-    
     protected void enableButton(JButton... jButtonArray){
         for (JButton jButton : jButtonArray) {
             if(!jButton.isEnabled()){
@@ -307,6 +297,16 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         }
     }
 
+    public void setLabelAreaClearanceState(int stateChange) {
+        if (stateChange == ItemEvent.SELECTED) {
+            labelAreaClearance.setText("Area Cleared");
+            labelAreaClearance.setBackground(new Color(97, 179, 57));
+        } else if (stateChange == ItemEvent.DESELECTED) {
+            labelAreaClearance.setText("Area Not Cleared");
+            labelAreaClearance.setBackground(new Color(238, 137, 21));
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -339,7 +339,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             //new SuperDefence().setVisible(true);
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSend;
     private javax.swing.JButton buttonShoot;

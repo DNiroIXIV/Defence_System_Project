@@ -21,87 +21,89 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="scrollPaneMessageInput" min="-2" pref="450" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="buttonSend" min="-2" pref="120" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="scrollPaneMessageBox" alignment="0" min="-2" pref="600" max="-2" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="labelSoldierCount" min="-2" pref="160" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Component id="spinnerSoldierCount" min="-2" pref="80" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="labelAreaClearance" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <Component id="buttonShoot" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                                  <Component id="buttonRedar" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="buttonRotate" min="-2" pref="280" max="-2" attributes="0"/>
-                                      <Component id="buttonMissile" min="-2" pref="280" max="-2" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="labelAmmoCount" min="-2" pref="160" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                                          <Component id="spinnerAmmoCount" min="-2" pref="80" max="-2" attributes="0"/>
-                                      </Group>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Component id="scrollPaneMessageInput" min="-2" pref="450" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="buttonSend" min="-2" pref="120" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrollPaneMessageBox" alignment="0" min="-2" pref="600" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="labelSoldierCount" min="-2" pref="160" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Component id="spinnerSoldierCount" min="-2" pref="80" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="labelAreaClearance" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                      <Component id="buttonShoot" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
-                                  <Component id="checkBoxPosition" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="buttonMissile" min="-2" pref="280" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Component id="labelAmmoCount" min="-2" pref="160" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                              <Component id="spinnerAmmoCount" min="-2" pref="80" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="buttonRotate" alignment="0" min="-2" pref="280" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
+                                      <Component id="checkBoxPosition" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
                   </Group>
+                  <Component id="buttonRedar" min="-2" pref="280" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="sliderFuel" min="-2" pref="100" max="-2" attributes="0"/>
                   <Component id="labelFuel" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelAreaClearance" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelFuel" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="checkBoxPosition" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="buttonShoot" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="buttonMissile" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="buttonRedar" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="buttonRotate" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="spinnerSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="spinnerAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                           <Component id="labelSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="scrollPaneMessageBox" min="-2" pref="200" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -114,7 +116,7 @@
                   </Group>
                   <Component id="sliderFuel" min="-2" pref="540" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>

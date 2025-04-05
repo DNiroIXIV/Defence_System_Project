@@ -24,36 +24,21 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="labelPosition" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="sliderPosition" min="-2" pref="620" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
-                      <Component id="checkBoxAreaClear" min="-2" pref="120" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="scrollPanePrivateMessageBox" min="-2" pref="500" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="scrollPaneGlobalMessageBox" min="-2" pref="500" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="comboBoxSelectDefence" min="-2" pref="200" max="-2" attributes="0"/>
+                          <Component id="checkBoxSendPrivate" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="comboBoxSelectDefence" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="checkBoxSendPrivate" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="scrollPaneInputBox" min="-2" pref="650" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                                  <Component id="buttonSend" min="-2" pref="120" max="-2" attributes="0"/>
-                              </Group>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="scrollPaneInputBox" min="-2" pref="650" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="checkBoxAreaClear" min="-2" pref="120" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="buttonCollectInfo" min="-2" pref="220" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="labelSoldier" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
                                       <Component id="labelAmmo" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
@@ -79,42 +64,48 @@
                           </Group>
                       </Group>
                   </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="labelPosition" min="-2" pref="100" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="sliderPosition" min="-2" pref="620" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="buttonSend" min="-2" pref="120" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="scrollPanePrivateMessageBox" min="-2" pref="500" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="scrollPaneGlobalMessageBox" min="-2" pref="500" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelPosition" min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="sliderPosition" min="-2" pref="80" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="checkBoxAreaClear" min="-2" pref="22" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="labelPosition" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="sliderPosition" min="-2" pref="80" max="-2" attributes="0"/>
+                  <Component id="checkBoxAreaClear" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace pref="30" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelSoldier" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelSoldierCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelEnergy" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelEnergyAmount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="buttonCollectInfo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="comboBoxSelectDefence" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelFuelAmount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelFuel" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="labelAmmo" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="labelAmmoCount" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
@@ -140,7 +131,7 @@
                   <Component id="scrollPanePrivateMessageBox" min="-2" pref="200" max="-2" attributes="0"/>
                   <Component id="scrollPaneGlobalMessageBox" min="-2" pref="200" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -186,6 +177,7 @@
       </Properties>
       <Events>
         <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="checkBoxAreaClearItemStateChanged"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkBoxAreaClearActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JComboBox" name="comboBoxSelectDefence">
