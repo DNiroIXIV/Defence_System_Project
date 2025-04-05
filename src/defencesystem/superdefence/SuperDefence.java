@@ -15,6 +15,7 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
@@ -30,7 +31,8 @@ public abstract class SuperDefence extends javax.swing.JFrame {
      */    
     
     public SuperDefence() {        
-        initComponents();        
+        initComponents();
+        textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
         setResizable(false);
     }
 
@@ -116,14 +118,16 @@ public abstract class SuperDefence extends javax.swing.JFrame {
 
         scrollPaneMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        textPaneMeassageBox.setEditable(false);
         textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
         textPaneMeassageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneMessageInput.setPreferredSize(new java.awt.Dimension(450, 30));
 
         textAreaMessageInput.setColumns(20);
-        textAreaMessageInput.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textAreaMessageInput.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
         textAreaMessageInput.setForeground(new java.awt.Color(0, 0, 0));
         textAreaMessageInput.setLineWrap(true);
         textAreaMessageInput.setRows(5);
@@ -192,8 +196,10 @@ public abstract class SuperDefence extends javax.swing.JFrame {
                 .addComponent(scrollPaneMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40))
         );
 
