@@ -31,10 +31,7 @@ public class Observer implements ObserverInterface{
     }
     
     public static Observer getObserverInstance(){
-        if(observer == null){
-            observer = new Observer();
-        }
-        return observer;
+        return observer == null ? observer = new Observer() : observer;
     }
     
     public void addDefenceUnit(Observable observable){        

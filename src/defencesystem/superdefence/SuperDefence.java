@@ -7,6 +7,8 @@ package defencesystem.superdefence;
 import defencesystem.util.DefenceType;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -16,49 +18,57 @@ import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
  * @author Nirodha
  */
 public abstract class SuperDefence extends javax.swing.JFrame {
+
     private int checkBoxPositionValue;
     private DefenceType unitType;
     private String unitName;
     private String unitId;
+
     /**
      * Creates new form SuperDefence
-     */    
-    
-    public SuperDefence() {        
+     */
+
+    public SuperDefence() {
         initComponents();
         textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
     }
 
-    protected void setUnitType(DefenceType unitType){
+    protected void setUnitType(DefenceType unitType) {
         this.unitType = unitType;
     }
-    
-    public DefenceType getUnitType(){
+
+    public DefenceType getUnitType() {
         return unitType;
     }
-    
-    public void setUnitName(String unitName){
+
+    public void setUnitName(String unitName) {
         this.unitName = unitName;
     }
-    
-    public String getUnitName(){
+
+    public String getUnitName() {
         return unitName;
     }
-    
-    protected void setUnitId(String unitId){
+
+    protected void setUnitId(String unitId) {
         this.unitId = unitId;
     }
-    
-    public String getUnitId(){
+
+    public String getUnitId() {
         return unitId;
     }
-    
+
     public JCheckBox getCheckBoxPosition() {
         return checkBoxPosition;
     }
@@ -106,11 +116,11 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     public JTextArea getTextAreaMessageInput() {
         return textAreaMessageInput;
     }
-    
-    public int getCheckBoxPositionStatus(){
+
+    public int getCheckBoxPositionStatus() {
         return checkBoxPositionValue;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -184,6 +194,23 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         textAreaMessageInput.setLineWrap(true);
         textAreaMessageInput.setRows(5);
         textAreaMessageInput.setWrapStyleWord(true);
+        textAreaMessageInput.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent evt){
+                setButtonSendEnabledStatus();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent evt){
+                setButtonSendEnabledStatus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent evt){
+                setButtonSendEnabledStatus();
+            }
+
+        });
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -194,6 +221,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
                 buttonSendActionPerformed(evt);
             }
         });
+        buttonSend.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,12 +229,12 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(scrollPaneMessageInput, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(scrollPaneMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrollPaneMessageBox)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -262,16 +290,36 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         checkBoxPositionValue = evt.getStateChange();
     }//GEN-LAST:event_checkBoxPositionItemStateChanged
 
+    private void setButtonSendEnabledStatus() {
+        buttonSend.setEnabled(!textAreaMessageInput.getText().trim().isEmpty());
+    }
+
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
-        String message = textAreaMessageInput.getText();
+        String message = textAreaMessageInput.getText().trim();
         textAreaMessageInput.setText("");
         updateTextPaneMessageBox(message);
     }//GEN-LAST:event_buttonSendActionPerformed
 
-    private void updateTextPaneMessageBox(String message){
-        
+    private void updateTextPaneMessageBox(String message) {
+        SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(senderAttributeSet, 5);
+        StyleConstants.setSpaceBelow(senderAttributeSet, 5);
+        StyleConstants.setLeftIndent(senderAttributeSet, 80);
+        StyleConstants.setRightIndent(senderAttributeSet, 5);
+        StyleConstants.setAlignment(senderAttributeSet, StyleConstants.ALIGN_RIGHT);
+        StyleConstants.setBackground(senderAttributeSet, new Color(217, 242, 231));
+        StyleConstants.setForeground(senderAttributeSet, new Color(0, 0, 0));
+
+        StyledDocument styledDocument = textPaneMeassageBox.getStyledDocument();
+        textPaneMeassageBox.setParagraphAttributes(senderAttributeSet, false);
+        try {
+            styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
+        } catch (BadLocationException ex) {
+            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-    
+
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jSlider.setMajorTickSpacing(20);
@@ -285,17 +333,17 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         jButton.setForeground(new java.awt.Color(0, 0, 0));
     }
 
-    protected void enableButton(JButton... jButtonArray){
+    protected void enableButton(JButton... jButtonArray) {
         for (JButton jButton : jButtonArray) {
-            if(!jButton.isEnabled()){
+            if (!jButton.isEnabled()) {
                 jButton.setEnabled(true);
-            }            
+            }
         }
     }
-    
-    protected void disableButton(JButton... jButtonArray){
+
+    protected void disableButton(JButton... jButtonArray) {
         for (JButton jButton : jButtonArray) {
-            if(jButton.isEnabled()){
+            if (jButton.isEnabled()) {
                 jButton.setEnabled(false);
             }
         }
@@ -310,7 +358,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             labelAreaClearance.setBackground(new Color(238, 137, 21));
         }
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -343,7 +391,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             //new SuperDefence().setVisible(true);
         });
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSend;
     private javax.swing.JButton buttonShoot;

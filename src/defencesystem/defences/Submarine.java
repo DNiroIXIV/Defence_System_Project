@@ -22,8 +22,8 @@ public class Submarine extends SuperDefence implements Observable{
     public Submarine() {
         setUnitType(DefenceType.SUBMARINE);
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.SUBMARINE));
-        setUnitName("Submarine | "+getUnitId());
-        setTitle(getUnitName());
+        setUnitName("Submarine");
+        setTitle(getUnitName()+" | "+getUnitId());
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -31,7 +31,7 @@ public class Submarine extends SuperDefence implements Observable{
     public Submarine(String unitName){
         this();
         setUnitName(unitName);
-        setTitle(getUnitName());        
+        setTitle(getUnitName()+" | "+getUnitId());        
     }
     
     /**

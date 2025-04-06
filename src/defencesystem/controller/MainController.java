@@ -33,10 +33,7 @@ public class MainController extends javax.swing.JFrame {
     }
     
     public static MainController getMainControllerInstance(ObserverInterface observerInterface) {
-        if (mainController == null) {
-            mainController = new MainController(observerInterface);
-        }
-        return mainController;
+        return mainController == null ? mainController = new MainController(observerInterface) : mainController;
     }
 
     public void addObserverInstance(ObserverInterface observerInterface){
@@ -188,11 +185,6 @@ public class MainController extends javax.swing.JFrame {
         buttonGroupSendPrivacy.add(radioButtonSendAll);
         radioButtonSendAll.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         radioButtonSendAll.setText("Send All");
-        radioButtonSendAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioButtonSendAllActionPerformed(evt);
-            }
-        });
 
         labelSendPrivacyError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         labelSendPrivacyError.setForeground(new java.awt.Color(255, 0, 51));
@@ -352,10 +344,6 @@ public class MainController extends javax.swing.JFrame {
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxAreaClearActionPerformed
-
-    private void radioButtonSendAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonSendAllActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_radioButtonSendAllActionPerformed
     
     /**
      * @param args the command line arguments

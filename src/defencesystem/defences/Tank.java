@@ -22,8 +22,8 @@ public class Tank extends SuperDefence implements Observable{
     public Tank() {
         setUnitType(DefenceType.TANK);
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.TANK));
-        setUnitName("Tank | "+getUnitId());
-        setTitle(getUnitName());
+        setUnitName("Tank");
+        setTitle(getUnitName()+" | "+getUnitId());
         initComponents();        
         setLocationRelativeTo(null);        
     }
@@ -31,7 +31,7 @@ public class Tank extends SuperDefence implements Observable{
     public Tank(String unitName){
         this();
         setUnitName(unitName);
-        setTitle(getUnitName());
+        setTitle(getUnitName()+" | "+getUnitId());
     }
 
     /**

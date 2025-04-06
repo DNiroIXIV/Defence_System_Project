@@ -21,8 +21,8 @@ public class Helicopter extends SuperDefence implements Observable{
     public Helicopter() {          
         setUnitType(DefenceType.HELICOPTER);
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.HELICOPTER));
-        setUnitName("Helicopter | "+getUnitId());
-        setTitle(getUnitName());
+        setUnitName("Helicopter");
+        setTitle(getUnitName()+" | "+getUnitId());
         initComponents(); 
         setLocationRelativeTo(null);
     }
@@ -30,7 +30,7 @@ public class Helicopter extends SuperDefence implements Observable{
     public Helicopter(String unitName){
         this();
         setUnitName(unitName);
-        setTitle(getUnitName());
+        setTitle(getUnitName()+" | "+getUnitId());
     }    
     
     /**
