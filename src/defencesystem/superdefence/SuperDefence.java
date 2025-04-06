@@ -265,9 +265,13 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         String message = textAreaMessageInput.getText();
         textAreaMessageInput.setText("");
-        textPaneMeassageBox.setText(getUnitName()+" : "+message+"\n");
+        updateTextPaneMessageBox(message);
     }//GEN-LAST:event_buttonSendActionPerformed
 
+    private void updateTextPaneMessageBox(String message){
+        
+    }
+    
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jSlider.setMajorTickSpacing(20);

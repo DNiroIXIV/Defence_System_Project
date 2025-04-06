@@ -23,11 +23,11 @@ public class Starter {
     public static void main(String[] args) {
         Observer observer = Observer.getObserverInstance();
         MainController.getMainControllerInstance(observer);
-        observer.addDefenceUnit(new Helicopter());
+        observer.addDefenceUnit(new Helicopter());        
+        observer.addDefenceUnit(new Tank());      
         observer.addDefenceUnit(new Submarine());
-        observer.addDefenceUnit(new Tank("Panther"));
         //observer.addDefenceUnit(new Helicopter("Hawk"));
-        //observer.addDefenceUnit(new Tank());
+        //observer.addDefenceUnit(new Tank("Panther"));
         //observer.addDefenceUnit(new Submarine("USS Alexandria"));
         //observer.addDefenceUnit(new Helicopter("Boeing"));
         //observer.addDefenceUnit(new Tank("Crusader"));                

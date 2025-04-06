@@ -51,11 +51,13 @@ public class MainController extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroupSendPrivacy = new javax.swing.ButtonGroup();
         labelPosition = new javax.swing.JLabel();
         sliderPosition = new javax.swing.JSlider();
         checkBoxAreaClear = new javax.swing.JCheckBox();
         comboBoxSelectDefence = new javax.swing.JComboBox<>();
         buttonCollectInfo = new javax.swing.JButton();
+        labelSelectDefenceUnitError = new javax.swing.JLabel();
         labelSoldier = new javax.swing.JLabel();
         labelSoldierCount = new javax.swing.JLabel();
         labelAmmo = new javax.swing.JLabel();
@@ -66,14 +68,17 @@ public class MainController extends javax.swing.JFrame {
         labelFuelAmount = new javax.swing.JLabel();
         labelOxygen = new javax.swing.JLabel();
         labelOxygenAmount = new javax.swing.JLabel();
-        checkBoxSendPrivate = new javax.swing.JCheckBox();
-        scrollPaneInputBox = new javax.swing.JScrollPane();
-        textAreaInputBox = new javax.swing.JTextArea();
-        buttonSend = new javax.swing.JButton();
         scrollPanePrivateMessageBox = new javax.swing.JScrollPane();
         textPanePrivateMessageBox = new javax.swing.JTextPane();
         scrollPaneGlobalMessageBox = new javax.swing.JScrollPane();
         textPaneGlobalMessageBox = new javax.swing.JTextPane();
+        labelSelectSendPrivacy = new javax.swing.JLabel();
+        radioButtonSendPrivate = new javax.swing.JRadioButton();
+        radioButtonSendAll = new javax.swing.JRadioButton();
+        labelSendPrivacyError = new javax.swing.JLabel();
+        scrollPaneInputBox = new javax.swing.JScrollPane();
+        textAreaInputBox = new javax.swing.JTextArea();
+        buttonSend = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -115,6 +120,11 @@ public class MainController extends javax.swing.JFrame {
         buttonCollectInfo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonCollectInfo.setText("Collect Informations");
 
+        labelSelectDefenceUnitError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        labelSelectDefenceUnitError.setForeground(new java.awt.Color(255, 0, 51));
+        labelSelectDefenceUnitError.setText("Please select defence unit!");
+        labelSelectDefenceUnitError.setVisible(false);
+
         labelSoldier.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelSoldier.setText("Soldier Count");
 
@@ -150,10 +160,44 @@ public class MainController extends javax.swing.JFrame {
         labelOxygenAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelOxygenAmount.setText("1000");
 
-        checkBoxSendPrivate.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        checkBoxSendPrivate.setForeground(new java.awt.Color(0, 0, 0));
-        checkBoxSendPrivate.setText("Send Private");
-        checkBoxSendPrivate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        scrollPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+
+        textPanePrivateMessageBox.setEditable(false);
+        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
+
+        scrollPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+
+        textPaneGlobalMessageBox.setEditable(false);
+        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
+
+        labelSelectSendPrivacy.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        labelSelectSendPrivacy.setText("Select Privacy");
+
+        buttonGroupSendPrivacy.add(radioButtonSendPrivate);
+        radioButtonSendPrivate.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        radioButtonSendPrivate.setText("Send Private");
+
+        buttonGroupSendPrivacy.add(radioButtonSendAll);
+        radioButtonSendAll.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        radioButtonSendAll.setText("Send All");
+        radioButtonSendAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioButtonSendAllActionPerformed(evt);
+            }
+        });
+
+        labelSendPrivacyError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
+        labelSendPrivacyError.setForeground(new java.awt.Color(255, 0, 51));
+        labelSendPrivacyError.setText("Please select send privacy before sending the message!");
+        labelSendPrivacyError.setVisible(false);
 
         scrollPaneInputBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
@@ -173,87 +217,75 @@ public class MainController extends javax.swing.JFrame {
             }
         });
 
-        scrollPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-
-        textPanePrivateMessageBox.setEditable(false);
-        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        textPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
-
-        scrollPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-
-        textPaneGlobalMessageBox.setEditable(false);
-        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
-        textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
-        scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(40, 40, 40)
-                                    .addComponent(buttonCollectInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(50, 50, 50)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(10, 10, 10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(50, 50, 50)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(10, 10, 10)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(labelFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(40, 40, 40)
-                                    .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(checkBoxSendPrivate)
-                                .addGap(50, 50, 50)
-                                .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(50, 50, 50)
-                                .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                                .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(40, 40, 40)
+                                .addComponent(buttonCollectInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelSelectDefenceUnitError, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelSoldierCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(50, 50, 50)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelEnergy, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelEnergyAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(40, 40, 40)
+                        .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)
                         .addComponent(sliderPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(125, 125, 125)
-                        .addComponent(checkBoxAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(85, 85, 85))))
+                        .addComponent(checkBoxAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(labelSelectSendPrivacy, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(radioButtonSendPrivate, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(radioButtonSendAll, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)
+                        .addComponent(labelSendPrivacyError, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(70, 70, 70)
+                        .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(sliderPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(44, Short.MAX_VALUE)
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(checkBoxAreaClear, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -272,21 +304,24 @@ public class MainController extends javax.swing.JFrame {
                     .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(checkBoxSendPrivate)
-                            .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(40, 40, 40)))
+                    .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelSelectDefenceUnitError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(radioButtonSendPrivate)
+                    .addComponent(radioButtonSendAll)
+                    .addComponent(labelSelectSendPrivacy)
+                    .addComponent(labelSendPrivacyError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -306,6 +341,8 @@ public class MainController extends javax.swing.JFrame {
                 break;
             }
         }
+        buttonGroupSendPrivacy.add(buttonSend);
+        
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
@@ -315,6 +352,10 @@ public class MainController extends javax.swing.JFrame {
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxAreaClearActionPerformed
+
+    private void radioButtonSendAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioButtonSendAllActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioButtonSendAllActionPerformed
     
     /**
      * @param args the command line arguments
@@ -351,9 +392,9 @@ public class MainController extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonCollectInfo;
+    private javax.swing.ButtonGroup buttonGroupSendPrivacy;
     private javax.swing.JButton buttonSend;
     private javax.swing.JCheckBox checkBoxAreaClear;
-    private javax.swing.JCheckBox checkBoxSendPrivate;
     private javax.swing.JComboBox<String> comboBoxSelectDefence;
     private javax.swing.JLabel labelAmmo;
     private javax.swing.JLabel labelAmmoCount;
@@ -364,8 +405,13 @@ public class MainController extends javax.swing.JFrame {
     private javax.swing.JLabel labelOxygen;
     private javax.swing.JLabel labelOxygenAmount;
     private javax.swing.JLabel labelPosition;
+    private javax.swing.JLabel labelSelectDefenceUnitError;
+    private javax.swing.JLabel labelSelectSendPrivacy;
+    private javax.swing.JLabel labelSendPrivacyError;
     private javax.swing.JLabel labelSoldier;
     private javax.swing.JLabel labelSoldierCount;
+    private javax.swing.JRadioButton radioButtonSendAll;
+    private javax.swing.JRadioButton radioButtonSendPrivate;
     private javax.swing.JScrollPane scrollPaneGlobalMessageBox;
     private javax.swing.JScrollPane scrollPaneInputBox;
     private javax.swing.JScrollPane scrollPanePrivateMessageBox;
