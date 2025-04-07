@@ -38,7 +38,6 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     /**
      * Creates new form SuperDefence
      */
-
     public SuperDefence() {
         initComponents();
         textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
@@ -181,8 +180,14 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         textPaneMeassageBox.setEditable(false);
-        textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
         textPaneMeassageBox.setForeground(new java.awt.Color(0, 0, 0));
+        textPaneMeassageBox.setCaret(new DefaultCaret(){
+            @Override
+            public void setVisible(boolean e){
+                super.setVisible(false); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        });
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -358,16 +363,6 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             labelAreaClearance.setText("Area Not Cleared");
             labelAreaClearance.setBackground(new Color(238, 137, 21));
         }
-    }
-    
-    public void setCaretVisibilty(){        
-        textPaneMeassageBox.setCaret(new DefaultCaret(){
-            @Override
-            public void setVisible(boolean e) {
-                super.setVisible(true); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-            
-        });
     }
 
     /**

@@ -8,10 +8,10 @@ package defencesystem.util;
  *
  * @author Nirodha
  */
-public interface ObserverInterface {    
+public interface ObserverInterface {
 
     public void notifyCheckBoxAreaClearStatus(int stateChange);
 
     public void notifyStrength(Strength strength);
-    
+
 }

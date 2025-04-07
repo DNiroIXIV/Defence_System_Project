@@ -4,7 +4,9 @@
  */
 package defencesystem.defences;
 
+import defencesystem.controller.MainController;
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
@@ -14,8 +16,10 @@ import observerpattern.Observer;
  *
  * @author Nirodha
  */
-public class Submarine extends SuperDefence implements Observable{
+public class Submarine extends SuperDefence implements Observable {
 
+    private MainController mainController;
+    private ComboBoxDefenceItem comboBoxDefenceItem;
     /**
      * Creates new form Submarine
      */
@@ -23,17 +27,19 @@ public class Submarine extends SuperDefence implements Observable{
         setUnitType(DefenceType.SUBMARINE);
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.SUBMARINE));
         setUnitName("Submarine");
-        setTitle(getUnitName()+" | "+getUnitId());
+        setTitle(getUnitName() + " | " + getUnitId());
+        mainController = MainController.getMainControllerInstance(Observer.getObserverInstance());
+        comboBoxDefenceItem = new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType());
         initComponents();
         setLocationRelativeTo(null);
     }
 
-    public Submarine(String unitName){
+    public Submarine(String unitName) {
         this();
         setUnitName(unitName);
-        setTitle(getUnitName()+" | "+getUnitId());        
+        setTitle(getUnitName() + " | " + getUnitId());
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -237,27 +243,32 @@ public class Submarine extends SuperDefence implements Observable{
         switch (strength) {
             case CLOSED: {
                 disableButton(buttonShoot, buttonSonar, buttonTomahawk, buttonTrident);
-            }break;
-            
+            }
+            break;
+
             case LOW: {
                 enableButton(buttonShoot);
                 disableButton(buttonSonar, buttonTomahawk, buttonTrident);
-            }break;                
-            
+            }
+            break;
+
             case MEDIUM: {
                 enableButton(buttonShoot, buttonSonar);
                 disableButton(buttonTomahawk, buttonTrident);
-            }break;
-                
+            }
+            break;
+
             case HIGH: {
-                enableButton(buttonShoot, buttonSonar, buttonTomahawk);                
+                enableButton(buttonShoot, buttonSonar, buttonTomahawk);
                 disableButton(buttonTrident);
-            }break;
-                
-            case STRONG: {                
-                enableButton(buttonShoot, buttonSonar, buttonTomahawk, buttonTrident);                
-            }break;
-            default:                
+            }
+            break;
+
+            case STRONG: {
+                enableButton(buttonShoot, buttonSonar, buttonTomahawk, buttonTrident);
+            }
+            break;
+            default:
         }
     }
 }

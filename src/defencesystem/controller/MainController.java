@@ -17,8 +17,9 @@ public class MainController extends javax.swing.JFrame {
     private static MainController mainController = null;
 
     private ObserverInterface observerInterface;
-    
+
     private final Strength[] strengthList;
+
     /**
      * Creates new form MainController
      */
@@ -29,17 +30,17 @@ public class MainController extends javax.swing.JFrame {
         this.observerInterface = observerInterface;
         strengthList = Strength.values();
         textAreaInputBox.setBorder(new EmptyBorder(0, 5, 0, 5));
-        System.out.println("size pane"+textPanePrivateMessageBox);
         setVisible(true);
     }
-    
+
     public static MainController getMainControllerInstance(ObserverInterface observerInterface) {
         return mainController == null ? mainController = new MainController(observerInterface) : mainController;
     }
 
-    public void addObserverInstance(ObserverInterface observerInterface){
+    public void addObserverInstance(ObserverInterface observerInterface) {
         this.observerInterface = observerInterface;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -326,15 +327,15 @@ public class MainController extends javax.swing.JFrame {
 
     private void sliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderPositionStateChanged
         int sliderPositionValue = sliderPosition.getValue();
-        
+
         for (Strength strength : strengthList) {
-            if(strength.inRange(sliderPositionValue)){
+            if (strength.inRange(sliderPositionValue)) {
                 observerInterface.notifyStrength(strength);
                 break;
             }
         }
         buttonGroupSendPrivacy.add(buttonSend);
-        
+
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
@@ -344,7 +345,7 @@ public class MainController extends javax.swing.JFrame {
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxAreaClearActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */

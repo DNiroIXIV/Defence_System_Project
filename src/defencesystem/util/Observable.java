@@ -13,17 +13,15 @@ public interface Observable {
     public void setLabelAreaClearanceState(int stateChange);
 
     public void enableWeaponOperation(Strength strength);
-    
-    public int getCheckBoxPositionStatus();
-    
-    public DefenceType getUnitType();    
-        
-    public String getUnitName();
-    
-    public String getUnitId();
-    
-    public void setVisible(boolean value);
 
-    public void setCaretVisibilty();
+    public int getCheckBoxPositionStatus();
+
+    public DefenceType getUnitType();
+
+    public String getUnitName();
+
+    public String getUnitId();
+
+    public void setVisible(boolean value);
     
 }

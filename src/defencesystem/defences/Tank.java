@@ -4,7 +4,9 @@
  */
 package defencesystem.defences;
 
+import defencesystem.controller.MainController;
 import defencesystem.superdefence.SuperDefence;
+import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
@@ -14,8 +16,10 @@ import observerpattern.Observer;
  *
  * @author Nirodha
  */
-public class Tank extends SuperDefence implements Observable{
+public class Tank extends SuperDefence implements Observable {
 
+    private MainController mainController;
+    private ComboBoxDefenceItem comboBoxDefenceItem;
     /**
      * Creates new form Tank
      */
@@ -23,15 +27,17 @@ public class Tank extends SuperDefence implements Observable{
         setUnitType(DefenceType.TANK);
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.TANK));
         setUnitName("Tank");
-        setTitle(getUnitName()+" | "+getUnitId());
-        initComponents();        
-        setLocationRelativeTo(null);        
+        setTitle(getUnitName() + " | " + getUnitId());
+        mainController = MainController.getMainControllerInstance(Observer.getObserverInstance());
+        comboBoxDefenceItem = new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType());
+        initComponents();
+        setLocationRelativeTo(null);
     }
-    
-    public Tank(String unitName){
+
+    public Tank(String unitName) {
         this();
         setUnitName(unitName);
-        setTitle(getUnitName()+" | "+getUnitId());
+        setTitle(getUnitName() + " | " + getUnitId());
     }
 
     /**
@@ -225,27 +231,32 @@ public class Tank extends SuperDefence implements Observable{
         switch (strength) {
             case CLOSED: {
                 disableButton(buttonShoot, buttonMissile, buttonRedar, buttonRotate);
-            }break;
-            
+            }
+            break;
+
             case LOW: {
                 enableButton(buttonShoot);
                 disableButton(buttonMissile, buttonRedar, buttonRotate);
-            }break;                
-            
+            }
+            break;
+
             case MEDIUM: {
                 enableButton(buttonShoot, buttonMissile);
                 disableButton(buttonRedar, buttonRotate);
-            }break;
-                
+            }
+            break;
+
             case HIGH: {
-                enableButton(buttonShoot, buttonMissile, buttonRedar); 
+                enableButton(buttonShoot, buttonMissile, buttonRedar);
                 disableButton(buttonRotate);
-            }break;
-                
-            case STRONG: {                
-                enableButton(buttonShoot, buttonMissile, buttonRedar, buttonRotate);   
-            }break;
-            default:                
+            }
+            break;
+
+            case STRONG: {
+                enableButton(buttonShoot, buttonMissile, buttonRedar, buttonRotate);
+            }
+            break;
+            default:
         }
     }
 }

@@ -15,81 +15,85 @@ import java.util.ArrayList;
  *
  * @author Nirodha
  */
-public class Observer implements ObserverInterface{
+public class Observer implements ObserverInterface {
+
     private static Observer observer = null;
-    
+
     private final ArrayList<Observable> defenceUnitsList;
     private final ArrayList<Observable> helicopterList;
     private final ArrayList<Observable> submarineList;
     private final ArrayList<Observable> tankList;
-    
-    private Observer(){
+
+    private Observer() {
         defenceUnitsList = new ArrayList<>();
         helicopterList = new ArrayList<>();
         submarineList = new ArrayList<>();
         tankList = new ArrayList<>();
     }
-    
-    public static Observer getObserverInstance(){
+
+    public static Observer getObserverInstance() {
         return observer == null ? observer = new Observer() : observer;
     }
-    
-    public void addDefenceUnit(Observable observable){        
+
+    public void addDefenceUnit(Observable observable) {
         DefenceType unitType = observable.getUnitType();
         switch (unitType) {
             case HELICOPTER: {
                 helicopterList.add(observable);
-            }break;
-            
+            }
+            break;
+
             case SUBMARINE: {
                 submarineList.add(observable);
-            }break;
-            
+            }
+            break;
+
             case TANK: {
                 tankList.add(observable);
-            }break;
-            default:                
+            }
+            break;
+            default:
         }
         defenceUnitsList.add(observable);
         observable.setVisible(true);
-        observable.setCaretVisibilty();
     }
-    
-    public String generateUnitId(DefenceType unitType){
+
+    public String generateUnitId(DefenceType unitType) {
         String unitId;
         int unitIdNumber;
         Observable observable;
         switch (unitType) {
             case HELICOPTER: {
-                if(helicopterList.isEmpty()){
+                if (helicopterList.isEmpty()) {
                     return "H001";
                 }
                 observable = helicopterList.getLast();
                 unitId = observable.getUnitId();
                 unitIdNumber = Integer.parseInt(unitId.substring(1));
-                return String.format("H%03d", unitIdNumber+1);
+                return String.format("H%03d", unitIdNumber + 1);
             }
-            
+
             case SUBMARINE: {
-                if(submarineList.isEmpty()){
+                if (submarineList.isEmpty()) {
                     return "S001";
                 }
                 observable = submarineList.getLast();
                 unitId = observable.getUnitId();
                 unitIdNumber = Integer.parseInt(unitId.substring(1));
-                return String.format("S%03d", unitIdNumber+1);
+                return String.format("S%03d", unitIdNumber + 1);
             }
-            
+
             case TANK: {
-                if(tankList.isEmpty()){
+                if (tankList.isEmpty()) {
                     return "T001";
                 }
                 observable = tankList.getLast();
                 unitId = observable.getUnitId();
                 unitIdNumber = Integer.parseInt(unitId.substring(1));
-                return String.format("T%03d", unitIdNumber+1);
+                return String.format("T%03d", unitIdNumber + 1);
             }
-            default: return "";
+            default:
+                return "";
         }
     }
 
@@ -104,16 +108,16 @@ public class Observer implements ObserverInterface{
     public void notifyStrength(Strength strength) {
         for (Observable observable : defenceUnitsList) {
             int stateChange = observable.getCheckBoxPositionStatus();
-            
-            if(stateChange == ItemEvent.SELECTED){
+
+            if (stateChange == ItemEvent.SELECTED) {
                 observable.enableWeaponOperation(strength);
             }
         }
     }
-    
-    public void notifyInitialStrength(Strength strength){
+
+    public void notifyInitialStrength(Strength strength) {
         for (Observable observable : defenceUnitsList) {
             observable.enableWeaponOperation(strength);
-        }        
+        }
     }
 }

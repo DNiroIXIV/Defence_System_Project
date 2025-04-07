@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.text.DefaultCaret;
 
 /**
  *
@@ -25,11 +26,14 @@ public class ComboBoxDefenceItem {
     private final JScrollPane scrollPaneItem;
     private final JTextPane textPaneItem;
 
-    public ComboBoxDefenceItem() {
+    public ComboBoxDefenceItem(String itemId, String itemName, DefenceType itemType) {
+        setItemId(itemId);
+        setItemName(itemName);
+        setItemType(itemType);
         textPaneItem = new JTextPane();
-        setItemTextPaneAttributes();
+        setTextPaneItemAttributes();
         scrollPaneItem = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        setItemScrollPaneAttributes();
+        setScrollPaneItemAttributes();
     }
 
     public void setItemId(String itemId) {
@@ -56,36 +60,45 @@ public class ComboBoxDefenceItem {
         return itemType;
     }
 
-    public JTextPane getItemTextPane() {
+    public JTextPane getTextPaneItem() {
         return textPaneItem;
     }
 
-    public JScrollPane getItemScrollPane() {
+    public JScrollPane getScrollPaneItem() {
         return scrollPaneItem;
     }
 
-    private void setItemTextPaneAttributes() {
+    private void setTextPaneItemAttributes() {
         textPaneItem.setEditable(false);
         textPaneItem.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N        
         textPaneItem.setForeground(new java.awt.Color(0, 0, 0));
-        textPaneItem.setPreferredSize(new Dimension(497,197));
-        
+        textPaneItem.setCaret(new DefaultCaret() {
+            @Override
+            public void setVisible(boolean value) {
+                super.setVisible(false); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        });
     }
 
-    private void setItemScrollPaneAttributes() {
+    private void setScrollPaneItemAttributes() {
         scrollPaneItem.setPreferredSize(new Dimension(500, 200));
-        scrollPaneItem.getViewport().setBackground(Color.red);
         scrollPaneItem.setViewportView(textPaneItem);
     }
-    
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setSize(800, 400);        
-        frame.setLayout(new FlowLayout());
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ComboBoxDefenceItem comboBoxDefenceItem = new ComboBoxDefenceItem();                
-        frame.add(comboBoxDefenceItem.getItemScrollPane(), BorderLayout.CENTER);
-        frame.setVisible(true);
-        System.out.println("scroll " + comboBoxDefenceItem.getItemTextPane());
+
+//    public static void main(String[] args) {
+//        JFrame frame = new JFrame();
+//        frame.setSize(800, 400);        
+//        frame.setLayout(new FlowLayout());
+//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        ComboBoxDefenceItem comboBoxDefenceItem = new ComboBoxDefenceItem(null, null, null);                
+//        frame.add(comboBoxDefenceItem.getScrollPaneItem(), BorderLayout.CENTER);
+//        frame.setVisible(true);
+//        System.out.println("scroll "+comboBoxDefenceItem.getScrollPaneItem());
+//        System.out.println("scroll "+comboBoxDefenceItem.getTextPaneItem());
+//    }
+
+    @Override
+    public String toString() {
+        return itemName+" | "+itemId;
     }
 }
