@@ -52,6 +52,7 @@ public class Observer implements ObserverInterface{
         }
         defenceUnitsList.add(observable);
         observable.setVisible(true);
+        observable.setCaretVisibilty();
     }
     
     public String generateUnitId(DefenceType unitType){

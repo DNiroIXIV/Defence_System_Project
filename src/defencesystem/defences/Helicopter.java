@@ -14,25 +14,26 @@ import observerpattern.Observer;
  *
  * @author Nirodha
  */
-public class Helicopter extends SuperDefence implements Observable{    
+public class Helicopter extends SuperDefence implements Observable {
+
     /**
      * Creates new form Helicopter
      */
-    public Helicopter() {          
+    public Helicopter() {
         setUnitType(DefenceType.HELICOPTER);
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.HELICOPTER));
         setUnitName("Helicopter");
-        setTitle(getUnitName()+" | "+getUnitId());
-        initComponents(); 
+        setTitle(getUnitName() + " | " + getUnitId());
+        initComponents();
         setLocationRelativeTo(null);
     }
 
-    public Helicopter(String unitName){
+    public Helicopter(String unitName) {
         this();
         setUnitName(unitName);
-        setTitle(getUnitName()+" | "+getUnitId());
-    }    
-    
+        setTitle(getUnitName() + " | " + getUnitId());
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +67,10 @@ public class Helicopter extends SuperDefence implements Observable{
         setButtonCommonAppearance(buttonLaser);
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
+
+        scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
+
+        scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
@@ -207,25 +212,30 @@ public class Helicopter extends SuperDefence implements Observable{
         switch (strength) {
             case CLOSED: {
                 disableButton(buttonShoot, buttonMissile, buttonLaser);
-            }break;
-            
+            }
+            break;
+
             case LOW: {
                 enableButton(buttonShoot);
                 disableButton(buttonMissile, buttonLaser);
-            }break;                
-            
+            }
+            break;
+
             case MEDIUM: {
                 enableButton(buttonShoot, buttonMissile);
                 disableButton(buttonLaser);
-            }break;
-                
+            }
+            break;
+
             case HIGH: {
-                enableButton(buttonShoot, buttonMissile, buttonLaser);                
-            }break;
-                
-            case STRONG: {                
-            }break;
-            default:                
+                enableButton(buttonShoot, buttonMissile, buttonLaser);
+            }
+            break;
+
+            case STRONG: {
+            }
+            break;
+            default:
         }
     }
 }

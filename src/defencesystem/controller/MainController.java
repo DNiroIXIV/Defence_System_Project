@@ -29,6 +29,7 @@ public class MainController extends javax.swing.JFrame {
         this.observerInterface = observerInterface;
         strengthList = Strength.values();
         textAreaInputBox.setBorder(new EmptyBorder(0, 5, 0, 5));
+        System.out.println("size pane"+textPanePrivateMessageBox);
         setVisible(true);
     }
     
@@ -157,21 +158,19 @@ public class MainController extends javax.swing.JFrame {
         labelOxygenAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         labelOxygenAmount.setText("1000");
 
-        scrollPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
         textPanePrivateMessageBox.setEditable(false);
-        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         textPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
-        scrollPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneGlobalMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scrollPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
         textPaneGlobalMessageBox.setEditable(false);
-        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
@@ -192,6 +191,7 @@ public class MainController extends javax.swing.JFrame {
         labelSendPrivacyError.setVisible(false);
 
         scrollPaneInputBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneInputBox.setViewportView(textAreaInputBox);
 
         textAreaInputBox.setColumns(20);
         textAreaInputBox.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
@@ -374,7 +374,7 @@ public class MainController extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            //getMainControllerInstance(Observer.getObserverInstance());
+            getMainControllerInstance(null).setVisible(true);
         });
     }
 

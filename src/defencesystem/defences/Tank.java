@@ -72,6 +72,10 @@ public class Tank extends SuperDefence implements Observable{
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
+        scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
+
+        scrollPaneMessageInput.setViewportView(textAreaMessageInput);
+
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         labelFuel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N

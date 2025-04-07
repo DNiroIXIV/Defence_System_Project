@@ -211,6 +211,11 @@
       </AuxValues>
     </Component>
     <Container class="javax.swing.JScrollPane" name="scrollPaneMessageBox">
+      <Properties>
+        <Property name="viewportView" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="textPaneMeassageBox"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="getScrollPaneMessageBox()"/>
       </AuxValues>
@@ -230,6 +235,11 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JScrollPane" name="scrollPaneMessageInput">
+      <Properties>
+        <Property name="viewportView" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="textAreaMessageInput"/>
+        </Property>
+      </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="getScrollPaneMessageInput()"/>
       </AuxValues>

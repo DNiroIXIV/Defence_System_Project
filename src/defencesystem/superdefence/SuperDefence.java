@@ -7,8 +7,6 @@ package defencesystem.superdefence;
 import defencesystem.util.DefenceType;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JLabel;
@@ -21,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -179,14 +178,16 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         buttonShoot.setText("Shoot");
 
         scrollPaneMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         textPaneMeassageBox.setEditable(false);
-        textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 0, 18)); // NOI18N
+        textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
         textPaneMeassageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPaneMessageInput.setPreferredSize(new java.awt.Dimension(450, 30));
+        scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         textAreaMessageInput.setColumns(20);
         textAreaMessageInput.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
@@ -357,6 +358,16 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             labelAreaClearance.setText("Area Not Cleared");
             labelAreaClearance.setBackground(new Color(238, 137, 21));
         }
+    }
+    
+    public void setCaretVisibilty(){        
+        textPaneMeassageBox.setCaret(new DefaultCaret(){
+            @Override
+            public void setVisible(boolean e) {
+                super.setVisible(true); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+            
+        });
     }
 
     /**
