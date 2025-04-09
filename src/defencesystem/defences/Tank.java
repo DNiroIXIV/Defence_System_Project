@@ -19,7 +19,6 @@ import observerpattern.Observer;
 public class Tank extends SuperDefence implements Observable {
 
     private MainController mainController;
-    private ComboBoxDefenceItem comboBoxDefenceItem;
     /**
      * Creates new form Tank
      */
@@ -28,8 +27,8 @@ public class Tank extends SuperDefence implements Observable {
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.TANK));
         setUnitName("Tank");
         setTitle(getUnitName() + " | " + getUnitId());
-        mainController = MainController.getMainControllerInstance(Observer.getObserverInstance());
-        comboBoxDefenceItem = new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType());
+        mainController = getMainController();
+        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType()));
         initComponents();
         setLocationRelativeTo(null);
     }

@@ -55,6 +55,7 @@ public class Observer implements ObserverInterface {
             default:
         }
         defenceUnitsList.add(observable);
+        observable.sendComboBoxDefenceItem();
         observable.setVisible(true);
     }
 

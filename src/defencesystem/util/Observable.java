@@ -23,5 +23,7 @@ public interface Observable {
     public String getUnitId();
 
     public void setVisible(boolean value);
+
+    public void sendComboBoxDefenceItem();
     
 }

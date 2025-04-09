@@ -19,7 +19,6 @@ import observerpattern.Observer;
 public class Helicopter extends SuperDefence implements Observable {
     
     private MainController mainController;
-    private ComboBoxDefenceItem comboBoxDefenceItem;
     
     /**
      * Creates new form Helicopter
@@ -29,8 +28,8 @@ public class Helicopter extends SuperDefence implements Observable {
         setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.HELICOPTER));
         setUnitName("Helicopter");
         setTitle(getUnitName() + " | " + getUnitId());
-        mainController = MainController.getMainControllerInstance(Observer.getObserverInstance());
-        comboBoxDefenceItem = new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType());
+        mainController = getMainController();
+        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType()));
         initComponents();
         setLocationRelativeTo(null);
     }

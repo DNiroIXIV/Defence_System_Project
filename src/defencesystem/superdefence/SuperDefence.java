@@ -4,6 +4,8 @@
  */
 package defencesystem.superdefence;
 
+import defencesystem.controller.MainController;
+import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
@@ -34,15 +36,22 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private DefenceType unitType;
     private String unitName;
     private String unitId;
+    private ComboBoxDefenceItem comboBoxDefenceItem;
+    private MainController mainController;
 
     /**
      * Creates new form SuperDefence
      */
     public SuperDefence() {
         initComponents();
+        mainController = MainController.getMainControllerInstance();
         textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
     }
 
+    public MainController getMainController(){
+        return mainController;
+    }
+    
     protected void setUnitType(DefenceType unitType) {
         this.unitType = unitType;
     }
@@ -65,6 +74,14 @@ public abstract class SuperDefence extends javax.swing.JFrame {
 
     public String getUnitId() {
         return unitId;
+    }
+    
+    public void setComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem){
+        this.comboBoxDefenceItem = comboBoxDefenceItem;
+    }
+    
+    public ComboBoxDefenceItem getComboBoxDefenceItem(){
+        return comboBoxDefenceItem;
     }
 
     public JCheckBox getCheckBoxPosition() {
@@ -363,6 +380,10 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             labelAreaClearance.setText("Area Not Cleared");
             labelAreaClearance.setBackground(new Color(238, 137, 21));
         }
+    }
+    
+    public void sendComboBoxDefenceItem(){
+        mainController.addComboBoxDefenceItem(comboBoxDefenceItem);
     }
 
     /**
