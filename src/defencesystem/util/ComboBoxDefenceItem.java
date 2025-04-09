@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.util.Vector;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
@@ -23,13 +24,15 @@ public class ComboBoxDefenceItem {
     private String itemId;
     private String itemName;
     private DefenceType itemType;
+    private String comboBoxItemName;
     private final JScrollPane scrollPaneItem;
     private final JTextPane textPaneItem;
-
+    
     public ComboBoxDefenceItem(String itemId, String itemName, DefenceType itemType) {
         setItemId(itemId);
         setItemName(itemName);
         setItemType(itemType);
+        setComboBoxItemName();
         textPaneItem = new JTextPane();
         setTextPaneItemAttributes();
         scrollPaneItem = new JScrollPane(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -43,7 +46,7 @@ public class ComboBoxDefenceItem {
     public String getItemId() {
         return itemId;
     }
-
+    
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
@@ -58,6 +61,19 @@ public class ComboBoxDefenceItem {
 
     public DefenceType getItemType() {
         return itemType;
+    }
+    
+    
+    public void setComboBoxItemName(){
+        comboBoxItemName = itemName+" | "+itemId;
+    }
+    
+    public void setComboBoxItemName(String comboBoxItemName){
+        this.comboBoxItemName = comboBoxItemName;
+    }
+    
+    public String getComboBoxItemName(){
+        return comboBoxItemName;
     }
 
     public JTextPane getTextPaneItem() {
@@ -98,7 +114,7 @@ public class ComboBoxDefenceItem {
 //    }
 
     @Override
-    public String toString() {
-        return itemName+" | "+itemId;
+    public String toString() {        
+        return comboBoxItemName;
     }
 }

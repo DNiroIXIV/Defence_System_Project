@@ -28,7 +28,7 @@ public class Submarine extends SuperDefence implements Observable {
         setUnitName("Submarine");
         setTitle(getUnitName() + " | " + getUnitId());
         mainController = getMainController();
-        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType()));
+        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getUnitName(), getUnitType()));
         initComponents();
         setLocationRelativeTo(null);        
     }

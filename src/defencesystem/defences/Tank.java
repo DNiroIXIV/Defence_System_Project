@@ -28,7 +28,7 @@ public class Tank extends SuperDefence implements Observable {
         setUnitName("Tank");
         setTitle(getUnitName() + " | " + getUnitId());
         mainController = getMainController();
-        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType()));
+        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getUnitName(), getUnitType()));
         initComponents();
         setLocationRelativeTo(null);
     }

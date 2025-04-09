@@ -5,8 +5,14 @@
 package defencesystem.controller;
 
 import defencesystem.util.ComboBoxDefenceItem;
+import defencesystem.util.DefenceType;
+import static defencesystem.util.DefenceType.HELICOPTER;
+import static defencesystem.util.DefenceType.SUBMARINE;
+import static defencesystem.util.DefenceType.TANK;
 import defencesystem.util.ObserverInterface;
 import defencesystem.util.Strength;
+import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.EmptyBorder;
 import observerpattern.Observer;
 
@@ -20,17 +26,27 @@ public class MainController extends javax.swing.JFrame {
 
     private ObserverInterface observerInterface;
     
-    private final Strength[] strengthList;
+    private final Strength[] strengthList = Strength.values();
+    
+    private Vector<ComboBoxDefenceItem> helicopterCBList = new Vector<>();
+    private Vector<ComboBoxDefenceItem> submarineCBList = new Vector<>();
+    private Vector<ComboBoxDefenceItem> tankCBList = new Vector<>();
+    
+    private Vector<ComboBoxDefenceItem> comboBoxDefenceItemList = new Vector<>();
+
+    private final ComboBoxDefenceModel comboBoxDefenceModel;
     /**
      * Creates new form MainController
      */
     private MainController() {
-        super("Main Controller");
+        super("Main Controller"); 
         addObserverInstance(Observer.getObserverInstance());
-        initComponents();
-        setLocationRelativeTo(null);
-        strengthList = Strength.values();
-        textAreaInputBox.setBorder(new EmptyBorder(0, 5, 0, 5));
+        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("", "", null);
+        defaultItem.setComboBoxItemName("None");
+        comboBoxDefenceItemList.add(defaultItem);
+        comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
+        initComponents();        
+        setLocationRelativeTo(null);        
         setVisible(true);
     }
     
@@ -113,8 +129,8 @@ public class MainController extends javax.swing.JFrame {
             }
         });
 
-        comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        comboBoxSelectDefence.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Defence", "Item 2", "Item 3", "Item 4" }));
+        comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
+        comboBoxSelectDefence.setModel(comboBoxDefenceModel);
 
         buttonCollectInfo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonCollectInfo.setText("Collect Informations");
@@ -200,6 +216,7 @@ public class MainController extends javax.swing.JFrame {
         textAreaInputBox.setLineWrap(true);
         textAreaInputBox.setRows(5);
         textAreaInputBox.setWrapStyleWord(true);
+        textAreaInputBox.setBorder(new EmptyBorder(0, 5, 0, 5));
         scrollPaneInputBox.setViewportView(textAreaInputBox);
 
         buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -345,6 +362,43 @@ public class MainController extends javax.swing.JFrame {
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxAreaClearActionPerformed
+
+    private class ComboBoxDefenceModel extends DefaultComboBoxModel{
+
+        private ComboBoxDefenceModel(Vector<ComboBoxDefenceItem> comboBoxDefenceItemList) {
+            super(comboBoxDefenceItemList);
+        }
+
+        @Override
+        public void addElement(Object object) {
+            if(object instanceof ComboBoxDefenceItem){
+                ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)object;
+                super.addElement(comboBoxDefenceItem); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        }
+
+        @Override
+        public void insertElementAt(Object anObject, int index) {
+            super.insertElementAt(anObject, index); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        }
+    }
+    
+    public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem) {
+        DefenceType defenceType = comboBoxDefenceItem.getItemType();
+        switch (defenceType) {
+            case HELICOPTER: {
+                helicopterCBList.add(comboBoxDefenceItem);
+            }break;
+            case SUBMARINE: {
+                submarineCBList.add(comboBoxDefenceItem);
+            }break;
+            case TANK: {
+                tankCBList.add(comboBoxDefenceItem);
+            }break;
+            default: {}
+        }
+        comboBoxDefenceModel.addElement(comboBoxDefenceItem);
+    }
     
     /**
      * @param args the command line arguments
@@ -409,8 +463,5 @@ public class MainController extends javax.swing.JFrame {
     private javax.swing.JTextPane textPaneGlobalMessageBox;
     private javax.swing.JTextPane textPanePrivateMessageBox;
     // End of variables declaration//GEN-END:variables
-
-    public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem) {
-        
-    }
+   
 }

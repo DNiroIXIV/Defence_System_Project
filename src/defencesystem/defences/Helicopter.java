@@ -29,7 +29,7 @@ public class Helicopter extends SuperDefence implements Observable {
         setUnitName("Helicopter");
         setTitle(getUnitName() + " | " + getUnitId());
         mainController = getMainController();
-        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getName(), getUnitType()));
+        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getUnitName(), getUnitType()));
         initComponents();
         setLocationRelativeTo(null);
     }
