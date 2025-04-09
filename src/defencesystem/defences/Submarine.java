@@ -6,11 +6,9 @@ package defencesystem.defences;
 
 import defencesystem.controller.MainController;
 import defencesystem.superdefence.SuperDefence;
-import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
-import observerpattern.Observer;
 
 /**
  *
@@ -18,25 +16,17 @@ import observerpattern.Observer;
  */
 public class Submarine extends SuperDefence implements Observable {
 
-    private MainController mainController;
+    private final MainController mainController = getMainController();
     /**
      * Creates new form Submarine
      */
     public Submarine() {
-        setUnitType(DefenceType.SUBMARINE);
-        setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.SUBMARINE));
-        setUnitName("Submarine");
-        setTitle(getUnitName() + " | " + getUnitId());
-        mainController = getMainController();
-        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getUnitName(), getUnitType()));
-        initComponents();
-        setLocationRelativeTo(null);        
+        this("Submarine");
     }
 
     public Submarine(String unitName) {
-        this();
-        setUnitName(unitName);
-        setTitle(getUnitName() + " | " + getUnitId());
+        initComponents();
+        postInit(unitName, DefenceType.SUBMARINE);
     }
 
     /**

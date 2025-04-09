@@ -6,11 +6,9 @@ package defencesystem.defences;
 
 import defencesystem.controller.MainController;
 import defencesystem.superdefence.SuperDefence;
-import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
-import observerpattern.Observer;
 
 /**
  *
@@ -18,25 +16,17 @@ import observerpattern.Observer;
  */
 public class Tank extends SuperDefence implements Observable {
 
-    private MainController mainController;
+    private final MainController mainController = getMainController();
     /**
      * Creates new form Tank
      */
     public Tank() {
-        setUnitType(DefenceType.TANK);
-        setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.TANK));
-        setUnitName("Tank");
-        setTitle(getUnitName() + " | " + getUnitId());
-        mainController = getMainController();
-        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getUnitName(), getUnitType()));
-        initComponents();
-        setLocationRelativeTo(null);
+        this("Tank");
     }
 
     public Tank(String unitName) {
-        this();
-        setUnitName(unitName);
-        setTitle(getUnitName() + " | " + getUnitId());
+        initComponents();
+        postInit(unitName, DefenceType.TANK);
     }
 
     /**

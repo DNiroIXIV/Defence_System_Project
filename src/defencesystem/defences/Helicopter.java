@@ -6,11 +6,9 @@ package defencesystem.defences;
 
 import defencesystem.controller.MainController;
 import defencesystem.superdefence.SuperDefence;
-import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
 import defencesystem.util.Strength;
-import observerpattern.Observer;
 
 /**
  *
@@ -18,27 +16,20 @@ import observerpattern.Observer;
  */
 public class Helicopter extends SuperDefence implements Observable {
     
-    private MainController mainController;
+    private final MainController mainController = getMainController();
     
     /**
      * Creates new form Helicopter
      */
-    public Helicopter() {
-        setUnitType(DefenceType.HELICOPTER);
-        setUnitId(Observer.getObserverInstance().generateUnitId(DefenceType.HELICOPTER));
-        setUnitName("Helicopter");
-        setTitle(getUnitName() + " | " + getUnitId());
-        mainController = getMainController();
-        setComboBoxDefenceItem(new ComboBoxDefenceItem(getUnitId(), getUnitName(), getUnitType()));
-        initComponents();
-        setLocationRelativeTo(null);
+    public Helicopter() {        
+        this("Helicopter");
+        
     }
 
     public Helicopter(String unitName) {
-        this();
-        setUnitName(unitName);
-        setTitle(getUnitName() + " | " + getUnitId());
-    }
+        initComponents();
+        postInit(unitName, DefenceType.HELICOPTER);
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.

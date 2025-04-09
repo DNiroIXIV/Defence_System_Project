@@ -25,6 +25,7 @@ import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
+import observerpattern.Observer;
 
 /**
  *
@@ -37,15 +38,13 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private String unitName;
     private String unitId;
     private ComboBoxDefenceItem comboBoxDefenceItem;
-    private MainController mainController;
+    private final MainController mainController = MainController.getMainControllerInstance();
 
     /**
      * Creates new form SuperDefence
      */
     public SuperDefence() {
-        initComponents();
-        mainController = MainController.getMainControllerInstance();
-        textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
+        initComponents();        
     }
 
     public MainController getMainController(){
@@ -217,6 +216,8 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         textAreaMessageInput.setLineWrap(true);
         textAreaMessageInput.setRows(5);
         textAreaMessageInput.setWrapStyleWord(true);
+        textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));
+
         textAreaMessageInput.getDocument().addDocumentListener(new DocumentListener(){
             @Override
             public void insertUpdate(DocumentEvent evt){
@@ -372,6 +373,15 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         }
     }
 
+    protected void postInit(String unitName, DefenceType unitType){
+        this.unitType = unitType;
+        unitId = Observer.getObserverInstance().generateUnitId(unitType); 
+        this.unitName = unitName;
+        setTitle(unitName + " | " + unitId);
+        comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName, unitType);        
+        setLocationRelativeTo(null);
+    }
+    
     public void setLabelAreaClearanceState(int stateChange) {
         if (stateChange == ItemEvent.SELECTED) {
             labelAreaClearance.setText("Area Cleared");

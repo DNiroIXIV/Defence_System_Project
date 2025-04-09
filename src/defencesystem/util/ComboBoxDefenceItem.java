@@ -4,12 +4,7 @@
  */
 package defencesystem.util;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.util.Vector;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
@@ -99,6 +94,14 @@ public class ComboBoxDefenceItem {
     private void setScrollPaneItemAttributes() {
         scrollPaneItem.setPreferredSize(new Dimension(500, 200));
         scrollPaneItem.setViewportView(textPaneItem);
+    }
+    
+    public int compareToIgnoreCase(ComboBoxDefenceItem comboBoxDefenceItem){
+        return itemName.compareToIgnoreCase(comboBoxDefenceItem.itemName);
+    }
+    
+    public int compareTo(ComboBoxDefenceItem comboBoxDefenceItem){
+        return itemName.compareTo(comboBoxDefenceItem.itemName);
     }
 
 //    public static void main(String[] args) {

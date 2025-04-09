@@ -231,7 +231,7 @@
             <Property name="wrapStyleWord" type="boolean" value="true"/>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textAreaMessageInput.getDocument().addDocumentListener(new DocumentListener(){&#xa;    @Override&#xa;    public void insertUpdate(DocumentEvent evt){&#xa;        setButtonSendEnabledStatus();&#xa;    }&#xa;&#xa;    @Override&#xa;    public void changedUpdate(DocumentEvent evt){&#xa;        setButtonSendEnabledStatus();&#xa;    }&#xa;&#xa;    @Override&#xa;    public void removeUpdate(DocumentEvent evt){&#xa;        setButtonSendEnabledStatus();&#xa;    }&#xa;&#xa;});"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textAreaMessageInput.setBorder(new EmptyBorder(0, 5, 0, 5));&#xa;&#xa;textAreaMessageInput.getDocument().addDocumentListener(new DocumentListener(){&#xa;    @Override&#xa;    public void insertUpdate(DocumentEvent evt){&#xa;        setButtonSendEnabledStatus();&#xa;    }&#xa;&#xa;    @Override&#xa;    public void changedUpdate(DocumentEvent evt){&#xa;        setButtonSendEnabledStatus();&#xa;    }&#xa;&#xa;    @Override&#xa;    public void removeUpdate(DocumentEvent evt){&#xa;        setButtonSendEnabledStatus();&#xa;    }&#xa;&#xa;});"/>
           </AuxValues>
         </Component>
       </SubComponents>

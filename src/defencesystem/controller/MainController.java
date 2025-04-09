@@ -131,6 +131,7 @@ public class MainController extends javax.swing.JFrame {
 
         comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         comboBoxSelectDefence.setModel(comboBoxDefenceModel);
+        comboBoxSelectDefence.setEditable(true);
 
         buttonCollectInfo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonCollectInfo.setText("Collect Informations");
@@ -371,15 +372,27 @@ public class MainController extends javax.swing.JFrame {
 
         @Override
         public void addElement(Object object) {
-            if(object instanceof ComboBoxDefenceItem){
-                ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)object;
-                super.addElement(comboBoxDefenceItem); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            if(object instanceof ComboBoxDefenceItem){                             
+                insertElementAt((ComboBoxDefenceItem)object, 1);
             }
         }
 
         @Override
-        public void insertElementAt(Object anObject, int index) {
-            super.insertElementAt(anObject, index); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        public void insertElementAt(Object object, int index) {
+            ComboBoxDefenceItem comboBoxDefenceAdd = (ComboBoxDefenceItem)object;
+            for (index = 1; index < getSize(); index++) {
+                ComboBoxDefenceItem comboBoxDefenceExist = (ComboBoxDefenceItem)getElementAt(index);
+                int caseInsensitiveValue = comboBoxDefenceExist.compareToIgnoreCase(comboBoxDefenceAdd);
+                if(caseInsensitiveValue > 0){
+                    break;
+                }else if(caseInsensitiveValue == 0){
+                    int caseSensitiveValue = comboBoxDefenceExist.compareTo(comboBoxDefenceAdd);
+                    if(caseSensitiveValue < 0){
+                        break;
+                    }
+                }
+            }
+            super.insertElementAt(comboBoxDefenceAdd, index); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         }
     }
     
