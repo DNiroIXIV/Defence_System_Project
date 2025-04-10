@@ -6,15 +6,11 @@ package defencesystem.controller;
 
 import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
-import static defencesystem.util.DefenceType.HELICOPTER;
-import static defencesystem.util.DefenceType.SUBMARINE;
-import static defencesystem.util.DefenceType.TANK;
 import defencesystem.util.ObserverInterface;
 import defencesystem.util.Strength;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.EmptyBorder;
-import observerpattern.Observer;
 
 /**
  *
@@ -28,20 +24,21 @@ public class MainController extends javax.swing.JFrame {
     
     private final Strength[] strengthList = Strength.values();
     
-    private Vector<ComboBoxDefenceItem> helicopterCBList = new Vector<>();
-    private Vector<ComboBoxDefenceItem> submarineCBList = new Vector<>();
-    private Vector<ComboBoxDefenceItem> tankCBList = new Vector<>();
+    private final Vector<ComboBoxDefenceItem> helicopterCBList = new Vector<>();
+    private final Vector<ComboBoxDefenceItem> submarineCBList = new Vector<>();
+    private final Vector<ComboBoxDefenceItem> tankCBList = new Vector<>();
     
-    private Vector<ComboBoxDefenceItem> comboBoxDefenceItemList = new Vector<>();
+    private final Vector<ComboBoxDefenceItem> comboBoxDefenceItemList = new Vector<>();
 
     private final ComboBoxDefenceModel comboBoxDefenceModel;
     /**
      * Creates new form MainController
      */
-    private MainController() {
-        super("Main Controller"); 
-        addObserverInstance(Observer.getObserverInstance());
-        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("", "", null);
+            
+    private MainController(ObserverInterface observerInterface){
+        super("Main Controller");         
+        this.observerInterface = observerInterface;
+        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("", "");
         defaultItem.setComboBoxItemName("None");
         comboBoxDefenceItemList.add(defaultItem);
         comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
@@ -51,7 +48,11 @@ public class MainController extends javax.swing.JFrame {
     }
     
     public static MainController getMainControllerInstance() {
-        return mainController == null ? mainController = new MainController() : mainController;
+        return getMainControllerInstance(null);
+    }
+    
+    public static MainController getMainControllerInstance(ObserverInterface observerInterface) {
+        return mainController == null ? mainController = new MainController(observerInterface) : mainController;
     }
 
     public void addObserverInstance(ObserverInterface observerInterface){
@@ -396,9 +397,8 @@ public class MainController extends javax.swing.JFrame {
         }
     }
     
-    public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem) {
-        DefenceType defenceType = comboBoxDefenceItem.getItemType();
-        switch (defenceType) {
+    public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem, DefenceType unitType) {
+        switch (unitType) {
             case HELICOPTER: {
                 helicopterCBList.add(comboBoxDefenceItem);
             }break;
@@ -412,6 +412,25 @@ public class MainController extends javax.swing.JFrame {
         }
         comboBoxDefenceModel.addElement(comboBoxDefenceItem);
     }
+    
+//    public void updateTextPanePrivateMessageBox(DefenceType unitType, ComboBoxDefenceItem comboBoxDefenceItem, String message){
+//        switch (unitType) {
+//            case HELICOPTER: {
+//                for (ComboBoxDefenceItem comboBoxDefenceItem : helicopterCBList) {
+//                    if(comboBoxDefenceItem){
+//                        
+//                    }
+//                }
+//            }break;
+//            case SUBMARINE: {
+//                submarineCBList.add(comboBoxDefenceItem);
+//            }break;
+//            case TANK: {
+//                tankCBList.add(comboBoxDefenceItem);
+//            }break;
+//            default: {}
+//        }
+//    }
     
     /**
      * @param args the command line arguments

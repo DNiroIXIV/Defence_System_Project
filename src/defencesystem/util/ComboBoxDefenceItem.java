@@ -18,15 +18,13 @@ public class ComboBoxDefenceItem {
 
     private String itemId;
     private String itemName;
-    private DefenceType itemType;
     private String comboBoxItemName;
     private final JScrollPane scrollPaneItem;
     private final JTextPane textPaneItem;
     
-    public ComboBoxDefenceItem(String itemId, String itemName, DefenceType itemType) {
-        setItemId(itemId);
-        setItemName(itemName);
-        setItemType(itemType);
+    public ComboBoxDefenceItem(String itemId, String itemName) {
+        this.itemId = itemId;
+        this.itemName = itemName;
         setComboBoxItemName();
         textPaneItem = new JTextPane();
         setTextPaneItemAttributes();
@@ -49,18 +47,9 @@ public class ComboBoxDefenceItem {
     public String getItemName() {
         return itemName;
     }
-
-    public void setItemType(DefenceType itemType) {
-        this.itemType = itemType;
-    }
-
-    public DefenceType getItemType() {
-        return itemType;
-    }
     
-    
-    public void setComboBoxItemName(){
-        comboBoxItemName = itemName+" | "+itemId;
+    private void setComboBoxItemName(){
+        comboBoxItemName = itemName + " | " + itemId;
     }
     
     public void setComboBoxItemName(String comboBoxItemName){
