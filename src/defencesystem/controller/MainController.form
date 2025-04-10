@@ -405,6 +405,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Send Private"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="radioButtonSendPrivate.addActionListener(radioButtonActionListener);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radioButtonSendAll">
       <Properties>
@@ -416,6 +419,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Send All"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="radioButtonSendAll.addActionListener(radioButtonActionListener);"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="labelSendPrivacyError">
       <Properties>

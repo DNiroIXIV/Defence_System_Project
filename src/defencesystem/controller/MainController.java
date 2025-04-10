@@ -8,8 +8,11 @@ import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.ObserverInterface;
 import defencesystem.util.Strength;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -33,6 +36,8 @@ public class MainController extends javax.swing.JFrame {
     private final Vector<ComboBoxDefenceItem> comboBoxDefenceItemList = new Vector<>();
 
     private final ComboBoxDefenceModel comboBoxDefenceModel;
+    
+    private ActionListener radioButtonActionListener;
     /**
      * Creates new form MainController
      */
@@ -44,6 +49,7 @@ public class MainController extends javax.swing.JFrame {
         defaultItem.setComboBoxItemName("None");
         comboBoxDefenceItemList.add(defaultItem);
         comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
+        setRadioButtonActionListener();
         initComponents();        
         setLocationRelativeTo(null);        
         setVisible(true);
@@ -206,10 +212,12 @@ public class MainController extends javax.swing.JFrame {
         buttonGroupSendPrivacy.add(radioButtonSendPrivate);
         radioButtonSendPrivate.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         radioButtonSendPrivate.setText("Send Private");
+        radioButtonSendPrivate.addActionListener(radioButtonActionListener);
 
         buttonGroupSendPrivacy.add(radioButtonSendAll);
         radioButtonSendAll.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         radioButtonSendAll.setText("Send All");
+        radioButtonSendAll.addActionListener(radioButtonActionListener);
 
         labelSendPrivacyError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         labelSendPrivacyError.setForeground(new java.awt.Color(255, 0, 51));
@@ -364,6 +372,18 @@ public class MainController extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setRadioButtonActionListener(){
+        radioButtonActionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JRadioButton radioButton = (JRadioButton)e.getSource();
+                if(labelSendPrivacyError.isVisible() && radioButton.isSelected()){
+                    setLabelSendPrivacyErrorVisibility(false);
+                }
+            }
+        };      
+    }
+    
     private void setButtonSendEnabledStatus() {
         buttonSend.setEnabled(!textAreaInputBox.getText().trim().isEmpty());
     }
@@ -389,20 +409,14 @@ public class MainController extends javax.swing.JFrame {
         if(radioButtonSendPrivate.isSelected() || radioButtonSendAll.isSelected()){
             
         }else{
-            setLabelSendPrivacyErrorVisibility(true);
+            if(!labelSendPrivacyError.isVisible()){
+                setLabelSendPrivacyErrorVisibility(true);
+            }
         }
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void setLabelSendPrivacyErrorVisibility(boolean value){
-        if(value){
-            if(!labelSendPrivacyError.isVisible()){
-                labelSendPrivacyError.setVisible(value);
-            }
-        }else{
-            if(labelSendPrivacyError.isVisible()){
-                labelSendPrivacyError.setVisible(value);
-            }
-        }
+        labelSendPrivacyError.setVisible(value);
     }
     
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
