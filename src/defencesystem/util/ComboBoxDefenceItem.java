@@ -4,11 +4,19 @@
  */
 package defencesystem.util;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
+import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -85,6 +93,26 @@ public class ComboBoxDefenceItem {
         scrollPaneItem.setViewportView(textPaneItem);
     }
     
+    public void updateTextPaneItem(String message) {
+        SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(receiverAttributeSet, 5);
+        StyleConstants.setSpaceBelow(receiverAttributeSet, 5);
+        StyleConstants.setRightIndent(receiverAttributeSet, 80);
+        StyleConstants.setLeftIndent(receiverAttributeSet, 5);
+        StyleConstants.setAlignment(receiverAttributeSet, StyleConstants.ALIGN_LEFT);
+        StyleConstants.setBackground(receiverAttributeSet, new Color(251, 210, 217));
+        StyleConstants.setForeground(receiverAttributeSet, new Color(0, 0, 0));
+
+        StyledDocument styledDocument = textPaneItem.getStyledDocument();
+        textPaneItem.setParagraphAttributes(receiverAttributeSet, false);
+        try {
+            styledDocument.insertString(styledDocument.getLength(), message + "\n", receiverAttributeSet);
+        } catch (BadLocationException ex) {
+            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }            
+    
     public int compareToIgnoreCase(ComboBoxDefenceItem comboBoxDefenceItem){
         return itemName.compareToIgnoreCase(comboBoxDefenceItem.itemName);
     }
@@ -98,7 +126,7 @@ public class ComboBoxDefenceItem {
 //        frame.setSize(800, 400);        
 //        frame.setLayout(new FlowLayout());
 //        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        ComboBoxDefenceItem comboBoxDefenceItem = new ComboBoxDefenceItem(null, null, null);                
+//        ComboBoxDefenceItem comboBoxDefenceItem = new ComboBoxDefenceItem(null, null);                
 //        frame.add(comboBoxDefenceItem.getScrollPaneItem(), BorderLayout.CENTER);
 //        frame.setVisible(true);
 //        System.out.println("scroll "+comboBoxDefenceItem.getScrollPaneItem());

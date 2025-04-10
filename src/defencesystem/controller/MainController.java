@@ -133,6 +133,11 @@ public class MainController extends javax.swing.JFrame {
         comboBoxSelectDefence.setFont(new java.awt.Font("Arial", 1, 16)); // NOI18N
         comboBoxSelectDefence.setModel(comboBoxDefenceModel);
         comboBoxSelectDefence.setEditable(true);
+        comboBoxSelectDefence.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxSelectDefenceActionPerformed(evt);
+            }
+        });
 
         buttonCollectInfo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonCollectInfo.setText("Collect Informations");
@@ -365,6 +370,11 @@ public class MainController extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxAreaClearActionPerformed
 
+    private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
+        ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem();
+        
+    }//GEN-LAST:event_comboBoxSelectDefenceActionPerformed
+
     private class ComboBoxDefenceModel extends DefaultComboBoxModel{
 
         private ComboBoxDefenceModel(Vector<ComboBoxDefenceItem> comboBoxDefenceItemList) {
@@ -413,25 +423,7 @@ public class MainController extends javax.swing.JFrame {
         comboBoxDefenceModel.addElement(comboBoxDefenceItem);
     }
     
-//    public void updateTextPanePrivateMessageBox(DefenceType unitType, ComboBoxDefenceItem comboBoxDefenceItem, String message){
-//        switch (unitType) {
-//            case HELICOPTER: {
-//                for (ComboBoxDefenceItem comboBoxDefenceItem : helicopterCBList) {
-//                    if(comboBoxDefenceItem){
-//                        
-//                    }
-//                }
-//            }break;
-//            case SUBMARINE: {
-//                submarineCBList.add(comboBoxDefenceItem);
-//            }break;
-//            case TANK: {
-//                tankCBList.add(comboBoxDefenceItem);
-//            }break;
-//            default: {}
-//        }
-//    }
-    
+
     /**
      * @param args the command line arguments
      */

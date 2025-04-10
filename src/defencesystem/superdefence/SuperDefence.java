@@ -338,7 +338,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         String message = textAreaMessageInput.getText().trim();
         textAreaMessageInput.setText("");
         updateTextPaneMessageBox(message);
-        updateTextPaneComboBoxDefenceItem(message);
+        comboBoxDefenceItem.updateTextPaneItem(message);
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void updateTextPaneMessageBox(String message) {
@@ -360,27 +360,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private void updateTextPaneComboBoxDefenceItem(String message) {
-        SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
-
-        StyleConstants.setSpaceAbove(receiverAttributeSet, 5);
-        StyleConstants.setSpaceBelow(receiverAttributeSet, 5);
-        StyleConstants.setLeftIndent(receiverAttributeSet, 80);
-        StyleConstants.setRightIndent(receiverAttributeSet, 5);
-        StyleConstants.setAlignment(receiverAttributeSet, StyleConstants.ALIGN_RIGHT);
-        StyleConstants.setBackground(receiverAttributeSet, new Color(217, 242, 231));
-        StyleConstants.setForeground(receiverAttributeSet, new Color(0, 0, 0));
-
-        StyledDocument styledDocument = textPaneMeassageBox.getStyledDocument();
-        textPaneMeassageBox.setParagraphAttributes(receiverAttributeSet, false);
-        try {
-            styledDocument.insertString(styledDocument.getLength(), message + "\n", receiverAttributeSet);
-        } catch (BadLocationException ex) {
-            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }            
-
+    
     protected void setSliderCommonAppearance(JSlider jSlider) {
     jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
     jSlider.setMajorTickSpacing(20);
