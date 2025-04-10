@@ -14,4 +14,6 @@ public interface ObserverInterface {
 
     public void notifyStrength(Strength strength);
 
+    public void notifyMessageToEachUnit(String message);
+
 }

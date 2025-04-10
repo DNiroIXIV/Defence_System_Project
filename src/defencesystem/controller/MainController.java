@@ -8,6 +8,7 @@ import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.ObserverInterface;
 import defencesystem.util.Strength;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
@@ -16,6 +17,10 @@ import javax.swing.JRadioButton;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 /**
  *
@@ -26,46 +31,48 @@ public class MainController extends javax.swing.JFrame {
     private static MainController mainController = null;
 
     private ObserverInterface observerInterface;
-    
+
     private final Strength[] strengthList = Strength.values();
-    
+
     private final Vector<ComboBoxDefenceItem> helicopterCBList = new Vector<>();
     private final Vector<ComboBoxDefenceItem> submarineCBList = new Vector<>();
     private final Vector<ComboBoxDefenceItem> tankCBList = new Vector<>();
-    
+
     private final Vector<ComboBoxDefenceItem> comboBoxDefenceItemList = new Vector<>();
 
     private final ComboBoxDefenceModel comboBoxDefenceModel;
-    
+
     private ActionListener radioButtonActionListener;
+
     /**
      * Creates new form MainController
      */
-            
-    private MainController(ObserverInterface observerInterface){
-        super("Main Controller");         
+
+    private MainController(ObserverInterface observerInterface) {
+        super("Main Controller");
         this.observerInterface = observerInterface;
         ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("", "");
         defaultItem.setComboBoxItemName("None");
         comboBoxDefenceItemList.add(defaultItem);
         comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
         setRadioButtonActionListener();
-        initComponents();        
-        setLocationRelativeTo(null);        
+        initComponents();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+
     public static MainController getMainControllerInstance() {
         return getMainControllerInstance(null);
     }
-    
+
     public static MainController getMainControllerInstance(ObserverInterface observerInterface) {
         return mainController == null ? mainController = new MainController(observerInterface) : mainController;
     }
 
-    public void addObserverInstance(ObserverInterface observerInterface){
+    public void addObserverInstance(ObserverInterface observerInterface) {
         this.observerInterface = observerInterface;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -130,11 +137,6 @@ public class MainController extends javax.swing.JFrame {
         checkBoxAreaClear.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 checkBoxAreaClearItemStateChanged(evt);
-            }
-        });
-        checkBoxAreaClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkBoxAreaClearActionPerformed(evt);
             }
         });
 
@@ -202,7 +204,7 @@ public class MainController extends javax.swing.JFrame {
         scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
         textPaneGlobalMessageBox.setEditable(false);
-        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
         textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
@@ -372,64 +374,99 @@ public class MainController extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void setRadioButtonActionListener(){
+    private void setRadioButtonActionListener() {
         radioButtonActionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JRadioButton radioButton = (JRadioButton)e.getSource();
-                if(labelSendPrivacyError.isVisible() && radioButton.isSelected()){
+                JRadioButton radioButton = (JRadioButton) e.getSource();
+                if (labelSendPrivacyError.isVisible() && radioButton.isSelected()) {
                     setLabelSendPrivacyErrorVisibility(false);
                 }
             }
-        };      
+        };
     }
-    
+
     private void setButtonSendEnabledStatus() {
         buttonSend.setEnabled(!textAreaInputBox.getText().trim().isEmpty());
     }
-    
+
     private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
         observerInterface.notifyCheckBoxAreaClearStatus(evt.getStateChange());
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
 
     private void sliderPositionStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliderPositionStateChanged
         int sliderPositionValue = sliderPosition.getValue();
-        
+
         for (Strength strength : strengthList) {
-            if(strength.inRange(sliderPositionValue)){
+            if (strength.inRange(sliderPositionValue)) {
                 observerInterface.notifyStrength(strength);
                 break;
             }
         }
         buttonGroupSendPrivacy.add(buttonSend);
-        
+
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
-        if(radioButtonSendPrivate.isSelected() || radioButtonSendAll.isSelected()){
-            
-        }else{
-            if(!labelSendPrivacyError.isVisible()){
+        if (radioButtonSendPrivate.isSelected() || radioButtonSendAll.isSelected()) {
+            String message = textAreaInputBox.getText().trim();
+            textAreaInputBox.setText("");
+            if (radioButtonSendAll.isSelected()) {
+                sendMessageToAllUnits(message);
+            } else {
+                sendMessageToSelectedUnit(message);
+            }
+        } else {
+            if (!labelSendPrivacyError.isVisible()) {
                 setLabelSendPrivacyErrorVisibility(true);
             }
         }
     }//GEN-LAST:event_buttonSendActionPerformed
 
-    private void setLabelSendPrivacyErrorVisibility(boolean value){
+    private void setLabelSendPrivacyErrorVisibility(boolean value) {
         labelSendPrivacyError.setVisible(value);
     }
-    
-    private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkBoxAreaClearActionPerformed
+
+    private void sendMessageToAllUnits(String message) {
+        updateTextPaneGlobalMessageBox(message);
+        for (int i = 1; i < comboBoxDefenceModel.getSize(); i++) {
+            ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)comboBoxDefenceModel.getElementAt(i);
+            comboBoxDefenceItem.updateTextPaneItemForSender(message);
+        }
+        observerInterface.notifyMessageToEachUnit(message);
+    }
+
+    private void updateTextPaneGlobalMessageBox(String message) {
+        SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(senderAttributeSet, 5);
+        StyleConstants.setSpaceBelow(senderAttributeSet, 5);
+        StyleConstants.setLeftIndent(senderAttributeSet, 80);
+        StyleConstants.setRightIndent(senderAttributeSet, 5);
+        StyleConstants.setAlignment(senderAttributeSet, StyleConstants.ALIGN_RIGHT);
+        StyleConstants.setBackground(senderAttributeSet, new Color(176, 226, 243));
+        StyleConstants.setForeground(senderAttributeSet, new Color(0, 0, 0));
+
+        StyledDocument styledDocument = textPaneGlobalMessageBox.getStyledDocument();
+        textPaneGlobalMessageBox.setParagraphAttributes(senderAttributeSet, false);
+        try {
+            styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
+        } catch (BadLocationException ex) {
+            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void sendMessageToSelectedUnit(String mesaage) {
+
+    }
 
     private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
-        ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem();
+        ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
         textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
-        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);        
+        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
     }//GEN-LAST:event_comboBoxSelectDefenceActionPerformed
 
-    private class ComboBoxDefenceModel extends DefaultComboBoxModel{
+    private class ComboBoxDefenceModel extends DefaultComboBoxModel {
 
         private ComboBoxDefenceModel(Vector<ComboBoxDefenceItem> comboBoxDefenceItemList) {
             super(comboBoxDefenceItemList);
@@ -437,22 +474,22 @@ public class MainController extends javax.swing.JFrame {
 
         @Override
         public void addElement(Object object) {
-            if(object instanceof ComboBoxDefenceItem){                             
-                insertElementAt((ComboBoxDefenceItem)object, 1);
+            if (object instanceof ComboBoxDefenceItem) {
+                insertElementAt((ComboBoxDefenceItem) object, 1);
             }
         }
 
         @Override
         public void insertElementAt(Object object, int index) {
-            ComboBoxDefenceItem comboBoxDefenceAdd = (ComboBoxDefenceItem)object;
+            ComboBoxDefenceItem comboBoxDefenceAdd = (ComboBoxDefenceItem) object;
             for (index = 1; index < getSize(); index++) {
-                ComboBoxDefenceItem comboBoxDefenceExist = (ComboBoxDefenceItem)getElementAt(index);
+                ComboBoxDefenceItem comboBoxDefenceExist = (ComboBoxDefenceItem) getElementAt(index);
                 int caseInsensitiveValue = comboBoxDefenceExist.compareToIgnoreCase(comboBoxDefenceAdd);
-                if(caseInsensitiveValue > 0){
+                if (caseInsensitiveValue > 0) {
                     break;
-                }else if(caseInsensitiveValue == 0){
+                } else if (caseInsensitiveValue == 0) {
                     int caseSensitiveValue = comboBoxDefenceExist.compareTo(comboBoxDefenceAdd);
-                    if(caseSensitiveValue < 0){
+                    if (caseSensitiveValue < 0) {
                         break;
                     }
                 }
@@ -460,23 +497,26 @@ public class MainController extends javax.swing.JFrame {
             super.insertElementAt(comboBoxDefenceAdd, index); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
         }
     }
-    
+
     public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem, DefenceType unitType) {
         switch (unitType) {
             case HELICOPTER: {
                 helicopterCBList.add(comboBoxDefenceItem);
-            }break;
+            }
+            break;
             case SUBMARINE: {
                 submarineCBList.add(comboBoxDefenceItem);
-            }break;
+            }
+            break;
             case TANK: {
                 tankCBList.add(comboBoxDefenceItem);
-            }break;
-            default: {}
+            }
+            break;
+            default: {
+            }
         }
         comboBoxDefenceModel.addElement(comboBoxDefenceItem);
     }
-    
 
     /**
      * @param args the command line arguments
@@ -541,5 +581,5 @@ public class MainController extends javax.swing.JFrame {
     private javax.swing.JTextPane textPaneGlobalMessageBox;
     private javax.swing.JTextPane textPanePrivateMessageBox;
     // End of variables declaration//GEN-END:variables
-   
+
 }

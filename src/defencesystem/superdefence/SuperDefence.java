@@ -31,7 +31,6 @@ import observerpattern.Observer;
  *
  * @author Nirodha
  */
-
 public abstract class SuperDefence extends javax.swing.JFrame {
 
     private int checkBoxPositionValue;
@@ -46,13 +45,13 @@ public abstract class SuperDefence extends javax.swing.JFrame {
      * Creates new form SuperDefence
      */
     public SuperDefence() {
-        initComponents();        
+        initComponents();
     }
 
-    public MainController getMainController(){
+    public MainController getMainController() {
         return mainController;
     }
-    
+
     protected void setUnitType(DefenceType unitType) {
         this.unitType = unitType;
     }
@@ -76,12 +75,12 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     public String getUnitId() {
         return unitId;
     }
-    
+
     public void setUnitTitle(String unitTitle) {
         this.unitTitle = unitTitle;
         setTitle(unitTitle);
     }
-    
+
     protected void setUnitTitle() {
         unitTitle = unitName + " | " + unitId;
         setTitle(unitTitle);
@@ -90,12 +89,12 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     public String getUnitTitle() {
         return unitTitle;
     }
-    
-    public void setComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem){
+
+    public void setComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem) {
         this.comboBoxDefenceItem = comboBoxDefenceItem;
     }
-    
-    public ComboBoxDefenceItem getComboBoxDefenceItem(){
+
+    public ComboBoxDefenceItem getComboBoxDefenceItem() {
         return comboBoxDefenceItem;
     }
 
@@ -337,11 +336,11 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         String message = textAreaMessageInput.getText().trim();
         textAreaMessageInput.setText("");
-        updateTextPaneMessageBox(message);
-        comboBoxDefenceItem.updateTextPaneItem(message);
+        updateTextPaneMessageBoxForSending(message);
+        comboBoxDefenceItem.updateTextPaneItemForReceiver(message);
     }//GEN-LAST:event_buttonSendActionPerformed
 
-    private void updateTextPaneMessageBox(String message) {
+    private void updateTextPaneMessageBoxForSending(String message) {
         SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
 
         StyleConstants.setSpaceAbove(senderAttributeSet, 5);
@@ -360,91 +359,115 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    private void updateTextPaneMessageBoxForReceiving(String message) {
+        SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(receiverAttributeSet, 5);
+        StyleConstants.setSpaceBelow(receiverAttributeSet, 5);
+        StyleConstants.setRightIndent(receiverAttributeSet, 80);
+        StyleConstants.setLeftIndent(receiverAttributeSet, 5);
+        StyleConstants.setAlignment(receiverAttributeSet, StyleConstants.ALIGN_LEFT);
+        StyleConstants.setBackground(receiverAttributeSet, new Color(215, 203, 220));
+        StyleConstants.setForeground(receiverAttributeSet, new Color(0, 0, 0));
+
+        StyledDocument styledDocument = textPaneMeassageBox.getStyledDocument();
+        textPaneMeassageBox.setParagraphAttributes(receiverAttributeSet, false);
+        try {
+            styledDocument.insertString(styledDocument.getLength(), message + "\n", receiverAttributeSet);
+        } catch (BadLocationException ex) {
+            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+
     protected void setSliderCommonAppearance(JSlider jSlider) {
-    jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-    jSlider.setMajorTickSpacing(20);
-    jSlider.setMinorTickSpacing(10);
-    jSlider.setPaintLabels(true);
-    jSlider.setPaintTicks(true);
-}
+        jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jSlider.setMajorTickSpacing(20);
+        jSlider.setMinorTickSpacing(10);
+        jSlider.setPaintLabels(true);
+        jSlider.setPaintTicks(true);
+    }
 
     protected void setButtonCommonAppearance(JButton jButton) {
-    jButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-    jButton.setForeground(new java.awt.Color(0, 0, 0));
-}
+        jButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jButton.setForeground(new java.awt.Color(0, 0, 0));
+    }
 
     protected void enableButton(JButton... jButtonArray) {
-    for (JButton jButton : jButtonArray) {
-        if (!jButton.isEnabled()) {
-            jButton.setEnabled(true);
+        for (JButton jButton : jButtonArray) {
+            if (!jButton.isEnabled()) {
+                jButton.setEnabled(true);
+            }
         }
     }
-}
 
     protected void disableButton(JButton... jButtonArray) {
-    for (JButton jButton : jButtonArray) {
-        if (jButton.isEnabled()) {
-            jButton.setEnabled(false);
+        for (JButton jButton : jButtonArray) {
+            if (jButton.isEnabled()) {
+                jButton.setEnabled(false);
+            }
         }
     }
-}
 
     protected void postInit(String unitName, DefenceType unitType) {
-    this.unitType = unitType;
-    unitId = Observer.getObserverInstance().generateUnitId(unitType);
-    this.unitName = unitName;
-    setUnitTitle();
-    comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName);
-    setLocationRelativeTo(null);
-}
-    
-    public void setLabelAreaClearanceState(int stateChange) {
-    if (stateChange == ItemEvent.SELECTED) {
-        labelAreaClearance.setText("Area Cleared");
-        labelAreaClearance.setBackground(new Color(97, 179, 57));
-    } else if (stateChange == ItemEvent.DESELECTED) {
-        labelAreaClearance.setText("Area Not Cleared");
-        labelAreaClearance.setBackground(new Color(238, 137, 21));
+        this.unitType = unitType;
+        unitId = Observer.getObserverInstance().generateUnitId(unitType);
+        this.unitName = unitName;
+        setUnitTitle();
+        comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName);
+        setLocationRelativeTo(null);
     }
-}
-    
-    public void sendComboBoxDefenceItem() {
-    mainController.addComboBoxDefenceItem(comboBoxDefenceItem, unitType);
-}
 
+    public void setLabelAreaClearanceState(int stateChange) {
+        if (stateChange == ItemEvent.SELECTED) {
+            labelAreaClearance.setText("Area Cleared");
+            labelAreaClearance.setBackground(new Color(97, 179, 57));
+        } else if (stateChange == ItemEvent.DESELECTED) {
+            labelAreaClearance.setText("Area Not Cleared");
+            labelAreaClearance.setBackground(new Color(238, 137, 21));
+        }
+    }
+
+    public void sendComboBoxDefenceItem() {
+        mainController.addComboBoxDefenceItem(comboBoxDefenceItem, unitType);
+    }
+
+    public void getMessage(String message){
+        updateTextPaneMessageBoxForReceiving(message);
+    }
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-    /* Set the Nimbus look and feel */
-    //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-    /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-     */
-    try {
-        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-            if ("Nimbus".equals(info.getName())) {
-                javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                break;
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    } catch (ClassNotFoundException ex) {
-        java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (InstantiationException ex) {
-        java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (IllegalAccessException ex) {
-        java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-        java.util.logging.Logger.getLogger(SuperDefence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-    }
-    //</editor-fold>
+        //</editor-fold>
 
-    /* Create and display the form */
-    java.awt.EventQueue.invokeLater(() -> {
-        //new SuperDefence().setVisible(true);
-    });
-}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            //new SuperDefence().setVisible(true);
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonSend;

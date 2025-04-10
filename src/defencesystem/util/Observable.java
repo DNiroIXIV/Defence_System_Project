@@ -25,5 +25,7 @@ public interface Observable {
     public void setVisible(boolean value);
 
     public void sendComboBoxDefenceItem();
+
+    public void getMessage(String message);
     
 }

@@ -93,7 +93,7 @@ public class ComboBoxDefenceItem {
         scrollPaneItem.setViewportView(textPaneItem);
     }
     
-    public void updateTextPaneItem(String message) {
+    public void updateTextPaneItemForReceiver(String message) {
         SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
 
         StyleConstants.setSpaceAbove(receiverAttributeSet, 5);
@@ -111,7 +111,27 @@ public class ComboBoxDefenceItem {
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }            
+    } 
+    
+    public void updateTextPaneItemForSender(String message) {
+        SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(senderAttributeSet, 5);
+        StyleConstants.setSpaceBelow(senderAttributeSet, 5);
+        StyleConstants.setLeftIndent(senderAttributeSet, 80);
+        StyleConstants.setRightIndent(senderAttributeSet, 5);
+        StyleConstants.setAlignment(senderAttributeSet, StyleConstants.ALIGN_RIGHT);
+        StyleConstants.setBackground(senderAttributeSet, new Color(176, 226, 243));
+        StyleConstants.setForeground(senderAttributeSet, new Color(0, 0, 0));
+
+        StyledDocument styledDocument = textPaneItem.getStyledDocument();
+        textPaneItem.setParagraphAttributes(senderAttributeSet, false);
+        try {
+            styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
+        } catch (BadLocationException ex) {
+            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     public int compareToIgnoreCase(ComboBoxDefenceItem comboBoxDefenceItem){
         return itemName.compareToIgnoreCase(comboBoxDefenceItem.itemName);
