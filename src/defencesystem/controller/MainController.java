@@ -386,9 +386,25 @@ public class MainController extends javax.swing.JFrame {
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
-        
+        if(radioButtonSendPrivate.isSelected() || radioButtonSendAll.isSelected()){
+            
+        }else{
+            setLabelSendPrivacyErrorVisibility(true);
+        }
     }//GEN-LAST:event_buttonSendActionPerformed
 
+    private void setLabelSendPrivacyErrorVisibility(boolean value){
+        if(value){
+            if(!labelSendPrivacyError.isVisible()){
+                labelSendPrivacyError.setVisible(value);
+            }
+        }else{
+            if(labelSendPrivacyError.isVisible()){
+                labelSendPrivacyError.setVisible(value);
+            }
+        }
+    }
+    
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_checkBoxAreaClearActionPerformed
