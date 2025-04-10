@@ -85,7 +85,7 @@ public class MainController extends javax.swing.JFrame {
         labelOxygen = new javax.swing.JLabel();
         labelOxygenAmount = new javax.swing.JLabel();
         scrollPanePrivateMessageBox = new javax.swing.JScrollPane();
-        textPanePrivateMessageBox = new javax.swing.JTextPane();
+        textPanePrivateMessageBox = comboBoxDefenceItemList.get(0).getTextPaneItem();
         scrollPaneGlobalMessageBox = new javax.swing.JScrollPane();
         textPaneGlobalMessageBox = new javax.swing.JTextPane();
         labelSelectSendPrivacy = new javax.swing.JLabel();
@@ -186,7 +186,7 @@ public class MainController extends javax.swing.JFrame {
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
         textPanePrivateMessageBox.setEditable(false);
-        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
         textPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
@@ -372,7 +372,8 @@ public class MainController extends javax.swing.JFrame {
 
     private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
         ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem();
-        
+        textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
+        scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);        
     }//GEN-LAST:event_comboBoxSelectDefenceActionPerformed
 
     private class ComboBoxDefenceModel extends DefaultComboBoxModel{
