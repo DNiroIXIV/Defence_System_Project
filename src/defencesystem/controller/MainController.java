@@ -11,6 +11,8 @@ import defencesystem.util.Strength;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -224,6 +226,22 @@ public class MainController extends javax.swing.JFrame {
         textAreaInputBox.setRows(5);
         textAreaInputBox.setWrapStyleWord(true);
         textAreaInputBox.setBorder(new EmptyBorder(0, 5, 0, 5));
+        textAreaInputBox.getDocument().addDocumentListener(new DocumentListener(){
+            @Override
+            public void insertUpdate(DocumentEvent evt){
+                setButtonSendEnabledStatus();
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent evt){
+                setButtonSendEnabledStatus();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent evt){
+                setButtonSendEnabledStatus();
+            }
+        });
         scrollPaneInputBox.setViewportView(textAreaInputBox);
 
         buttonSend.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -233,6 +251,7 @@ public class MainController extends javax.swing.JFrame {
                 buttonSendActionPerformed(evt);
             }
         });
+        buttonSend.setEnabled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -345,6 +364,10 @@ public class MainController extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setButtonSendEnabledStatus() {
+        buttonSend.setEnabled(!textAreaInputBox.getText().trim().isEmpty());
+    }
+    
     private void checkBoxAreaClearItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxAreaClearItemStateChanged
         observerInterface.notifyCheckBoxAreaClearStatus(evt.getStateChange());
     }//GEN-LAST:event_checkBoxAreaClearItemStateChanged
@@ -363,7 +386,7 @@ public class MainController extends javax.swing.JFrame {
     }//GEN-LAST:event_sliderPositionStateChanged
 
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void checkBoxAreaClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxAreaClearActionPerformed
