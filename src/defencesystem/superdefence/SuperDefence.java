@@ -360,7 +360,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         }
     }
 
-    private void updateTextPaneMessageBoxForReceiving(String message) {
+    public void updateTextPaneMessageBoxForReceiving(String message) {
         SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
 
         StyleConstants.setSpaceAbove(receiverAttributeSet, 5);

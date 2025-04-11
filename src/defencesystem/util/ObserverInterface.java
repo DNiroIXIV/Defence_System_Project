@@ -16,4 +16,6 @@ public interface ObserverInterface {
 
     public void notifyMessageToEachUnit(String message);
 
+    public void notifyMessageToSelectedUnit(String message, DefenceType itemType, String itemId);
+
 }

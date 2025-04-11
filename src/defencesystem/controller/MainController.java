@@ -51,7 +51,7 @@ public class MainController extends javax.swing.JFrame {
     private MainController(ObserverInterface observerInterface) {
         super("Main Controller");
         this.observerInterface = observerInterface;
-        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("0000", "None");
+        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("0000", "None",null);
         defaultItem.setComboBoxItemName("None");
         comboBoxDefenceItemList.add(defaultItem);
         comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
@@ -430,7 +430,7 @@ public class MainController extends javax.swing.JFrame {
                 }else{
                     textAreaInputBox.setText("");
                     comboBoxDefenceItem.updateTextPaneItemForSender(message);
-                    sendMessageToSelectedUnit(message, comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
+                    observerInterface.notifyMessageToSelectedUnit(message, comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
                 }
             }
         } else {

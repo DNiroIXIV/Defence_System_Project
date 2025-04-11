@@ -28,4 +28,6 @@ public interface Observable {
 
     public void getMessage(String message);
 
+    public void updateTextPaneMessageBoxForReceiving(String message);
+
 }
