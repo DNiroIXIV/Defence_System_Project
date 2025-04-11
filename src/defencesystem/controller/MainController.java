@@ -13,8 +13,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -419,8 +417,9 @@ public class MainController extends javax.swing.JFrame {
             String message = textAreaInputBox.getText().trim();
             if (radioButtonSendAll.isSelected()) {
                 textAreaInputBox.setText("");
-                updateTextPaneGlobalMessageBox(message);
+                updateTextPaneGlobalMessageBoxSending(message);
                 sendMessageToAllUnits(message);
+                buttonGroupSendPrivacy.clearSelection();
             } else {
                 ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
                 String itemId = comboBoxDefenceItem.getItemId();                
@@ -431,6 +430,7 @@ public class MainController extends javax.swing.JFrame {
                     textAreaInputBox.setText("");
                     comboBoxDefenceItem.updateTextPaneItemForSender(message);
                     observerInterface.notifyMessageToSelectedUnit(message, comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
+                    buttonGroupSendPrivacy.clearSelection();
                 }
             }
         } else {
@@ -462,7 +462,7 @@ public class MainController extends javax.swing.JFrame {
         observerInterface.notifyMessageToEachUnit(message);
     }
 
-    private void updateTextPaneGlobalMessageBox(String message) {
+    private void updateTextPaneGlobalMessageBoxSending(String message) {
         SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
 
         StyleConstants.setSpaceAbove(senderAttributeSet, 5);
@@ -477,6 +477,31 @@ public class MainController extends javax.swing.JFrame {
         textPaneGlobalMessageBox.setParagraphAttributes(senderAttributeSet, false);
         try {
             styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
+        } catch (BadLocationException ex) {
+            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void updateTextPaneGlobalMessageBoxReceiving(String comboBoxItemName) {
+        SimpleAttributeSet receiverAttributeSet1 = new SimpleAttributeSet();
+        SimpleAttributeSet receiverAttributeSet2 = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(receiverAttributeSet1, 5);
+        StyleConstants.setSpaceBelow(receiverAttributeSet1, 5);
+        StyleConstants.setRightIndent(receiverAttributeSet1, 80);
+        StyleConstants.setLeftIndent(receiverAttributeSet1, 5);
+        StyleConstants.setAlignment(receiverAttributeSet1, StyleConstants.ALIGN_LEFT);
+        StyleConstants.setBackground(receiverAttributeSet1, new Color(223, 223, 223));
+        StyleConstants.setForeground(receiverAttributeSet1, new Color(24, 24, 186));
+        StyleConstants.setBackground(receiverAttributeSet2, new Color(223, 223, 223));
+        StyleConstants.setForeground(receiverAttributeSet2, new Color(176, 26, 26));
+
+        StyledDocument styledDocument = textPaneGlobalMessageBox.getStyledDocument();
+        textPaneGlobalMessageBox.setParagraphAttributes(receiverAttributeSet1, false);
+        String senderName = comboBoxItemName + " : ";
+        try {
+            styledDocument.insertString(styledDocument.getLength(), senderName, receiverAttributeSet1);
+            styledDocument.insertString(styledDocument.getLength(), "New Message...!" + "\n", receiverAttributeSet2);
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }

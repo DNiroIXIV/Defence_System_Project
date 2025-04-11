@@ -338,6 +338,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         textAreaMessageInput.setText("");
         updateTextPaneMessageBoxForSending(message);
         comboBoxDefenceItem.updateTextPaneItemForReceiver(message);
+        mainController.updateTextPaneGlobalMessageBoxReceiving(comboBoxDefenceItem.getComboBoxItemName());
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void updateTextPaneMessageBoxForSending(String message) {
