@@ -4,11 +4,8 @@
  */
 package defencesystem.util;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.ScrollPaneConstants;
@@ -29,9 +26,9 @@ public class ComboBoxDefenceItem {
     private String comboBoxItemName;
     private final JScrollPane scrollPaneItem;
     private final JTextPane textPaneItem;
-    
+
     public ComboBoxDefenceItem(String itemId, String itemName) {
-        this.itemId = itemId;
+        setItemId(itemId);
         this.itemName = itemName;
         setComboBoxItemName();
         textPaneItem = new JTextPane();
@@ -40,14 +37,14 @@ public class ComboBoxDefenceItem {
         setScrollPaneItemAttributes();
     }
 
-    public void setItemId(String itemId) {
+    private void setItemId(String itemId) {
         this.itemId = itemId;
     }
 
     public String getItemId() {
         return itemId;
     }
-    
+
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
@@ -55,16 +52,16 @@ public class ComboBoxDefenceItem {
     public String getItemName() {
         return itemName;
     }
-    
-    private void setComboBoxItemName(){
+
+    private void setComboBoxItemName() {
         comboBoxItemName = itemName + " | " + itemId;
     }
-    
-    public void setComboBoxItemName(String comboBoxItemName){
+
+    public void setComboBoxItemName(String comboBoxItemName) {
         this.comboBoxItemName = comboBoxItemName;
     }
-    
-    public String getComboBoxItemName(){
+
+    public String getComboBoxItemName() {
         return comboBoxItemName;
     }
 
@@ -92,7 +89,7 @@ public class ComboBoxDefenceItem {
         scrollPaneItem.setPreferredSize(new Dimension(500, 200));
         scrollPaneItem.setViewportView(textPaneItem);
     }
-    
+
     public void updateTextPaneItemForReceiver(String message) {
         SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
 
@@ -111,8 +108,8 @@ public class ComboBoxDefenceItem {
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
-    
+    }
+
     public void updateTextPaneItemForSender(String message) {
         SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
 
@@ -132,29 +129,17 @@ public class ComboBoxDefenceItem {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public int compareToIgnoreCase(ComboBoxDefenceItem comboBoxDefenceItem){
+
+    public int compareToIgnoreCase(ComboBoxDefenceItem comboBoxDefenceItem) {
         return itemName.compareToIgnoreCase(comboBoxDefenceItem.itemName);
     }
-    
-    public int compareTo(ComboBoxDefenceItem comboBoxDefenceItem){
+
+    public int compareTo(ComboBoxDefenceItem comboBoxDefenceItem) {
         return itemName.compareTo(comboBoxDefenceItem.itemName);
     }
 
-//    public static void main(String[] args) {
-//        JFrame frame = new JFrame();
-//        frame.setSize(800, 400);        
-//        frame.setLayout(new FlowLayout());
-//        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        ComboBoxDefenceItem comboBoxDefenceItem = new ComboBoxDefenceItem(null, null);                
-//        frame.add(comboBoxDefenceItem.getScrollPaneItem(), BorderLayout.CENTER);
-//        frame.setVisible(true);
-//        System.out.println("scroll "+comboBoxDefenceItem.getScrollPaneItem());
-//        System.out.println("scroll "+comboBoxDefenceItem.getTextPaneItem());
-//    }
-
     @Override
-    public String toString() {        
+    public String toString() {
         return comboBoxItemName;
     }
 }

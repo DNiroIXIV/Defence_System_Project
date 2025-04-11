@@ -17,6 +17,7 @@ import defencesystem.util.Strength;
 public class Tank extends SuperDefence implements Observable {
 
     private final MainController mainController = getMainController();
+
     /**
      * Creates new form Tank
      */

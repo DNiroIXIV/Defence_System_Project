@@ -68,7 +68,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         return unitName;
     }
 
-    protected void setUnitId(String unitId) {
+    private void setUnitId(String unitId) {
         this.unitId = unitId;
     }
 
@@ -378,7 +378,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
-    } 
+    }
 
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -411,7 +411,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
 
     protected void postInit(String unitName, DefenceType unitType) {
         this.unitType = unitType;
-        unitId = Observer.getObserverInstance().generateUnitId(unitType);
+        setUnitId(Observer.getObserverInstance().generateUnitId(unitType));
         this.unitName = unitName;
         setUnitTitle();
         comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName);
@@ -432,10 +432,10 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         mainController.addComboBoxDefenceItem(comboBoxDefenceItem, unitType);
     }
 
-    public void getMessage(String message){
+    public void getMessage(String message) {
         updateTextPaneMessageBoxForReceiving(message);
     }
-    
+
     /**
      * @param args the command line arguments
      */

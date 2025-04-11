@@ -27,5 +27,5 @@ public interface Observable {
     public void sendComboBoxDefenceItem();
 
     public void getMessage(String message);
-    
+
 }

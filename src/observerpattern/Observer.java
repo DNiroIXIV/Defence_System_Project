@@ -121,8 +121,8 @@ public class Observer implements ObserverInterface {
             observable.enableWeaponOperation(strength);
         }
     }
-    
-    public void notifyMessageToEachUnit(String message){
+
+    public void notifyMessageToEachUnit(String message) {
         for (Observable observable : defenceUnitsList) {
             observable.getMessage(message);
         }

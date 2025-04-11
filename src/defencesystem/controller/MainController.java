@@ -47,11 +47,10 @@ public class MainController extends javax.swing.JFrame {
     /**
      * Creates new form MainController
      */
-
     private MainController(ObserverInterface observerInterface) {
         super("Main Controller");
         this.observerInterface = observerInterface;
-        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("", "");
+        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("0000", "None");
         defaultItem.setComboBoxItemName("None");
         comboBoxDefenceItemList.add(defaultItem);
         comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
@@ -154,7 +153,6 @@ public class MainController extends javax.swing.JFrame {
 
         labelSelectDefenceUnitError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         labelSelectDefenceUnitError.setForeground(new java.awt.Color(255, 0, 51));
-        labelSelectDefenceUnitError.setText("Please select defence unit!");
         labelSelectDefenceUnitError.setVisible(false);
 
         labelSoldier.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -223,7 +221,6 @@ public class MainController extends javax.swing.JFrame {
 
         labelSendPrivacyError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
         labelSendPrivacyError.setForeground(new java.awt.Color(255, 0, 51));
-        labelSendPrivacyError.setText("Please select send privacy before sending the message!");
         labelSendPrivacyError.setVisible(false);
 
         scrollPaneInputBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -378,9 +375,18 @@ public class MainController extends javax.swing.JFrame {
         radioButtonActionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JRadioButton radioButton = (JRadioButton) e.getSource();
-                if (labelSendPrivacyError.isVisible() && radioButton.isSelected()) {
+                if (labelSendPrivacyError.isVisible()) {
                     setLabelSendPrivacyErrorVisibility(false);
+                }
+                
+                if(radioButtonSendAll.isSelected()){
+                    if(labelSelectDefenceUnitError.isVisible()){
+                        setLabelSelectDefenceUnitErrorVisibility(false);
+                    }                    
+                }else{
+                    if(((ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem()).getItemId().equals("0000")){
+                        setLabelSelectDefenceUnitErrorVisibility(true);
+                    }
                 }
             }
         };
@@ -410,11 +416,16 @@ public class MainController extends javax.swing.JFrame {
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         if (radioButtonSendPrivate.isSelected() || radioButtonSendAll.isSelected()) {
             String message = textAreaInputBox.getText().trim();
-            textAreaInputBox.setText("");
             if (radioButtonSendAll.isSelected()) {
+                textAreaInputBox.setText("");
                 sendMessageToAllUnits(message);
             } else {
+                String itemId = ((ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem()).getItemId();
+                    if(itemId.equals("0000")){
+                        labelSelectDefenceUnitError.setText("Please select a defence unit to send message privately!");
+                        labelSelectDefenceUnitError.setVisible(true);
                 sendMessageToSelectedUnit(message);
+                    }
             }
         } else {
             if (!labelSendPrivacyError.isVisible()) {
@@ -424,13 +435,23 @@ public class MainController extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void setLabelSendPrivacyErrorVisibility(boolean value) {
+        if(value){
+            labelSendPrivacyError.setText("Please select send privacy before sending the message!");
+        }
         labelSendPrivacyError.setVisible(value);
+    }
+    
+    private void setLabelSelectDefenceUnitErrorVisibility(boolean value){
+        if(value){
+            labelSelectDefenceUnitError.setText("Please select a defence unit!");
+        }
+        labelSelectDefenceUnitError.setVisible(value);
     }
 
     private void sendMessageToAllUnits(String message) {
         updateTextPaneGlobalMessageBox(message);
         for (int i = 1; i < comboBoxDefenceModel.getSize(); i++) {
-            ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem)comboBoxDefenceModel.getElementAt(i);
+            ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxDefenceModel.getElementAt(i);
             comboBoxDefenceItem.updateTextPaneItemForSender(message);
         }
         observerInterface.notifyMessageToEachUnit(message);
@@ -462,6 +483,13 @@ public class MainController extends javax.swing.JFrame {
 
     private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
         ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
+        boolean isComboBoxItemNone = comboBoxDefenceItem.getItemId().equals("0000");
+        boolean isErrorVisible = labelSelectDefenceUnitError.isVisible();
+        if(!isComboBoxItemNone && isErrorVisible){
+            setLabelSelectDefenceUnitErrorVisibility(false);
+        }else if (isComboBoxItemNone && radioButtonSendPrivate.isSelected() && !isErrorVisible){
+            setLabelSelectDefenceUnitErrorVisibility(true);
+        }
         textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
     }//GEN-LAST:event_comboBoxSelectDefenceActionPerformed
@@ -581,5 +609,4 @@ public class MainController extends javax.swing.JFrame {
     private javax.swing.JTextPane textPaneGlobalMessageBox;
     private javax.swing.JTextPane textPanePrivateMessageBox;
     // End of variables declaration//GEN-END:variables
-
 }

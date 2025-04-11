@@ -17,6 +17,7 @@ import defencesystem.util.Strength;
 public class Submarine extends SuperDefence implements Observable {
 
     private final MainController mainController = getMainController();
+
     /**
      * Creates new form Submarine
      */

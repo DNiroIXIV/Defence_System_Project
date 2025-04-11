@@ -15,21 +15,21 @@ import defencesystem.util.Strength;
  * @author Nirodha
  */
 public class Helicopter extends SuperDefence implements Observable {
-    
+
     private final MainController mainController = getMainController();
-    
+
     /**
      * Creates new form Helicopter
      */
-    public Helicopter() {        
+    public Helicopter() {
         this("Helicopter");
-        
+
     }
 
     public Helicopter(String unitName) {
         initComponents();
         postInit(unitName, DefenceType.HELICOPTER);
-    }    
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
