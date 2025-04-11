@@ -414,7 +414,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         setUnitId(Observer.getObserverInstance().generateUnitId(unitType));
         this.unitName = unitName;
         setUnitTitle();
-        comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName);
+        comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName, unitType);
         setLocationRelativeTo(null);
     }
 

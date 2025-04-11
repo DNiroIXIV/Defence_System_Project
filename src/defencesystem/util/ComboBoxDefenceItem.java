@@ -23,13 +23,15 @@ public class ComboBoxDefenceItem {
 
     private String itemId;
     private String itemName;
+    private DefenceType itemType;
     private String comboBoxItemName;
     private final JScrollPane scrollPaneItem;
     private final JTextPane textPaneItem;
 
-    public ComboBoxDefenceItem(String itemId, String itemName) {
+    public ComboBoxDefenceItem(String itemId, String itemName, DefenceType itemType) {
         setItemId(itemId);
         this.itemName = itemName;
+        setItemType(itemType);
         setComboBoxItemName();
         textPaneItem = new JTextPane();
         setTextPaneItemAttributes();
@@ -51,6 +53,14 @@ public class ComboBoxDefenceItem {
 
     public String getItemName() {
         return itemName;
+    }
+    
+    private void setItemType(DefenceType itemType) {
+        this.itemType = itemType;
+    }
+
+    public DefenceType getItemType() {
+        return itemType;
     }
 
     private void setComboBoxItemName() {

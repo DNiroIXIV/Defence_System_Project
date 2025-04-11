@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -378,13 +379,13 @@ public class MainController extends javax.swing.JFrame {
                 if (labelSendPrivacyError.isVisible()) {
                     setLabelSendPrivacyErrorVisibility(false);
                 }
-                
-                if(radioButtonSendAll.isSelected()){
-                    if(labelSelectDefenceUnitError.isVisible()){
+
+                if (radioButtonSendAll.isSelected()) {
+                    if (labelSelectDefenceUnitError.isVisible()) {
                         setLabelSelectDefenceUnitErrorVisibility(false);
-                    }                    
-                }else{
-                    if(((ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem()).getItemId().equals("0000")){
+                    }
+                } else {
+                    if (((ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem()).getItemId().equals("0000")) {
                         setLabelSelectDefenceUnitErrorVisibility(true);
                     }
                 }
@@ -418,14 +419,19 @@ public class MainController extends javax.swing.JFrame {
             String message = textAreaInputBox.getText().trim();
             if (radioButtonSendAll.isSelected()) {
                 textAreaInputBox.setText("");
+                updateTextPaneGlobalMessageBox(message);
                 sendMessageToAllUnits(message);
             } else {
-                String itemId = ((ComboBoxDefenceItem)comboBoxSelectDefence.getSelectedItem()).getItemId();
-                    if(itemId.equals("0000")){
-                        labelSelectDefenceUnitError.setText("Please select a defence unit to send message privately!");
-                        labelSelectDefenceUnitError.setVisible(true);
-                sendMessageToSelectedUnit(message);
-                    }
+                ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
+                String itemId = comboBoxDefenceItem.getItemId();                
+                if (itemId.equals("0000")) {
+                    labelSelectDefenceUnitError.setText("Please select a defence unit to send message privately!");
+                    labelSelectDefenceUnitError.setVisible(true);                    
+                }else{
+                    textAreaInputBox.setText("");
+                    comboBoxDefenceItem.updateTextPaneItemForSender(message);
+                    sendMessageToSelectedUnit(message, comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
+                }
             }
         } else {
             if (!labelSendPrivacyError.isVisible()) {
@@ -435,21 +441,20 @@ public class MainController extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSendActionPerformed
 
     private void setLabelSendPrivacyErrorVisibility(boolean value) {
-        if(value){
+        if (value) {
             labelSendPrivacyError.setText("Please select send privacy before sending the message!");
         }
         labelSendPrivacyError.setVisible(value);
     }
-    
-    private void setLabelSelectDefenceUnitErrorVisibility(boolean value){
-        if(value){
+
+    private void setLabelSelectDefenceUnitErrorVisibility(boolean value) {
+        if (value) {
             labelSelectDefenceUnitError.setText("Please select a defence unit!");
         }
         labelSelectDefenceUnitError.setVisible(value);
     }
 
-    private void sendMessageToAllUnits(String message) {
-        updateTextPaneGlobalMessageBox(message);
+    private void sendMessageToAllUnits(String message) {        
         for (int i = 1; i < comboBoxDefenceModel.getSize(); i++) {
             ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxDefenceModel.getElementAt(i);
             comboBoxDefenceItem.updateTextPaneItemForSender(message);
@@ -476,18 +481,14 @@ public class MainController extends javax.swing.JFrame {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private void sendMessageToSelectedUnit(String mesaage) {
-
-    }
-
+    
     private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
         ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
         boolean isComboBoxItemNone = comboBoxDefenceItem.getItemId().equals("0000");
         boolean isErrorVisible = labelSelectDefenceUnitError.isVisible();
-        if(!isComboBoxItemNone && isErrorVisible){
+        if (!isComboBoxItemNone && isErrorVisible) {
             setLabelSelectDefenceUnitErrorVisibility(false);
-        }else if (isComboBoxItemNone && radioButtonSendPrivate.isSelected() && !isErrorVisible){
+        } else if (isComboBoxItemNone && radioButtonSendPrivate.isSelected() && !isErrorVisible) {
             setLabelSelectDefenceUnitErrorVisibility(true);
         }
         textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
