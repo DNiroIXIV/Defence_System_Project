@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JLabel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -58,7 +59,7 @@ public class MainController extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    
+
     public static MainController getMainControllerInstance() {
         return getMainControllerInstance(null);
     }
@@ -70,7 +71,7 @@ public class MainController extends javax.swing.JFrame {
     public void addObserverInstance(ObserverInterface observerInterface) {
         this.observerInterface = observerInterface;
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -526,6 +527,12 @@ public class MainController extends javax.swing.JFrame {
         } else if (isComboBoxItemNone && radioButtonSendPrivate.isSelected() && !isErrorVisible) {
             setSelectDefenceErrorVisibility(true);
         }
+        
+        JLabel[] jLabels = {labelSoldierCount, labelAmmoCount, labelEnergy, labelEnergyAmount, labelFuel, labelFuelAmount, labelOxygen, labelOxygenAmount};
+        for (JLabel jLabel : jLabels) {
+            jLabel.setVisible(false);
+        }
+
         textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
     }//GEN-LAST:event_comboBoxSelectDefenceActionPerformed
@@ -533,25 +540,25 @@ public class MainController extends javax.swing.JFrame {
     private void buttonCollectInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCollectInfoActionPerformed
         ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
         boolean isComboBoxItemNone = comboBoxDefenceItem.getItemId().equals("0000");
-        
-        if (isComboBoxItemNone) {  
+
+        if (isComboBoxItemNone) {
             setCollectInfoErrorVisibility(true);
-        }else{            
+        } else {
             observerInterface.notifyUnitToSendInformation(comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
         }
     }//GEN-LAST:event_buttonCollectInfoActionPerformed
 
-    private void setCollectInfoErrorVisibility(boolean value){
-        if(value){
-            labelErrorMessage.setText("Please select a defence unit to collect information!");  
+    private void setCollectInfoErrorVisibility(boolean value) {
+        if (value) {
+            labelErrorMessage.setText("Please select a defence unit to collect information!");
         }
-        labelErrorMessage.setVisible(value);        
+        labelErrorMessage.setVisible(value);
     }
 
-    public void setUnitInfo(DefenceType unitType, Object soldierCount, Object AmmoCount, int fuelAmount, int energyAmount, int oxygenAmount) {
+    public void setUnitInfo(DefenceType unitType, Object soldierCount, Object ammoCount, int fuelAmount, int energyAmount, int oxygenAmount) {
         labelSoldierCount.setText(soldierCount.toString());
         labelSoldierCount.setVisible(true);
-        labelAmmoCount.setText(AmmoCount.toString());
+        labelAmmoCount.setText(ammoCount.toString());
         labelAmmoCount.setVisible(true);
         switch (unitType) {
             case HELICOPTER: {
@@ -577,10 +584,10 @@ public class MainController extends javax.swing.JFrame {
                 labelFuelAmount.setVisible(true);
             }
             break;
-            default:                
+            default:
         }
     }
-    
+
     private class ComboBoxDefenceModel extends DefaultComboBoxModel {
 
         private ComboBoxDefenceModel(Vector<ComboBoxDefenceItem> comboBoxDefenceItemList) {
