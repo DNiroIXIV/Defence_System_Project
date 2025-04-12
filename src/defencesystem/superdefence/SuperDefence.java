@@ -17,6 +17,7 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -44,8 +45,9 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     /**
      * Creates new form SuperDefence
      */
-    public SuperDefence() {
+    public SuperDefence() {        
         initComponents();
+        
     }
 
     public MainController getMainController() {
@@ -417,6 +419,10 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         setUnitTitle();
         comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName, unitType);
         setLocationRelativeTo(null);
+    }
+    
+    protected void sendUnitInfo(int fuelAmount, int energyAmount, int oxygenAmount){        
+        mainController.setUnitInfo(unitType, spinnerSoldierCount.getValue(), spinnerAmmoCount.getValue(), fuelAmount, energyAmount, oxygenAmount);
     }
 
     public void setLabelAreaClearanceState(int stateChange) {

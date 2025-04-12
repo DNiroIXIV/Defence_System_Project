@@ -49,7 +49,7 @@ public class MainController extends javax.swing.JFrame {
     private MainController(ObserverInterface observerInterface) {
         super("Main Controller");
         this.observerInterface = observerInterface;
-        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("0000", "None",null);
+        ComboBoxDefenceItem defaultItem = new ComboBoxDefenceItem("0000", "None", null);
         defaultItem.setComboBoxItemName("None");
         comboBoxDefenceItemList.add(defaultItem);
         comboBoxDefenceModel = new ComboBoxDefenceModel(comboBoxDefenceItemList);
@@ -58,7 +58,7 @@ public class MainController extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    
     public static MainController getMainControllerInstance() {
         return getMainControllerInstance(null);
     }
@@ -70,7 +70,7 @@ public class MainController extends javax.swing.JFrame {
     public void addObserverInstance(ObserverInterface observerInterface) {
         this.observerInterface = observerInterface;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -86,7 +86,7 @@ public class MainController extends javax.swing.JFrame {
         checkBoxAreaClear = new javax.swing.JCheckBox();
         comboBoxSelectDefence = new javax.swing.JComboBox<>();
         buttonCollectInfo = new javax.swing.JButton();
-        labelSelectDefenceUnitError = new javax.swing.JLabel();
+        labelErrorMessage = new javax.swing.JLabel();
         labelSoldier = new javax.swing.JLabel();
         labelSoldierCount = new javax.swing.JLabel();
         labelAmmo = new javax.swing.JLabel();
@@ -149,45 +149,53 @@ public class MainController extends javax.swing.JFrame {
 
         buttonCollectInfo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonCollectInfo.setText("Collect Informations");
+        buttonCollectInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCollectInfoActionPerformed(evt);
+            }
+        });
 
-        labelSelectDefenceUnitError.setFont(new java.awt.Font("Arial", 0, 16)); // NOI18N
-        labelSelectDefenceUnitError.setForeground(new java.awt.Color(255, 0, 51));
-        labelSelectDefenceUnitError.setVisible(false);
+        labelErrorMessage.setFont(new java.awt.Font("sansserif", 0, 16)); // NOI18N
+        labelErrorMessage.setForeground(new java.awt.Color(255, 0, 51));
+        labelErrorMessage.setVisible(false);
 
         labelSoldier.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelSoldier.setText("Soldier Count");
 
         labelSoldierCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelSoldierCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelSoldierCount.setText("1000");
+        labelSoldierCount.setVisible(false);
 
         labelAmmo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelAmmo.setText("Ammo Count");
 
         labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelAmmoCount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelAmmoCount.setText("1000");
+        labelAmmoCount.setVisible(false);
 
         labelEnergy.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelEnergy.setText("Energy Amount");
+        labelEnergy.setVisible(false);
 
         labelEnergyAmount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelEnergyAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelEnergyAmount.setText("1000");
+        labelEnergyAmount.setVisible(false);
 
         labelFuel.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelFuel.setText("Fuel Amount");
+        labelFuel.setVisible(false);
 
         labelFuelAmount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelFuelAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelFuelAmount.setText("1000");
+        labelFuelAmount.setVisible(false);
 
         labelOxygen.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelOxygen.setText("Oxygen Amount");
+        labelOxygen.setVisible(false);
 
         labelOxygenAmount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelOxygenAmount.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        labelOxygenAmount.setText("1000");
+        labelOxygenAmount.setVisible(false);
 
         scrollPanePrivateMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
@@ -267,12 +275,12 @@ public class MainController extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(comboBoxSelectDefence, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
                                 .addComponent(buttonCollectInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(labelSelectDefenceUnitError, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(labelErrorMessage, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelSoldier, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -342,28 +350,30 @@ public class MainController extends javax.swing.JFrame {
                     .addComponent(labelFuelAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(labelFuel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelSelectDefenceUnitError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(radioButtonSendPrivate)
-                    .addComponent(radioButtonSendAll)
-                    .addComponent(labelSelectSendPrivacy)
-                    .addComponent(labelSendPrivacyError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelAmmo, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelAmmoCount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelOxygen, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelOxygenAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(scrollPanePrivateMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPaneGlobalMessageBox, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(radioButtonSendPrivate)
+                            .addComponent(radioButtonSendAll)
+                            .addComponent(labelSelectSendPrivacy)
+                            .addComponent(labelSendPrivacyError, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(buttonSend, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(scrollPaneInputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(labelErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -379,12 +389,12 @@ public class MainController extends javax.swing.JFrame {
                 }
 
                 if (radioButtonSendAll.isSelected()) {
-                    if (labelSelectDefenceUnitError.isVisible()) {
-                        setLabelSelectDefenceUnitErrorVisibility(false);
+                    if (labelErrorMessage.isVisible()) {
+                        labelErrorMessage.setVisible(false);
                     }
                 } else {
                     if (((ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem()).getItemId().equals("0000")) {
-                        setLabelSelectDefenceUnitErrorVisibility(true);
+                        setSelectDefenceErrorVisibility(true);
                     }
                 }
             }
@@ -422,11 +432,11 @@ public class MainController extends javax.swing.JFrame {
                 buttonGroupSendPrivacy.clearSelection();
             } else {
                 ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
-                String itemId = comboBoxDefenceItem.getItemId();                
+                String itemId = comboBoxDefenceItem.getItemId();
                 if (itemId.equals("0000")) {
-                    labelSelectDefenceUnitError.setText("Please select a defence unit to send message privately!");
-                    labelSelectDefenceUnitError.setVisible(true);                    
-                }else{
+                    labelErrorMessage.setText("Please select a defence unit to send message privately!");
+                    labelErrorMessage.setVisible(true);
+                } else {
                     textAreaInputBox.setText("");
                     comboBoxDefenceItem.updateTextPaneItemForSender(message);
                     observerInterface.notifyMessageToSelectedUnit(message, comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
@@ -447,14 +457,14 @@ public class MainController extends javax.swing.JFrame {
         labelSendPrivacyError.setVisible(value);
     }
 
-    private void setLabelSelectDefenceUnitErrorVisibility(boolean value) {
+    private void setSelectDefenceErrorVisibility(boolean value) {
         if (value) {
-            labelSelectDefenceUnitError.setText("Please select a defence unit!");
+            labelErrorMessage.setText("Please select a defence unit!");
         }
-        labelSelectDefenceUnitError.setVisible(value);
+        labelErrorMessage.setVisible(value);
     }
 
-    private void sendMessageToAllUnits(String message) {        
+    private void sendMessageToAllUnits(String message) {
         for (int i = 1; i < comboBoxDefenceModel.getSize(); i++) {
             ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxDefenceModel.getElementAt(i);
             comboBoxDefenceItem.updateTextPaneItemForSender(message);
@@ -481,7 +491,7 @@ public class MainController extends javax.swing.JFrame {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void updateTextPaneGlobalMessageBoxReceiving(String comboBoxItemName) {
         SimpleAttributeSet receiverAttributeSet1 = new SimpleAttributeSet();
         SimpleAttributeSet receiverAttributeSet2 = new SimpleAttributeSet();
@@ -506,20 +516,71 @@ public class MainController extends javax.swing.JFrame {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
         ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
         boolean isComboBoxItemNone = comboBoxDefenceItem.getItemId().equals("0000");
-        boolean isErrorVisible = labelSelectDefenceUnitError.isVisible();
+        boolean isErrorVisible = labelErrorMessage.isVisible();
         if (!isComboBoxItemNone && isErrorVisible) {
-            setLabelSelectDefenceUnitErrorVisibility(false);
+            labelErrorMessage.setVisible(false);
         } else if (isComboBoxItemNone && radioButtonSendPrivate.isSelected() && !isErrorVisible) {
-            setLabelSelectDefenceUnitErrorVisibility(true);
+            setSelectDefenceErrorVisibility(true);
         }
         textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
     }//GEN-LAST:event_comboBoxSelectDefenceActionPerformed
 
+    private void buttonCollectInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCollectInfoActionPerformed
+        ComboBoxDefenceItem comboBoxDefenceItem = (ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem();
+        boolean isComboBoxItemNone = comboBoxDefenceItem.getItemId().equals("0000");
+        
+        if (isComboBoxItemNone) {  
+            setCollectInfoErrorVisibility(true);
+        }else{            
+            observerInterface.notifyUnitToSendInformation(comboBoxDefenceItem.getItemType(), comboBoxDefenceItem.getItemId());
+        }
+    }//GEN-LAST:event_buttonCollectInfoActionPerformed
+
+    private void setCollectInfoErrorVisibility(boolean value){
+        if(value){
+            labelErrorMessage.setText("Please select a defence unit to collect information!");  
+        }
+        labelErrorMessage.setVisible(value);        
+    }
+
+    public void setUnitInfo(DefenceType unitType, Object soldierCount, Object AmmoCount, int fuelAmount, int energyAmount, int oxygenAmount) {
+        labelSoldierCount.setText(soldierCount.toString());
+        labelSoldierCount.setVisible(true);
+        labelAmmoCount.setText(AmmoCount.toString());
+        labelAmmoCount.setVisible(true);
+        switch (unitType) {
+            case HELICOPTER: {
+                labelFuel.setVisible(true);
+                labelFuelAmount.setText(Integer.toString(fuelAmount));
+                labelFuelAmount.setVisible(true);
+            }
+            break;
+
+            case SUBMARINE: {
+                labelEnergy.setVisible(true);
+                labelEnergyAmount.setText(Integer.toString(energyAmount));
+                labelEnergyAmount.setVisible(true);
+                labelOxygen.setVisible(true);
+                labelOxygenAmount.setText(Integer.toString(oxygenAmount));
+                labelOxygenAmount.setVisible(true);
+            }
+            break;
+
+            case TANK: {
+                labelFuel.setVisible(true);
+                labelFuelAmount.setText(Integer.toString(fuelAmount));
+                labelFuelAmount.setVisible(true);
+            }
+            break;
+            default:                
+        }
+    }
+    
     private class ComboBoxDefenceModel extends DefaultComboBoxModel {
 
         private ComboBoxDefenceModel(Vector<ComboBoxDefenceItem> comboBoxDefenceItemList) {
@@ -615,12 +676,12 @@ public class MainController extends javax.swing.JFrame {
     private javax.swing.JLabel labelAmmoCount;
     private javax.swing.JLabel labelEnergy;
     private javax.swing.JLabel labelEnergyAmount;
+    private javax.swing.JLabel labelErrorMessage;
     private javax.swing.JLabel labelFuel;
     private javax.swing.JLabel labelFuelAmount;
     private javax.swing.JLabel labelOxygen;
     private javax.swing.JLabel labelOxygenAmount;
     private javax.swing.JLabel labelPosition;
-    private javax.swing.JLabel labelSelectDefenceUnitError;
     private javax.swing.JLabel labelSelectSendPrivacy;
     private javax.swing.JLabel labelSendPrivacyError;
     private javax.swing.JLabel labelSoldier;

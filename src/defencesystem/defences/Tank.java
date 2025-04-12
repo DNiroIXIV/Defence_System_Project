@@ -4,7 +4,6 @@
  */
 package defencesystem.defences;
 
-import defencesystem.controller.MainController;
 import defencesystem.superdefence.SuperDefence;
 import defencesystem.util.DefenceType;
 import defencesystem.util.Observable;
@@ -15,8 +14,6 @@ import defencesystem.util.Strength;
  * @author Nirodha
  */
 public class Tank extends SuperDefence implements Observable {
-
-    private final MainController mainController = getMainController();
 
     /**
      * Creates new form Tank
@@ -248,5 +245,10 @@ public class Tank extends SuperDefence implements Observable {
             break;
             default:
         }
+    }
+
+    @Override
+    public void sendInformation() {
+        sendUnitInfo(sliderFuel.getValue(), 0, 0);
     }
 }

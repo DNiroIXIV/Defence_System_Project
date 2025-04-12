@@ -132,7 +132,7 @@ public class Observer implements ObserverInterface {
     @Override
     public void notifyMessageToSelectedUnit(String message, DefenceType itemType, String itemId) {
         ArrayList<Observable> unitList;
-        
+
         switch (itemType) {
             case HELICOPTER: {
                 unitList = helicopterList;
@@ -148,12 +148,44 @@ public class Observer implements ObserverInterface {
                 unitList = tankList;
             }
             break;
-            default: unitList = defenceUnitsList;                     
+            default:
+                unitList = defenceUnitsList;
         }
-        
+
         for (Observable observable : unitList) {
-            if(itemId.equals(observable.getUnitId())){
+            if (itemId.equals(observable.getUnitId())) {
                 observable.updateTextPaneMessageBoxForReceiving(message);
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void notifyUnitToSendInformation(DefenceType itemType, String itemId) {
+        ArrayList<Observable> unitList;
+
+        switch (itemType) {
+            case HELICOPTER: {
+                unitList = helicopterList;
+            }
+            break;
+
+            case SUBMARINE: {
+                unitList = submarineList;
+            }
+            break;
+
+            case TANK: {
+                unitList = tankList;
+            }
+            break;
+            default:
+                unitList = defenceUnitsList;
+        }
+
+        for (Observable observable : unitList) {
+            if (itemId.equals(observable.getUnitId())) {
+                observable.sendInformation();
                 break;
             }
         }

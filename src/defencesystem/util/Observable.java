@@ -30,4 +30,6 @@ public interface Observable {
 
     public void updateTextPaneMessageBoxForReceiving(String message);
 
+    public void sendInformation();
+
 }

@@ -18,4 +18,6 @@ public interface ObserverInterface {
 
     public void notifyMessageToSelectedUnit(String message, DefenceType itemType, String itemId);
 
+    public void notifyUnitToSendInformation(DefenceType itemType, String itemId);
+
 }

@@ -54,7 +54,7 @@ public class ComboBoxDefenceItem {
     public String getItemName() {
         return itemName;
     }
-    
+
     private void setItemType(DefenceType itemType) {
         this.itemType = itemType;
     }
