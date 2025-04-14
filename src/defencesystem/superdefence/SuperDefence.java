@@ -18,6 +18,7 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
+import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -163,9 +164,9 @@ public abstract class SuperDefence extends javax.swing.JFrame {
 
         labelAreaClearance = new javax.swing.JLabel();
         labelSoldierCount = new javax.swing.JLabel();
-        spinnerSoldierCount = new javax.swing.JSpinner();
+        spinnerSoldierCount = new javax.swing.JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
         labelAmmoCount = new javax.swing.JLabel();
-        spinnerAmmoCount = new javax.swing.JSpinner();
+        spinnerAmmoCount = new javax.swing.JSpinner(new SpinnerNumberModel(0, 0, 9999, 1));
         checkBoxPosition = new javax.swing.JCheckBox();
         buttonShoot = new javax.swing.JButton();
         scrollPaneMessageBox = new javax.swing.JScrollPane();
