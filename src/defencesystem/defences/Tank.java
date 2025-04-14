@@ -64,7 +64,6 @@ public class Tank extends SuperDefence implements Observable {
         setButtonCommonAppearance(buttonRotate);
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
-
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);

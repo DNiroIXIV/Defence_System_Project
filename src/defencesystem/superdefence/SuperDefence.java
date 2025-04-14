@@ -7,6 +7,7 @@ package defencesystem.superdefence;
 import defencesystem.controller.MainController;
 import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
+import defencesystem.util.WrapEditorKit;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
 import javax.swing.JButton;
@@ -17,7 +18,6 @@ import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextPane;
-import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -45,9 +45,9 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     /**
      * Creates new form SuperDefence
      */
-    public SuperDefence() {        
+    public SuperDefence() {
         initComponents();
-        
+
     }
 
     public MainController getMainController() {
@@ -221,6 +221,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
                 super.setVisible(false); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
             }
         });
+        textPaneMeassageBox.setEditorKit(new WrapEditorKit());
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -338,50 +339,40 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private void buttonSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSendActionPerformed
         String message = textAreaMessageInput.getText().trim();
         textAreaMessageInput.setText("");
-        updateTextPaneMessageBoxForSending(message);
+        updateTextPaneMessageBox(message, true);
         comboBoxDefenceItem.updateTextPaneItemForReceiver(message);
         mainController.updateTextPaneGlobalMessageBoxReceiving(comboBoxDefenceItem.getComboBoxItemName());
     }//GEN-LAST:event_buttonSendActionPerformed
 
-    private void updateTextPaneMessageBoxForSending(String message) {
-        SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
+    private void updateTextPaneMessageBox(String message, boolean isUserInput) {
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
 
-        StyleConstants.setSpaceAbove(senderAttributeSet, 5);
-        StyleConstants.setSpaceBelow(senderAttributeSet, 5);
-        StyleConstants.setLeftIndent(senderAttributeSet, 80);
-        StyleConstants.setRightIndent(senderAttributeSet, 5);
-        StyleConstants.setAlignment(senderAttributeSet, StyleConstants.ALIGN_RIGHT);
-        StyleConstants.setBackground(senderAttributeSet, new Color(217, 242, 231));
-        StyleConstants.setForeground(senderAttributeSet, new Color(0, 0, 0));
+        StyleConstants.setSpaceAbove(attributeSet, 5);
+        StyleConstants.setSpaceBelow(attributeSet, 5);        
+        
+        StyleConstants.setFontFamily(attributeSet, "sansserif");
+        StyleConstants.setFontSize(attributeSet, 14);
+        StyleConstants.setBold(attributeSet, true);
+        StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));   
+        
+        StyleConstants.setLeftIndent(attributeSet, isUserInput ? 80 : 5);
+        StyleConstants.setRightIndent(attributeSet, isUserInput ? 5 : 80);
+        StyleConstants.setAlignment(attributeSet, isUserInput ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
+        if(isUserInput){
+            StyleConstants.setBackground(attributeSet, new Color(217, 242, 231));
+        }else {
+            StyleConstants.setBackground(attributeSet, new Color(215, 203, 220));
+        }
 
         StyledDocument styledDocument = textPaneMeassageBox.getStyledDocument();
-        textPaneMeassageBox.setParagraphAttributes(senderAttributeSet, false);
+        int offSet = styledDocument.getLength();
         try {
-            styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
+            styledDocument.insertString(offSet, message + "\n", attributeSet);
+            styledDocument.setParagraphAttributes(offSet, message.length(), attributeSet, true);
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public void updateTextPaneMessageBoxForReceiving(String message) {
-        SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
-
-        StyleConstants.setSpaceAbove(receiverAttributeSet, 5);
-        StyleConstants.setSpaceBelow(receiverAttributeSet, 5);
-        StyleConstants.setRightIndent(receiverAttributeSet, 80);
-        StyleConstants.setLeftIndent(receiverAttributeSet, 5);
-        StyleConstants.setAlignment(receiverAttributeSet, StyleConstants.ALIGN_LEFT);
-        StyleConstants.setBackground(receiverAttributeSet, new Color(215, 203, 220));
-        StyleConstants.setForeground(receiverAttributeSet, new Color(0, 0, 0));
-
-        StyledDocument styledDocument = textPaneMeassageBox.getStyledDocument();
-        textPaneMeassageBox.setParagraphAttributes(receiverAttributeSet, false);
-        try {
-            styledDocument.insertString(styledDocument.getLength(), message + "\n", receiverAttributeSet);
-        } catch (BadLocationException ex) {
-            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    }    
 
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -420,8 +411,8 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName, unitType);
         setLocationRelativeTo(null);
     }
-    
-    protected void sendUnitInfo(int fuelAmount, int energyAmount, int oxygenAmount){        
+
+    protected void sendUnitInfo(int fuelAmount, int energyAmount, int oxygenAmount) {
         mainController.setUnitInfo(unitType, spinnerSoldierCount.getValue(), spinnerAmmoCount.getValue(), fuelAmount, energyAmount, oxygenAmount);
     }
 
@@ -436,13 +427,13 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     }
 
     public void sendComboBoxDefenceItem() {
-        mainController.addComboBoxDefenceItem(comboBoxDefenceItem, unitType);
+        mainController.addComboBoxDefenceItem(comboBoxDefenceItem);
     }
 
-    public void getMessage(String message) {
-        updateTextPaneMessageBoxForReceiving(message);
+    public void updateDefenceUnitMessageBox(String message){
+        updateTextPaneMessageBox(message, false);
     }
-
+    
     /**
      * @param args the command line arguments
      */

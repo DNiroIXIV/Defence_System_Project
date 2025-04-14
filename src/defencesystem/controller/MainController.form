@@ -408,6 +408,9 @@
               <Color blue="0" green="0" red="0" type="rgb"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="textPaneGlobalMessageBox.setCaret(new DefaultCaret(){&#xa;    @Override&#xa;    public void setVisible(boolean e){&#xa;        super.setVisible(false); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody&#xa;    }&#xa;});&#xa;textPaneGlobalMessageBox.setEditorKit(new WrapEditorKit());"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

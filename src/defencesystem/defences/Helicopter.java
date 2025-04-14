@@ -13,7 +13,7 @@ import defencesystem.util.Strength;
  *
  * @author Nirodha
  */
-public class Helicopter extends SuperDefence implements Observable {    
+public class Helicopter extends SuperDefence implements Observable {
 
     /**
      * Creates new form Helicopter
@@ -61,7 +61,6 @@ public class Helicopter extends SuperDefence implements Observable {
         setButtonCommonAppearance(buttonLaser);
 
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
-
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);

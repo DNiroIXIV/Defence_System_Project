@@ -125,7 +125,7 @@ public class Observer implements ObserverInterface {
     @Override
     public void notifyMessageToEachUnit(String message) {
         for (Observable observable : defenceUnitsList) {
-            observable.getMessage(message);
+            observable.updateDefenceUnitMessageBox(message);
         }
     }
 
@@ -154,7 +154,7 @@ public class Observer implements ObserverInterface {
 
         for (Observable observable : unitList) {
             if (itemId.equals(observable.getUnitId())) {
-                observable.updateTextPaneMessageBoxForReceiving(message);
+                observable.updateDefenceUnitMessageBox(message);
                 break;
             }
         }

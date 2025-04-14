@@ -93,51 +93,51 @@ public class ComboBoxDefenceItem {
                 super.setVisible(false); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
             }
         });
+        textPaneItem.setEditorKit(new WrapEditorKit());
     }
 
     private void setScrollPaneItemAttributes() {
         scrollPaneItem.setPreferredSize(new Dimension(500, 200));
         scrollPaneItem.setViewportView(textPaneItem);
     }
-
+    
     public void updateTextPaneItemForReceiver(String message) {
-        SimpleAttributeSet receiverAttributeSet = new SimpleAttributeSet();
+        updateTextPaneItem(message, false);
+    }
 
-        StyleConstants.setSpaceAbove(receiverAttributeSet, 5);
-        StyleConstants.setSpaceBelow(receiverAttributeSet, 5);
-        StyleConstants.setRightIndent(receiverAttributeSet, 80);
-        StyleConstants.setLeftIndent(receiverAttributeSet, 5);
-        StyleConstants.setAlignment(receiverAttributeSet, StyleConstants.ALIGN_LEFT);
-        StyleConstants.setBackground(receiverAttributeSet, new Color(251, 210, 217));
-        StyleConstants.setForeground(receiverAttributeSet, new Color(0, 0, 0));
+    private void updateTextPaneItem(String message, boolean isUserInput) {
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
+
+        StyleConstants.setSpaceAbove(attributeSet, 5);
+        StyleConstants.setSpaceBelow(attributeSet, 5);
+        
+        StyleConstants.setFontFamily(attributeSet, "sansserif");
+        StyleConstants.setFontSize(attributeSet, 14);
+        StyleConstants.setBold(attributeSet, true);
+        StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));
+        
+        StyleConstants.setRightIndent(attributeSet, isUserInput ? 5 : 80);
+        StyleConstants.setLeftIndent(attributeSet, isUserInput ? 80 : 5);
+        StyleConstants.setAlignment(attributeSet, isUserInput ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
+        
+        if(isUserInput){
+            StyleConstants.setBackground(attributeSet, new Color(176, 226, 243));
+        }else{
+            StyleConstants.setBackground(attributeSet, new Color(251, 210, 217));
+        }   
 
         StyledDocument styledDocument = textPaneItem.getStyledDocument();
-        textPaneItem.setParagraphAttributes(receiverAttributeSet, false);
+        int offSet = styledDocument.getLength();
         try {
-            styledDocument.insertString(styledDocument.getLength(), message + "\n", receiverAttributeSet);
+            styledDocument.insertString(offSet, message + "\n", attributeSet);
+            styledDocument.setParagraphAttributes(offSet, message.length(), attributeSet, true);
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void updateTextPaneItemForSender(String message) {
-        SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
-
-        StyleConstants.setSpaceAbove(senderAttributeSet, 5);
-        StyleConstants.setSpaceBelow(senderAttributeSet, 5);
-        StyleConstants.setLeftIndent(senderAttributeSet, 80);
-        StyleConstants.setRightIndent(senderAttributeSet, 5);
-        StyleConstants.setAlignment(senderAttributeSet, StyleConstants.ALIGN_RIGHT);
-        StyleConstants.setBackground(senderAttributeSet, new Color(176, 226, 243));
-        StyleConstants.setForeground(senderAttributeSet, new Color(0, 0, 0));
-
-        StyledDocument styledDocument = textPaneItem.getStyledDocument();
-        textPaneItem.setParagraphAttributes(senderAttributeSet, false);
-        try {
-            styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
-        } catch (BadLocationException ex) {
-            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        updateTextPaneItem(message, true);
     }
 
     public int compareToIgnoreCase(ComboBoxDefenceItem comboBoxDefenceItem) {

@@ -8,6 +8,7 @@ import defencesystem.util.ComboBoxDefenceItem;
 import defencesystem.util.DefenceType;
 import defencesystem.util.ObserverInterface;
 import defencesystem.util.Strength;
+import defencesystem.util.WrapEditorKit;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +19,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultCaret;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -33,10 +35,6 @@ public class MainController extends javax.swing.JFrame {
     private ObserverInterface observerInterface;
 
     private final Strength[] strengthList = Strength.values();
-
-    private final Vector<ComboBoxDefenceItem> helicopterCBList = new Vector<>();
-    private final Vector<ComboBoxDefenceItem> submarineCBList = new Vector<>();
-    private final Vector<ComboBoxDefenceItem> tankCBList = new Vector<>();
 
     private final Vector<ComboBoxDefenceItem> comboBoxDefenceItemList = new Vector<>();
 
@@ -212,6 +210,13 @@ public class MainController extends javax.swing.JFrame {
         textPaneGlobalMessageBox.setEditable(false);
         textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
         textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
+        textPaneGlobalMessageBox.setCaret(new DefaultCaret(){
+            @Override
+            public void setVisible(boolean e){
+                super.setVisible(false); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        });
+        textPaneGlobalMessageBox.setEditorKit(new WrapEditorKit());
         scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
         labelSelectSendPrivacy.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -382,21 +387,18 @@ public class MainController extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void setRadioButtonActionListener() {
-        radioButtonActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (labelSendPrivacyError.isVisible()) {
-                    setLabelSendPrivacyErrorVisibility(false);
-                }
+        radioButtonActionListener = (ActionEvent e) -> {
+            if (labelSendPrivacyError.isVisible()) {
+                setLabelSendPrivacyErrorVisibility(false);
+            }
 
-                if (radioButtonSendAll.isSelected()) {
-                    if (labelErrorMessage.isVisible()) {
-                        labelErrorMessage.setVisible(false);
-                    }
-                } else {
-                    if (((ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem()).getItemId().equals("0000")) {
-                        setSelectDefenceErrorVisibility(true);
-                    }
+            if (radioButtonSendAll.isSelected()) {
+                if (labelErrorMessage.isVisible()) {
+                    labelErrorMessage.setVisible(false);
+                }
+            } else {
+                if (((ComboBoxDefenceItem) comboBoxSelectDefence.getSelectedItem()).getItemId().equals("0000")) {
+                    setSelectDefenceErrorVisibility(true);
                 }
             }
         };
@@ -428,7 +430,7 @@ public class MainController extends javax.swing.JFrame {
             String message = textAreaInputBox.getText().trim();
             if (radioButtonSendAll.isSelected()) {
                 textAreaInputBox.setText("");
-                updateTextPaneGlobalMessageBoxSending(message);
+                updateTextPaneGlobalMessageBox(message, true);
                 sendMessageToAllUnits(message);
                 buttonGroupSendPrivacy.clearSelection();
             } else {
@@ -473,49 +475,48 @@ public class MainController extends javax.swing.JFrame {
         observerInterface.notifyMessageToEachUnit(message);
     }
 
-    private void updateTextPaneGlobalMessageBoxSending(String message) {
-        SimpleAttributeSet senderAttributeSet = new SimpleAttributeSet();
+    private void updateTextPaneGlobalMessageBox(String message, boolean isUserSending) {
+        SimpleAttributeSet attributeSet = new SimpleAttributeSet();
 
-        StyleConstants.setSpaceAbove(senderAttributeSet, 5);
-        StyleConstants.setSpaceBelow(senderAttributeSet, 5);
-        StyleConstants.setLeftIndent(senderAttributeSet, 80);
-        StyleConstants.setRightIndent(senderAttributeSet, 5);
-        StyleConstants.setAlignment(senderAttributeSet, StyleConstants.ALIGN_RIGHT);
-        StyleConstants.setBackground(senderAttributeSet, new Color(176, 226, 243));
-        StyleConstants.setForeground(senderAttributeSet, new Color(0, 0, 0));
-
+        StyleConstants.setSpaceAbove(attributeSet, 5);
+        StyleConstants.setSpaceBelow(attributeSet, 5);
+        
+        StyleConstants.setFontFamily(attributeSet, "sansserif");
+        StyleConstants.setFontSize(attributeSet, 14);
+        StyleConstants.setBold(attributeSet, true);
+        
+        StyleConstants.setLeftIndent(attributeSet, isUserSending ? 80 : 5);
+        StyleConstants.setRightIndent(attributeSet, isUserSending ? 5 : 80);
+        StyleConstants.setAlignment(attributeSet, isUserSending ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
+        
+        if(isUserSending){
+            StyleConstants.setBackground(attributeSet, new Color(176, 226, 243));
+            StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));
+        } else {
+            StyleConstants.setBackground(attributeSet, new Color(223, 223, 223));
+            StyleConstants.setForeground(attributeSet, new Color(24, 24, 186));        
+        }
+        
         StyledDocument styledDocument = textPaneGlobalMessageBox.getStyledDocument();
-        textPaneGlobalMessageBox.setParagraphAttributes(senderAttributeSet, false);
+        int offSet = styledDocument.getLength();
         try {
-            styledDocument.insertString(styledDocument.getLength(), message + "\n", senderAttributeSet);
+            if(isUserSending){
+                styledDocument.insertString(offSet, message + "\n", attributeSet);
+                styledDocument.setParagraphAttributes(offSet, message.length(), attributeSet, true);
+            }else{
+                styledDocument.insertString(offSet, message + " : ", attributeSet);
+                StyleConstants.setForeground(attributeSet, new Color(176, 26, 26));
+                offSet = styledDocument.getLength();
+                styledDocument.insertString(offSet, "New Message...!\n", attributeSet);
+                styledDocument.setParagraphAttributes(offSet, message.length(), attributeSet, true);
+            }            
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void updateTextPaneGlobalMessageBoxReceiving(String comboBoxItemName) {
-        SimpleAttributeSet receiverAttributeSet1 = new SimpleAttributeSet();
-        SimpleAttributeSet receiverAttributeSet2 = new SimpleAttributeSet();
-
-        StyleConstants.setSpaceAbove(receiverAttributeSet1, 5);
-        StyleConstants.setSpaceBelow(receiverAttributeSet1, 5);
-        StyleConstants.setRightIndent(receiverAttributeSet1, 80);
-        StyleConstants.setLeftIndent(receiverAttributeSet1, 5);
-        StyleConstants.setAlignment(receiverAttributeSet1, StyleConstants.ALIGN_LEFT);
-        StyleConstants.setBackground(receiverAttributeSet1, new Color(223, 223, 223));
-        StyleConstants.setForeground(receiverAttributeSet1, new Color(24, 24, 186));
-        StyleConstants.setBackground(receiverAttributeSet2, new Color(223, 223, 223));
-        StyleConstants.setForeground(receiverAttributeSet2, new Color(176, 26, 26));
-
-        StyledDocument styledDocument = textPaneGlobalMessageBox.getStyledDocument();
-        textPaneGlobalMessageBox.setParagraphAttributes(receiverAttributeSet1, false);
-        String senderName = comboBoxItemName + " : ";
-        try {
-            styledDocument.insertString(styledDocument.getLength(), senderName, receiverAttributeSet1);
-            styledDocument.insertString(styledDocument.getLength(), "New Message...!" + "\n", receiverAttributeSet2);
-        } catch (BadLocationException ex) {
-            //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        updateTextPaneGlobalMessageBox(comboBoxItemName, false);
     }
 
     private void comboBoxSelectDefenceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxSelectDefenceActionPerformed
@@ -527,7 +528,7 @@ public class MainController extends javax.swing.JFrame {
         } else if (isComboBoxItemNone && radioButtonSendPrivate.isSelected() && !isErrorVisible) {
             setSelectDefenceErrorVisibility(true);
         }
-        
+
         JLabel[] jLabels = {labelSoldierCount, labelAmmoCount, labelEnergy, labelEnergyAmount, labelFuel, labelFuelAmount, labelOxygen, labelOxygenAmount};
         for (JLabel jLabel : jLabels) {
             jLabel.setVisible(false);
@@ -596,8 +597,8 @@ public class MainController extends javax.swing.JFrame {
 
         @Override
         public void addElement(Object object) {
-            if (object instanceof ComboBoxDefenceItem) {
-                insertElementAt((ComboBoxDefenceItem) object, 1);
+            if (object instanceof ComboBoxDefenceItem comboBoxDefenceItem) {
+                insertElementAt(comboBoxDefenceItem, 1);
             }
         }
 
@@ -620,23 +621,7 @@ public class MainController extends javax.swing.JFrame {
         }
     }
 
-    public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem, DefenceType unitType) {
-        switch (unitType) {
-            case HELICOPTER: {
-                helicopterCBList.add(comboBoxDefenceItem);
-            }
-            break;
-            case SUBMARINE: {
-                submarineCBList.add(comboBoxDefenceItem);
-            }
-            break;
-            case TANK: {
-                tankCBList.add(comboBoxDefenceItem);
-            }
-            break;
-            default: {
-            }
-        }
+    public void addComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem) {
         comboBoxDefenceModel.addElement(comboBoxDefenceItem);
     }
 

@@ -26,9 +26,7 @@ public interface Observable {
 
     public void sendComboBoxDefenceItem();
 
-    public void getMessage(String message);
-
-    public void updateTextPaneMessageBoxForReceiving(String message);
+    public void updateDefenceUnitMessageBox(String message);
 
     public void sendInformation();
 
