@@ -480,36 +480,36 @@ public class MainController extends javax.swing.JFrame {
 
         StyleConstants.setSpaceAbove(attributeSet, 5);
         StyleConstants.setSpaceBelow(attributeSet, 5);
-        
+
         StyleConstants.setFontFamily(attributeSet, "sansserif");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
-        
+
         StyleConstants.setLeftIndent(attributeSet, isUserSending ? 80 : 5);
         StyleConstants.setRightIndent(attributeSet, isUserSending ? 5 : 80);
         StyleConstants.setAlignment(attributeSet, isUserSending ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
-        
-        if(isUserSending){
+
+        if (isUserSending) {
             StyleConstants.setBackground(attributeSet, new Color(176, 226, 243));
             StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));
         } else {
             StyleConstants.setBackground(attributeSet, new Color(223, 223, 223));
-            StyleConstants.setForeground(attributeSet, new Color(24, 24, 186));        
+            StyleConstants.setForeground(attributeSet, new Color(24, 24, 186));
         }
-        
+
         StyledDocument styledDocument = textPaneGlobalMessageBox.getStyledDocument();
         int offSet = styledDocument.getLength();
         try {
-            if(isUserSending){
+            if (isUserSending) {
                 styledDocument.insertString(offSet, message + "\n", attributeSet);
                 styledDocument.setParagraphAttributes(offSet, message.length(), attributeSet, true);
-            }else{
+            } else {
                 styledDocument.insertString(offSet, message + " : ", attributeSet);
                 StyleConstants.setForeground(attributeSet, new Color(176, 26, 26));
                 offSet = styledDocument.getLength();
                 styledDocument.insertString(offSet, "New Message...!\n", attributeSet);
                 styledDocument.setParagraphAttributes(offSet, message.length(), attributeSet, true);
-            }            
+            }
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }

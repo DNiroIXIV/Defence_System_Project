@@ -100,7 +100,7 @@ public class ComboBoxDefenceItem {
         scrollPaneItem.setPreferredSize(new Dimension(500, 200));
         scrollPaneItem.setViewportView(textPaneItem);
     }
-    
+
     public void updateTextPaneItemForReceiver(String message) {
         updateTextPaneItem(message, false);
     }
@@ -110,21 +110,21 @@ public class ComboBoxDefenceItem {
 
         StyleConstants.setSpaceAbove(attributeSet, 5);
         StyleConstants.setSpaceBelow(attributeSet, 5);
-        
+
         StyleConstants.setFontFamily(attributeSet, "sansserif");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));
-        
+
         StyleConstants.setRightIndent(attributeSet, isUserInput ? 5 : 80);
         StyleConstants.setLeftIndent(attributeSet, isUserInput ? 80 : 5);
         StyleConstants.setAlignment(attributeSet, isUserInput ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
-        
-        if(isUserInput){
+
+        if (isUserInput) {
             StyleConstants.setBackground(attributeSet, new Color(176, 226, 243));
-        }else{
+        } else {
             StyleConstants.setBackground(attributeSet, new Color(251, 210, 217));
-        }   
+        }
 
         StyledDocument styledDocument = textPaneItem.getStyledDocument();
         int offSet = styledDocument.getLength();

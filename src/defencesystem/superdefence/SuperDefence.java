@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
@@ -40,7 +41,7 @@ import observerpattern.Observer;
  * @author Nirodha
  */
 public abstract class SuperDefence extends javax.swing.JFrame {
-
+    
     private int checkBoxPositionValue;
     private DefenceType unitType;
     private String unitName;
@@ -55,32 +56,32 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     public SuperDefence() {
         initComponents();
     }
-
+    
     private void setSpinnerInputVerifier(JSpinner spinner) {
-        JSpinner.NumberEditor spinnerEditor = (JSpinner.NumberEditor)spinner.getEditor();
+        JSpinner.NumberEditor spinnerEditor = (JSpinner.NumberEditor) spinner.getEditor();
         JFormattedTextField spinnerTextField = spinnerEditor.getTextField();
         
-        final DocumentFilter documentFilter =  new DocumentFilter(){
+        final DocumentFilter documentFilter = new DocumentFilter() {
             final int maxNumbers = 4;
-
+            
             @Override
             public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
                 String docString = fb.getDocument().getText(0, fb.getDocument().getLength());
                 docString += string;
-                if((string.length() + fb.getDocument().getLength()) <= maxNumbers && docString.matches("^(0|[1-9][0-9]{0,3})$")){
+                if ((string.length() + fb.getDocument().getLength()) <= maxNumbers && docString.matches("^(0|[1-9][0-9]{0,3})$")) {
                     super.insertString(fb, offset, string, attr); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
                 }                
             }
-
+            
             @Override
             public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
                 String docString = fb.getDocument().getText(0, fb.getDocument().getLength());
                 docString += text;
-                if((fb.getDocument().getLength() + text.length() - length) <= maxNumbers && docString.matches("^(0|[1-9][0-9]{0,3})$")){
+                if ((fb.getDocument().getLength() + text.length() - length) <= maxNumbers && docString.matches("^(0|[1-9][0-9]{0,3})$")) {
                     super.replace(fb, offset, length, text, attrs); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
                 }
             }
-
+            
             @Override
             public void remove(DocumentFilter.FilterBypass fb, int offset, int length) throws BadLocationException {
                 super.remove(fb, offset, length); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
@@ -90,7 +91,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         NumberFormat numberFormat = NumberFormat.getIntegerInstance();
         numberFormat.setGroupingUsed(true);
         
-        InternationalFormatter internationalFormatter = new InternationalFormatter(numberFormat){
+        InternationalFormatter internationalFormatter = new InternationalFormatter(numberFormat) {
             @Override
             protected DocumentFilter getDocumentFilter() {
                 return documentFilter; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
@@ -100,106 +101,105 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         
         spinnerTextField.setFormatterFactory(new DefaultFormatterFactory(internationalFormatter));
     }
-                
-
+    
     public MainController getMainController() {
         return mainController;
     }
-
+    
     protected void setUnitType(DefenceType unitType) {
         this.unitType = unitType;
     }
-
+    
     public DefenceType getUnitType() {
         return unitType;
     }
-
+    
     public void setUnitName(String unitName) {
         this.unitName = unitName;
     }
-
+    
     public String getUnitName() {
         return unitName;
     }
-
+    
     private void setUnitId(String unitId) {
         this.unitId = unitId;
     }
-
+    
     public String getUnitId() {
         return unitId;
     }
-
+    
     public void setUnitTitle(String unitTitle) {
         this.unitTitle = unitTitle;
         setTitle(unitTitle);
     }
-
+    
     protected void setUnitTitle() {
         unitTitle = unitName + " | " + unitId;
         setTitle(unitTitle);
     }
-
+    
     public String getUnitTitle() {
         return unitTitle;
     }
-
+    
     public void setComboBoxDefenceItem(ComboBoxDefenceItem comboBoxDefenceItem) {
         this.comboBoxDefenceItem = comboBoxDefenceItem;
     }
-
+    
     public ComboBoxDefenceItem getComboBoxDefenceItem() {
         return comboBoxDefenceItem;
     }
-
+    
     public JCheckBox getCheckBoxPosition() {
         return checkBoxPosition;
     }
-
+    
     public JLabel getLabelAreaClearance() {
         return labelAreaClearance;
     }
-
+    
     public JLabel getLabelSoldierCount() {
         return labelSoldierCount;
     }
-
+    
     public JSpinner getSpinnerSoldierCount() {
         return spinnerSoldierCount;
     }
-
+    
     public JLabel getLabelAmmoCount() {
         return labelAmmoCount;
     }
-
+    
     public JSpinner getSpinnerAmmoCount() {
         return spinnerAmmoCount;
     }
-
+    
     public JButton getButtonShoot() {
         return buttonShoot;
     }
-
+    
     public JButton getButtonSend() {
         return buttonSend;
     }
-
+    
     public JScrollPane getScrollPaneMessageBox() {
         return scrollPaneMessageBox;
     }
-
+    
     public JTextPane getTextPaneMeassageBox() {
         return textPaneMeassageBox;
     }
-
+    
     public JScrollPane getScrollPaneMessageInput() {
         return scrollPaneMessageInput;
     }
-
+    
     public JTextArea getTextAreaMessageInput() {
         return textAreaMessageInput;
     }
-
+    
     public int getCheckBoxPositionStatus() {
         return checkBoxPositionValue;
     }
@@ -262,6 +262,11 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         buttonShoot.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         buttonShoot.setForeground(new java.awt.Color(0, 0, 0));
         buttonShoot.setText("Shoot");
+        buttonShoot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonShootActionPerformed(evt);
+            }
+        });
 
         scrollPaneMessageBox.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
@@ -385,7 +390,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
     private void checkBoxPositionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_checkBoxPositionItemStateChanged
         checkBoxPositionValue = evt.getStateChange();
     }//GEN-LAST:event_checkBoxPositionItemStateChanged
-
+    
     private void setButtonSendEnabledStatus() {
         buttonSend.setEnabled(!textAreaMessageInput.getText().trim().isEmpty());
     }
@@ -398,17 +403,30 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         mainController.updateTextPaneGlobalMessageBoxReceiving(comboBoxDefenceItem.getComboBoxItemName());
     }//GEN-LAST:event_buttonSendActionPerformed
 
+    private void buttonShootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonShootActionPerformed
+        try {
+            int availableAmmoCount = Integer.parseInt((spinnerAmmoCount.getValue()).toString());
+            if(availableAmmoCount > 0){
+                spinnerAmmoCount.setValue(availableAmmoCount - 1);
+            }else{
+                JOptionPane.showMessageDialog(this, "Unable to shoot out of Ammo!", "Error", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (NumberFormatException e) {
+            
+        }        
+    }//GEN-LAST:event_buttonShootActionPerformed
+    
     private void updateTextPaneMessageBox(String message, boolean isUserInput) {
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
-
+        
         StyleConstants.setSpaceAbove(attributeSet, 5);
         StyleConstants.setSpaceBelow(attributeSet, 5);
-
+        
         StyleConstants.setFontFamily(attributeSet, "sansserif");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));
-
+        
         StyleConstants.setLeftIndent(attributeSet, isUserInput ? 80 : 5);
         StyleConstants.setRightIndent(attributeSet, isUserInput ? 5 : 80);
         StyleConstants.setAlignment(attributeSet, isUserInput ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
@@ -417,7 +435,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         } else {
             StyleConstants.setBackground(attributeSet, new Color(215, 203, 220));
         }
-
+        
         StyledDocument styledDocument = textPaneMeassageBox.getStyledDocument();
         int offSet = styledDocument.getLength();
         try {
@@ -427,7 +445,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jSlider.setMajorTickSpacing(20);
@@ -435,12 +453,12 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         jSlider.setPaintLabels(true);
         jSlider.setPaintTicks(true);
     }
-
+    
     protected void setButtonCommonAppearance(JButton jButton) {
         jButton.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jButton.setForeground(new java.awt.Color(0, 0, 0));
     }
-
+    
     protected void enableButton(JButton... jButtonArray) {
         for (JButton jButton : jButtonArray) {
             if (!jButton.isEnabled()) {
@@ -448,7 +466,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             }
         }
     }
-
+    
     protected void disableButton(JButton... jButtonArray) {
         for (JButton jButton : jButtonArray) {
             if (jButton.isEnabled()) {
@@ -456,7 +474,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             }
         }
     }
-
+    
     protected void postInit(String unitName, DefenceType unitType) {
         this.unitType = unitType;
         setUnitId(Observer.getObserverInstance().generateUnitId(unitType));
@@ -465,11 +483,11 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         comboBoxDefenceItem = new ComboBoxDefenceItem(unitId, unitName, unitType);
         setLocationRelativeTo(null);
     }
-
+    
     protected void sendUnitInfo(int fuelAmount, int energyAmount, int oxygenAmount) {
         mainController.setUnitInfo(unitType, spinnerSoldierCount.getValue(), spinnerAmmoCount.getValue(), fuelAmount, energyAmount, oxygenAmount);
     }
-
+    
     public void setLabelAreaClearanceState(int stateChange) {
         if (stateChange == ItemEvent.SELECTED) {
             labelAreaClearance.setText("Area Cleared");
@@ -479,11 +497,11 @@ public abstract class SuperDefence extends javax.swing.JFrame {
             labelAreaClearance.setBackground(new Color(238, 137, 21));
         }
     }
-
+    
     public void sendComboBoxDefenceItem() {
         mainController.addComboBoxDefenceItem(comboBoxDefenceItem);
     }
-
+    
     public void updateDefenceUnitMessageBox(String message) {
         updateTextPaneMessageBox(message, false);
     }
