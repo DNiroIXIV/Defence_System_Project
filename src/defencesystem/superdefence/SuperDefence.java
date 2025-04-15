@@ -10,8 +10,10 @@ import defencesystem.util.DefenceType;
 import defencesystem.util.WrapEditorKit;
 import java.awt.Color;
 import java.awt.event.ItemEvent;
+import java.text.NumberFormat;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JSlider;
@@ -22,8 +24,12 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultCaret;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.DocumentFilter;
+import javax.swing.text.InternationalFormatter;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -48,8 +54,53 @@ public abstract class SuperDefence extends javax.swing.JFrame {
      */
     public SuperDefence() {
         initComponents();
-
     }
+
+    private void setSpinnerInputVerifier(JSpinner spinner) {
+        JSpinner.NumberEditor spinnerEditor = (JSpinner.NumberEditor)spinner.getEditor();
+        JFormattedTextField spinnerTextField = spinnerEditor.getTextField();
+        
+        final DocumentFilter documentFilter =  new DocumentFilter(){
+            final int maxNumbers = 4;
+
+            @Override
+            public void insertString(DocumentFilter.FilterBypass fb, int offset, String string, AttributeSet attr) throws BadLocationException {
+                String docString = fb.getDocument().getText(0, fb.getDocument().getLength());
+                docString += string;
+                if((string.length() + fb.getDocument().getLength()) <= maxNumbers && docString.matches("^(0|[1-9][0-9]{0,3})$")){
+                    super.insertString(fb, offset, string, attr); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                }                
+            }
+
+            @Override
+            public void replace(DocumentFilter.FilterBypass fb, int offset, int length, String text, AttributeSet attrs) throws BadLocationException {
+                String docString = fb.getDocument().getText(0, fb.getDocument().getLength());
+                docString += text;
+                if((fb.getDocument().getLength() + text.length() - length) <= maxNumbers && docString.matches("^(0|[1-9][0-9]{0,3})$")){
+                    super.replace(fb, offset, length, text, attrs); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+                }
+            }
+
+            @Override
+            public void remove(DocumentFilter.FilterBypass fb, int offset, int length) throws BadLocationException {
+                super.remove(fb, offset, length); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }
+        };
+        
+        NumberFormat numberFormat = NumberFormat.getIntegerInstance();
+        numberFormat.setGroupingUsed(true);
+        
+        InternationalFormatter internationalFormatter = new InternationalFormatter(numberFormat){
+            @Override
+            protected DocumentFilter getDocumentFilter() {
+                return documentFilter; // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+            }            
+        };
+        internationalFormatter.setValueClass(Integer.class);
+        
+        spinnerTextField.setFormatterFactory(new DefaultFormatterFactory(internationalFormatter));
+    }
+                
 
     public MainController getMainController() {
         return mainController;
@@ -190,12 +241,14 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         labelSoldierCount.setText("Soldier Count");
 
         spinnerSoldierCount.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        setSpinnerInputVerifier(spinnerSoldierCount);
 
         labelAmmoCount.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         labelAmmoCount.setForeground(new java.awt.Color(0, 0, 0));
         labelAmmoCount.setText("Ammo Count");
 
         spinnerAmmoCount.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        setSpinnerInputVerifier(spinnerAmmoCount);
 
         checkBoxPosition.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         checkBoxPosition.setForeground(new java.awt.Color(0, 0, 0));
@@ -349,19 +402,19 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         SimpleAttributeSet attributeSet = new SimpleAttributeSet();
 
         StyleConstants.setSpaceAbove(attributeSet, 5);
-        StyleConstants.setSpaceBelow(attributeSet, 5);        
-        
+        StyleConstants.setSpaceBelow(attributeSet, 5);
+
         StyleConstants.setFontFamily(attributeSet, "sansserif");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
-        StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));   
-        
+        StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));
+
         StyleConstants.setLeftIndent(attributeSet, isUserInput ? 80 : 5);
         StyleConstants.setRightIndent(attributeSet, isUserInput ? 5 : 80);
         StyleConstants.setAlignment(attributeSet, isUserInput ? StyleConstants.ALIGN_RIGHT : StyleConstants.ALIGN_LEFT);
-        if(isUserInput){
+        if (isUserInput) {
             StyleConstants.setBackground(attributeSet, new Color(217, 242, 231));
-        }else {
+        } else {
             StyleConstants.setBackground(attributeSet, new Color(215, 203, 220));
         }
 
@@ -373,7 +426,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         } catch (BadLocationException ex) {
             //Logger.getLogger(SuperDefence.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
 
     protected void setSliderCommonAppearance(JSlider jSlider) {
         jSlider.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -431,10 +484,10 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         mainController.addComboBoxDefenceItem(comboBoxDefenceItem);
     }
 
-    public void updateDefenceUnitMessageBox(String message){
+    public void updateDefenceUnitMessageBox(String message) {
         updateTextPaneMessageBox(message, false);
     }
-    
+
     /**
      * @param args the command line arguments
      */
