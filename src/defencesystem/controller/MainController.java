@@ -529,10 +529,7 @@ public class MainController extends javax.swing.JFrame {
             setSelectDefenceErrorVisibility(true);
         }
 
-        JLabel[] jLabels = {labelSoldierCount, labelAmmoCount, labelEnergy, labelEnergyAmount, labelFuel, labelFuelAmount, labelOxygen, labelOxygenAmount};
-        for (JLabel jLabel : jLabels) {
-            jLabel.setVisible(false);
-        }
+        setLabelVisibility(false, labelSoldierCount, labelAmmoCount, labelEnergy, labelEnergyAmount, labelFuel, labelFuelAmount, labelOxygen, labelOxygenAmount);        
 
         textPanePrivateMessageBox = comboBoxDefenceItem.getTextPaneItem();
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
@@ -557,36 +554,36 @@ public class MainController extends javax.swing.JFrame {
     }
 
     public void setUnitInfo(DefenceType unitType, Object soldierCount, Object ammoCount, int fuelAmount, int energyAmount, int oxygenAmount) {
-        labelSoldierCount.setText(soldierCount.toString());
-        labelSoldierCount.setVisible(true);
-        labelAmmoCount.setText(ammoCount.toString());
-        labelAmmoCount.setVisible(true);
+        labelSoldierCount.setText(soldierCount.toString());        
+        labelAmmoCount.setText(ammoCount.toString());  
+        setLabelVisibility(true, labelSoldierCount, labelAmmoCount);
         switch (unitType) {
-            case HELICOPTER: {
-                labelFuel.setVisible(true);
-                labelFuelAmount.setText(Integer.toString(fuelAmount));
-                labelFuelAmount.setVisible(true);
+            case HELICOPTER: {                
+                labelFuelAmount.setText(Integer.toString(fuelAmount));                
+                setLabelVisibility(true, labelFuel, labelFuelAmount);
             }
             break;
 
-            case SUBMARINE: {
-                labelEnergy.setVisible(true);
+            case SUBMARINE: {                
                 labelEnergyAmount.setText(Integer.toString(energyAmount));
-                labelEnergyAmount.setVisible(true);
-                labelOxygen.setVisible(true);
-                labelOxygenAmount.setText(Integer.toString(oxygenAmount));
-                labelOxygenAmount.setVisible(true);
+                labelOxygenAmount.setText(Integer.toString(oxygenAmount));                
+                setLabelVisibility(true, labelEnergy, labelEnergyAmount, labelOxygen, labelOxygenAmount);
             }
             break;
 
-            case TANK: {
-                labelFuel.setVisible(true);
-                labelFuelAmount.setText(Integer.toString(fuelAmount));
-                labelFuelAmount.setVisible(true);
+            case TANK: {                
+                labelFuelAmount.setText(Integer.toString(fuelAmount));                
+                setLabelVisibility(true, labelFuel, labelFuelAmount);
             }
             break;
             default:
         }
+    }
+    
+    private void setLabelVisibility(boolean value, JLabel... jLabels){
+        for (JLabel jLabel : jLabels) {
+            jLabel.setVisible(value);
+        }        
     }
 
     private class ComboBoxDefenceModel extends DefaultComboBoxModel {
