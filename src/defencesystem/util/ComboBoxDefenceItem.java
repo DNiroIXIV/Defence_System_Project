@@ -85,7 +85,7 @@ public class ComboBoxDefenceItem {
 
     private void setTextPaneItemAttributes() {
         textPaneItem.setEditable(false);
-        textPaneItem.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N        
+        textPaneItem.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N        
         textPaneItem.setForeground(new java.awt.Color(0, 0, 0));
         textPaneItem.setCaret(new DefaultCaret() {
             @Override
@@ -111,7 +111,7 @@ public class ComboBoxDefenceItem {
         StyleConstants.setSpaceAbove(attributeSet, 5);
         StyleConstants.setSpaceBelow(attributeSet, 5);
 
-        StyleConstants.setFontFamily(attributeSet, "sansserif");
+        StyleConstants.setFontFamily(attributeSet, "Verdana");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));

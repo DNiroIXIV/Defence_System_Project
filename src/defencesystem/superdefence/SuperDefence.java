@@ -272,7 +272,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         scrollPaneMessageBox.setViewportView(textPaneMeassageBox);
 
         textPaneMeassageBox.setEditable(false);
-        textPaneMeassageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
+        textPaneMeassageBox.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         textPaneMeassageBox.setForeground(new java.awt.Color(0, 0, 0));
         textPaneMeassageBox.setCaret(new DefaultCaret(){
             @Override
@@ -288,7 +288,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         scrollPaneMessageInput.setViewportView(textAreaMessageInput);
 
         textAreaMessageInput.setColumns(20);
-        textAreaMessageInput.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
+        textAreaMessageInput.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         textAreaMessageInput.setForeground(new java.awt.Color(0, 0, 0));
         textAreaMessageInput.setLineWrap(true);
         textAreaMessageInput.setRows(5);
@@ -422,7 +422,7 @@ public abstract class SuperDefence extends javax.swing.JFrame {
         StyleConstants.setSpaceAbove(attributeSet, 5);
         StyleConstants.setSpaceBelow(attributeSet, 5);
         
-        StyleConstants.setFontFamily(attributeSet, "sansserif");
+        StyleConstants.setFontFamily(attributeSet, "Verdana");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
         StyleConstants.setForeground(attributeSet, new Color(0, 0, 0));

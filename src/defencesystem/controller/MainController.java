@@ -200,7 +200,7 @@ public class MainController extends javax.swing.JFrame {
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
         textPanePrivateMessageBox.setEditable(false);
-        textPanePrivateMessageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
+        textPanePrivateMessageBox.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         textPanePrivateMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         scrollPanePrivateMessageBox.setViewportView(textPanePrivateMessageBox);
 
@@ -208,7 +208,7 @@ public class MainController extends javax.swing.JFrame {
         scrollPaneGlobalMessageBox.setViewportView(textPaneGlobalMessageBox);
 
         textPaneGlobalMessageBox.setEditable(false);
-        textPaneGlobalMessageBox.setFont(new java.awt.Font("sansserif", 1, 16)); // NOI18N
+        textPaneGlobalMessageBox.setFont(new java.awt.Font("Verdana", 1, 16)); // NOI18N
         textPaneGlobalMessageBox.setForeground(new java.awt.Color(0, 0, 0));
         textPaneGlobalMessageBox.setCaret(new DefaultCaret(){
             @Override
@@ -240,7 +240,7 @@ public class MainController extends javax.swing.JFrame {
         scrollPaneInputBox.setViewportView(textAreaInputBox);
 
         textAreaInputBox.setColumns(20);
-        textAreaInputBox.setFont(new java.awt.Font("sansserif", 0, 20)); // NOI18N
+        textAreaInputBox.setFont(new java.awt.Font("Verdana", 0, 20)); // NOI18N
         textAreaInputBox.setForeground(new java.awt.Color(0, 0, 0));
         textAreaInputBox.setLineWrap(true);
         textAreaInputBox.setRows(5);
@@ -481,7 +481,7 @@ public class MainController extends javax.swing.JFrame {
         StyleConstants.setSpaceAbove(attributeSet, 5);
         StyleConstants.setSpaceBelow(attributeSet, 5);
 
-        StyleConstants.setFontFamily(attributeSet, "sansserif");
+        StyleConstants.setFontFamily(attributeSet, "Verdana");
         StyleConstants.setFontSize(attributeSet, 14);
         StyleConstants.setBold(attributeSet, true);
 
